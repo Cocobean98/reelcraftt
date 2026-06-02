@@ -1,4 +1,3 @@
-// /api/proxy.js
 export const config = { runtime: 'edge' };
 
 export default async function handler(req) {
@@ -7,26 +6,38 @@ export default async function handler(req) {
   }
 
   try {
-    const { service, endpoint, body } = await req.json();
+    // Accept 'service' and 'method' from the frontend
+    const { service, endpoint, body, method = 'POST' } = await req.json();
     
     const services = {
       groq: {
         baseUrl: 'https://api.groq.com/openai/v1',
         apiKey: process.env.GROQ_API_KEY,
-        auth: { header: 'Authorization', format: k => `Bearer ${k}` }
+        authHeader: 'Authorization',
+        authFormat: k => `Bearer ${k}`
+      },
+      pexels: {
+        baseUrl: 'https://api.pexels.com',
+        apiKey: process.env.PEXELS_API_KEY,
+        authHeader: 'Authorization',
+        authFormat: k => k
       }
     };
 
     const cfg = services[service];
     if (!cfg) return new Response(JSON.stringify({ error: 'Invalid service' }), { status: 400 });
+    if (!cfg.apiKey) return new Response(JSON.stringify({ error: 'API key missing on server' }), { status: 500 });
 
-    const headers = { 'Content-Type': 'application/json' };
-    if (cfg.auth && cfg.apiKey) headers[cfg.auth.header] = cfg.auth.format(cfg.apiKey);
+    let url = `${cfg.baseUrl}${endpoint}`;
+    
+    const headers = {};
+    if (method === 'POST') headers['Content-Type'] = 'application/json';
+    if (cfg.authHeader) headers[cfg.authHeader] = cfg.authFormat(cfg.apiKey);
 
-    const res = await fetch(`${cfg.baseUrl}${endpoint}`, {
-      method: 'POST',
+    const res = await fetch(url, {
+      method: method,
       headers,
-      body: body ? JSON.stringify(body) : undefined
+      body: method === 'POST' && body ? JSON.stringify(body) : undefined
     });
 
     const data = await res.json();
@@ -35,6 +46,6 @@ export default async function handler(req) {
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Proxy failed' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'Proxy failed', details: err.message }), { status: 500 });
   }
 }
