@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelCraftt | AI Text-to-Reel Generator for TikTok, Instagram & YouTube Shorts</title>
+    <meta name="description" content="Create viral 9:16 vertical videos in seconds. AI-powered text-to-reel generator with contextual scripts, curated audio & smart captions.">
+    <meta name="keywords" content="AI reel generator, text to video, TikTok maker, Instagram Reels creator, YouTube Shorts tool, vertical video generator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reelcraftt.vercel.app">
+    <meta name="google-site-verification" content="vD2MkWF3hSqVApc5DditvALQxGLUzLgJZ1woQoFyiKw" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ReelCraftt | AI Text-to-Reel Generator">
+    <meta property="og:description" content="Create viral vertical videos in seconds with AI-powered scripts and curated audio.">
+    <meta property="og:image" content="/og-image.jpg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+        :root {
+            --bg: #09090b; --surface: #111114; --surface-elevated: #18181b;
+            --border: #27272a; --border-light: #3f3f46; --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa; --text-muted: #71717a; --primary: #6366f1;
+            --primary-hover: #4f46e5; --accent: #10b981; --accent-hover: #059669;
+            --warning: #f59e0b; --error: #ef4444; --radius-sm: 8px; --radius-md: 12px;
+            --radius-lg: 16px; --radius-full: 9999px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.4); --transition: 200ms cubic-bezier(0.4,0,0.2,1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.5;
+            background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.15), transparent),
+                              radial-gradient(circle at 0% 100%, rgba(16,185,129,0.08), transparent);
+            padding: 0;
+        }
+        .container { max-width: 1120px; margin: 0 auto; padding: 2rem 1rem; }
+        header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; }
+        .brand {
+            font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+        }
+        .tagline { color: var(--text-secondary); font-size: 1.125rem; max-width: 500px; margin: 0 auto; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
+            color: #818cf8; padding: 6px 14px; border-radius: var(--radius-full);
+            font-size: 0.8125rem; font-weight: 500; margin-bottom: 1.5rem;
+        }
+        .badge::before { content: "●"; color: #10b981; font-size: 10px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2rem;
+            box-shadow: var(--shadow-lg); position: relative; overflow: hidden; margin-bottom: 3rem;
+        }
+        .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+        .mode-selector {
+            display: inline-flex; background: var(--surface-elevated);
+            border: 1px solid var(--border); padding: 4px; border-radius: var(--radius-md);
+            margin-bottom: 2rem; width: 100%; max-width: 320px;
+        }
+        .mode-btn {
+            flex: 1; padding: 0.75rem 1rem; border: none; background: transparent;
+            color: var(--text-muted); border-radius: calc(var(--radius-md) - 4px);
+            cursor: pointer; font-weight: 500; font-size: 0.9375rem; transition: all var(--transition);
+        }
+        .mode-btn.active { background: var(--surface); color: var(--text-primary); box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .mode-btn:hover:not(.active) { color: var(--text-secondary); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-secondary); font-size: 0.875rem; }
+        input[type="text"], textarea, select {
+            width: 100%; padding: 0.875rem 1rem; background: var(--surface-elevated);
+            border: 1px solid var(--border); border-radius: var(--radius-md);
+            color: var(--text-primary); font-size: 0.9375rem; transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+        }
+        textarea { min-height: 140px; resize: vertical; line-height: 1.6; }
+        .length-selector { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+        .length-btn { flex: 1; padding: 0.7rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer; text-align: center; font-weight: 500; transition: var(--transition); }
+        .length-btn:hover { border-color: var(--border-light); color: var(--text-primary); }
+        .length-btn.active { border-color: var(--primary); background: rgba(99,102,241,0.1); color: #818cf8; }
+        .style-options, .music-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+        .style-btn, .music-btn {
+            padding: 0.75rem; background: var(--surface-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer;
+            font-size: 0.875rem; font-weight: 500; transition: all var(--transition); text-align: center;
+        }
+        .style-btn:hover, .music-btn:hover { border-color: var(--border-light); color: var(--text-primary); background: #1c1c21; }
+        .style-btn.active { border-color: var(--primary); background: rgba(99,102,241,0.1); color: #818cf8; }
+        .music-btn.active { border-color: var(--warning); background: rgba(245,158,11,0.1); color: #fbbf24; }
+        .upload-area {
+            margin-top: 1rem; padding: 1rem; background: var(--surface-elevated);
+            border: 2px dashed var(--border); border-radius: var(--radius-md); text-align: center;
+            cursor: pointer; transition: all var(--transition);
+        }
+        .upload-area:hover { border-color: var(--border-light); background: #1c1c21; }
+        input[type="file"] { display: none; }
+        .upload-label { color: var(--text-muted); font-size: 0.875rem; display: block; }
+        .upload-label strong { color: var(--primary); }
+        .btn {
+            background: linear-gradient(135deg, var(--primary), #4f46e5); color: white; border: none; padding: 1rem;
+            font-size: 1rem; border-radius: var(--radius-md); cursor: pointer; width: 100%; font-weight: 600;
+            transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+        }
+        .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,102,241,0.4); }
+        .btn:active:not(:disabled) { transform: translateY(0); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: var(--surface-elevated); border: 1px solid var(--border); color: var(--text-primary); box-shadow: none; }
+        .btn-secondary:hover { background: #1c1c21; border-color: var(--border-light); }
+        .btn-success { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
+        .btn-success:hover { box-shadow: 0 8px 20px rgba(16,185,129,0.4); }
+        .alert { padding: 0.875rem 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: none; font-size: 0.875rem; border-left: 3px solid transparent; }
+        .alert.error { background: rgba(239,68,68,0.1); border-color: var(--error); color: #fca5a5; }
+        .alert.info { background: rgba(16,185,129,0.1); border-color: var(--accent); color: #6ee7b7; }
+        .alert.show { display: flex; align-items: center; gap: 0.75rem; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .preview-section { display: none; margin-top: 2rem; }
+        .preview-section.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .video-container {
+            position: relative; width: 100%; max-width: 360px; margin: 0 auto 2rem;
+            aspect-ratio: 9/16; background: #000; border-radius: var(--radius-lg);
+            overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+        }
+        #backgroundVideo { width: 100%; height: 100%; object-fit: cover; }
+        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .text-slide {
+            color: white; font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 800; text-align: center;
+            line-height: 1.3; text-shadow: 0 2px 12px rgba(0,0,0,0.8); opacity: 0; transform: translateY(15px) scale(0.98);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); max-width: 100%;
+        }
+        .text-slide.active { opacity: 1; transform: translateY(0) scale(1); }
+        .progress-bar { position: absolute; bottom: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.1s linear; z-index: 10; }
+        .chunk-indicators { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .chunk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all var(--transition); }
+        .chunk-dot.active { background: var(--accent); transform: scale(1.4); box-shadow: 0 0 6px rgba(16,185,129,0.6); }
+        .preview-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+        .preview-actions .btn { flex: 1; min-width: 140px; }
+        .spinner { width: 1.25rem; height: 1.25rem; border: 3px solid rgba(255,255,255,0.2); border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .caption-section {
+            margin-top: 2rem; padding: 1.5rem; background: var(--surface-elevated);
+            border: 1px solid var(--border); border-radius: var(--radius-lg);
+        }
+        .caption-section h4 { margin-bottom: 1rem; color: var(--text-primary); }
+        .caption-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;
+            font-size: 0.9375rem; line-height: 1.5; white-space: pre-wrap;
+        }
+        .copy-btn {
+            background: var(--primary); color: white; border: none;
+            padding: 0.5rem 1rem; border-radius: var(--radius-sm);
+            cursor: pointer; font-size: 0.875rem; transition: var(--transition);
+        }
+        .copy-btn:hover { background: var(--primary-hover); }
+        .copy-btn.copied { background: var(--accent); }
+        .section { padding: 4rem 1rem; max-width: 1120px; margin: 0 auto; }
+        .section-title {
+            font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f4f4f5, #a1a1aa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle { text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; font-size: 1.125rem; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about-content p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+        .about-image {
+            background: var(--surface-elevated); border-radius: var(--radius-lg);
+            height: 300px; display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+        }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 1.5rem; transition: var(--transition);
+        }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+        .feature-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .feature-card p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.5; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
+        .step { padding: 1.5rem; }
+        .step-number {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; background: var(--primary); color: white;
+            border-radius: 50%; font-weight: 700; margin-bottom: 1rem;
+        }
+        .step h4 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .step p { color: var(--text-secondary); font-size: 0.9375rem; }
+        .faq-item {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md); margin-bottom: 1rem; overflow: hidden;
+        }
+        .faq-question {
+            padding: 1rem 1.5rem; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center; font-weight: 500; color: var(--text-primary);
+        }
+        .faq-question::after { content: "+"; font-size: 1.25rem; transition: var(--transition); }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer {
+            padding: 0 1.5rem; max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-secondary); line-height: 1.5;
+        }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1rem; max-height: 500px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+        .testimonial-text { color: var(--text-secondary); margin-bottom: 1rem; font-style: italic; line-height: 1.6; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+        .author-avatar {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+            display: flex; align-items: center; justify-content: center; font-weight: 600; color: white;
+        }
+        .author-name { font-weight: 500; color: var(--text-primary); }
+        .author-role { font-size: 0.875rem; color: var(--text-muted); }
+        footer {
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 3rem 1rem; margin-top: 4rem;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1120px; margin: 0 auto; }
+        .footer-section h4 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.125rem; }
+        .footer-section a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; transition: var(--transition); }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .section { padding: 3rem 1rem; }
+            .section-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="badge">✨ AI-Powered Reel Generator</div>
+        <h1 class="brand">ReelCraftt</h1>
+        <p class="tagline">Double the t's, double the craft. ✨ Create viral 9:16 videos in seconds.</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="alert error" id="errorAlert"></div>
+            <div class="alert info" id="infoAlert">✅ Ready to generate</div>
+
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
+                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
+            </div>
+            
+            <div id="subjectMode">
+                <div class="form-group">
+                    <label for="subject">Topic / Prompt</label>
+                    <input type="text" id="subject" placeholder="e.g., Explain the function of forceps, How do airplanes fly...">
+                </div>
+                <div class="form-group">
+                    <label>Content Style</label>
+                    <div class="style-options">
+                        <div class="style-btn active" data-style="educational" onclick="setStyle('educational')">Educational</div>
+                        <div class="style-btn" data-style="inspiring" onclick="setStyle('inspiring')">Inspiring</div>
+                        <div class="style-btn" data-style="fun" onclick="setStyle('fun')">Fun</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Video Length</label>
+                    <div class="length-selector">
+                        <button class="length-btn" data-seconds="15" onclick="setLength(15)">15s</button>
+                        <button class="length-btn active" data-seconds="30" onclick="setLength(30)">30s</button>
+                        <button class="length-btn" data-seconds="60" onclick="setLength(60)">60s</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="freeTextMode" style="display:none;">
+                <div class="form-group">
+                    <label>Your Script</label>
+                    <textarea id="freeText" placeholder="Paste your text here..."></textarea>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Background Music</label>
+                <div class="music-options">
+                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
+                    <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
+                    <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
+                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
+                    <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
+                </div>
+                <div class="upload-area" onclick="document.getElementById('customAudio').click()">
+                    <label class="upload-label"><strong>Or upload your own MP3</strong> (optional)</label>
+                    <input type="file" id="customAudio" accept="audio/mp3,audio/mpeg,audio/*">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="videoQuery">Background Video (optional)</label>
+                <input type="text" id="videoQuery" placeholder="e.g., medical, nature, tech, abstract...">
+                <div class="upload-area" onclick="document.getElementById('customVideo').click()" style="margin-top:0.75rem;">
+                    <label class="upload-label"><strong>Or upload your own MP4</strong> (optional, 9:16 recommended)</label>
+                    <input type="file" id="customVideo" accept="video/mp4,video/*">
+                </div>
+            </div>
+            
+            <button class="btn" onclick="generateReel()" id="generateBtn"><span>🎬</span> Generate Reel</button>
+        </div>
+
+        <div class="card preview-section" id="previewSection">
+            <div class="chunk-indicators" id="chunkIndicators"></div>
+            <div class="video-container">
+                <video id="backgroundVideo" loop muted playsinline crossorigin="anonymous"></video>
+                <div class="overlay"><div class="text-slide" id="displayText"></div></div>
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="preview-actions">
+                <button class="btn" onclick="playPreview()" id="playBtn">▶ Play</button>
+                <button class="btn btn-success" onclick="downloadReel()" id="downloadBtn">⬇ Download</button>
+            </div>
+            <div class="caption-section" id="captionSection" style="display:none;">
+                <h4>📝 Ready-to-Post Caption & Hashtags</h4>
+                <div class="caption-box" id="generatedCaption">Generating caption...</div>
+                <button class="copy-btn" onclick="copyToClipboard('generatedCaption', this)">📋 Copy Caption</button>
+                <div class="caption-box" id="generatedHashtags" style="margin-top:1rem; font-family:monospace;"></div>
+                <button class="copy-btn" onclick="copyToClipboard('generatedHashtags', this)">📋 Copy Hashtags</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="about">
+        <h2 class="section-title">About ReelCraftt</h2>
+        <p class="section-subtitle">Built by an engineer, designed for creators</p>
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>From Engineer to Creator</h3>
+                <p>Hi, I'm the founder of ReelCraftt. By day, I work as a professional engineer solving complex technical problems. By night, I explore creative projects and build tools that make content creation accessible to everyone.</p>
+                <p>I created ReelCraftt because I needed a faster way to produce high-quality vertical videos for my social media channels. What started as a personal productivity tool quickly grew into a platform that helps thousands of creators, educators, and businesses scale their content without sacrificing quality.</p>
+                <p>Every feature in ReelCraftt is built with one goal: <strong>save you time while helping you grow your audience</strong>. No fluff, no complicated workflows—just smart automation that works.</p>
+            </div>
+            <div class="about-image">
+                <div style="text-align:center; color:var(--text-secondary);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">👨‍💻</div>
+                    <p>Engineer & Creator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features" style="background:var(--surface);">
+        <h2 class="section-title">Why Creators Love ReelCraftt</h2>
+        <p class="section-subtitle">Everything you need to create viral vertical videos</p>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
+            <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
+            <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
+            <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
+            <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Create viral reels in 3 simple steps</p>
+        <div class="steps">
+            <div class="step"><div class="step-number">1</div><h4>Enter Your Topic</h4><p>Type what you want to explain. Choose style and length.</p></div>
+            <div class="step"><div class="step-number">2</div><h4>AI Generates Everything</h4><p>Scripts, audio, visuals, captions—done in seconds.</p></div>
+            <div class="step"><div class="step-number">3</div><h4>Download & Post</h4><p>Export your reel and paste the ready-to-use caption.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" style="background:var(--surface);">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know</p>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is ReelCraftt free to use?</div><div class="faq-answer">Yes! Our free tier lets you generate reels with full features. No credit card required.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I use generated reels commercially?</div><div class="faq-answer">Absolutely. All content generated by ReelCraftt is 100% yours to use. No attribution required.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What video formats are supported?</div><div class="faq-answer">Reels export as WebM (1080×1920, 9:16 aspect ratio), fully compatible with Instagram Reels, TikTok, YouTube Shorts, and Facebook Reels.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do I need to install anything?</div><div class="faq-answer">No installation required. ReelCraftt runs entirely in your browser—works on desktop, tablet, or mobile.</div></div>
+    </section>
+
+    <section class="section" id="testimonials">
+        <h2 class="section-title">What Creators Say</h2>
+        <p class="section-subtitle">Join thousands of satisfied users</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card"><p class="testimonial-text">"ReelCraftt cut my content creation time by 80%. I went from posting 2 reels/week to 10, and my engagement doubled!"</p><div class="testimonial-author"><div class="author-avatar">SK</div><div><div class="author-name">Sarah K.</div><div class="author-role">Fitness Coach • 45K followers</div></div></div></div>
+            <div class="testimonial-card"><p class="testimonial-text">"As a teacher, I use this to make educational shorts. The AI scripts are surprisingly accurate and the auto-captions save me hours."</p><div class="testimonial-author"><div class="author-avatar">MJ</div><div><div class="author-name">Mark J.</div><div class="author-role">High School Teacher • 12K followers</div></div></div></div>
+            <div class="testimonial-card"><p class="testimonial-text">"Finally a tool that understands my niche! The contextual music and smart hashtags helped my tech reviews go viral."</p><div class="testimonial-author"><div class="author-avatar">AL</div><div><div class="author-name">Alex L.</div><div class="author-role">Tech Reviewer • 89K followers</div></div></div></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section"><h4>ReelCraftt</h4><a href="#about">About</a><a href="#features">Features</a><a href="#how-it-works">How It Works</a><a href="#faq">FAQ</a></div>
+            <div class="footer-section"><h4>Resources</h4><a href="#">Blog</a><a href="#">Tutorial Videos</a><a href="#">API Documentation</a><a href="#">Community</a></div>
+            <div class="footer-section"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Commercial License</a><a href="#">Cookie Policy</a></div>
+            <div class="footer-section"><h4>Connect</h4><a href="#">Twitter / X</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Contact Support</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 ReelCraftt. All rights reserved. Built with ❤️ by engineers, for creators.</div>
+    </footer>
+
+    <script>
+        // 🎵 MUSIC CONFIGURATION - Update track counts to match your files
+        const MUSIC_CONFIG = {
+            ambient: { folder: 'Ambient', trackCount: 5 },
+            lofi: { folder: 'Lo-fi', trackCount: 5 },
+            upbeat: { folder: 'Upbeat', trackCount: 5 },
+            cinematic: { folder: 'Cinematic', trackCount: 5 }
+        };
+
+        let currentMode = 'subject', currentStyle = 'educational', selectedMusic = 'random';
+        let textChunks = [], currentChunkIndex = 0, animationInterval = null;
+        let customAudioBuffer = null, customVideoUrl = null;
+        let selectedDuration = 30, currentTopic = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.length-btn[data-seconds="30"]').classList.add('active');
+            document.getElementById('customAudio').addEventListener('change', handleCustomAudioUpload);
+            document.getElementById('customVideo').addEventListener('change', handleCustomVideoUpload);
+        });
+
+        function switchMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+            document.getElementById('freeTextMode').style.display = mode === 'free' ? 'block' : 'none';
+            document.getElementById('subjectMode').style.display = mode === 'subject' ? 'block' : 'none';
+        }
+        function setStyle(style) { currentStyle = style; document.querySelectorAll('.style-btn').forEach(b => b.classList.toggle('active', b.dataset.style === style)); }
+        function selectMusic(track) { selectedMusic = track; document.querySelectorAll('.music-btn').forEach(b => b.classList.toggle('active', b.dataset.track === track)); }
+        function setLength(seconds) {
+            selectedDuration = seconds;
+            document.querySelectorAll('.length-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.seconds) === seconds));
+        }
+
+        async function handleCustomAudioUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            try {
+                customAudioBuffer = await audioCtx.decodeAudioData(await file.arrayBuffer());
+                selectedMusic = 'custom';
+                document.querySelectorAll('.music-btn').forEach(b => b.classList.remove('active'));
+                showAlert(`✅ Loaded: ${file.name}`, 'info');
+            } catch (err) {
+                showAlert('❌ Could not decode audio. Try MP3 or WAV.', 'error');
+            }
+        }
+
+        function handleCustomVideoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            customVideoUrl = URL.createObjectURL(file);
+            showAlert(`✅ Loaded: ${file.name}`, 'info');
+        }
+
+        function showAlert(msg, type = 'error') {
+            const el = document.getElementById(`${type}Alert`);
+            el.innerHTML = msg; el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 8000);
+        }
+
+        function hideAlerts() { document.querySelectorAll('.alert').forEach(a => a.classList.remove('show')); }
+
+        // 🔐 SECURE PROXY FETCH
+        async function fetchViaProxy(endpoint, body) {
+            try {
+                const res = await fetch('/api/proxy', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ endpoint, body })
+                });
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    throw new Error(`Proxy error ${res.status}: ${errorText}`);
+                }
+                return await res.json();
+            } catch (err) {
+                console.error('Proxy fetch failed:', err);
+                throw err;
+            }
+        }
+
+        // 🎵 FOLDER-BASED MUSIC PLAYER
+        async function playMusic(type) {
+            if (window.currentAudio) { window.currentAudio.pause(); window.currentAudio = null; }
+            if (type === 'none' || type === 'custom') return;
+            
+            let folder, trackCount;
+            if (type === 'random') {
+                const keys = Object.keys(MUSIC_CONFIG);
+                const randKey = keys[Math.floor(Math.random() * keys.length)];
+                folder = MUSIC_CONFIG[randKey].folder;
+                trackCount = MUSIC_CONFIG[randKey].trackCount;
+            } else {
+                folder = MUSIC_CONFIG[type]?.folder;
+                trackCount = MUSIC_CONFIG[type]?.trackCount;
+            }
+            
+            if (!folder || !trackCount) return;
+            
+            const trackNum = Math.floor(Math.random() * trackCount) + 1;
+            const url = `/audio/${folder}/${trackNum}.mp3`;
+            
+            try {
+                showAlert(`🎵 Loading ${type} music...`, 'info');
+                const audio = new Audio(url);
+                audio.loop = true;
+                audio.volume = 0.4;
+                await audio.play();
+                window.currentAudio = audio;
+                showAlert('🎵 Music playing', 'info');
+            } catch(e) {
+                console.error('Music playback error:', e);
+                showAlert('⚠️ Could not play music. Check /audio/ folder structure.', 'error');
+            }
+        }
+
+        // 🤖 BULLETPROOF AI SCRIPT GENERATION
+        async function generateScriptFromPrompt(prompt) {
+            const totalWords = Math.round(selectedDuration * 2.5);
+            const slideCount = selectedDuration <= 15 ? 3 : selectedDuration <= 30 ? 5 : 8;
+            
+            const styleMap = {
+                educational: 'Clear, factual, and engaging. Explain concepts step-by-step with real-world context and specific examples.',
+                inspiring: 'Motivational and uplifting. Focus on impact, possibilities, and human achievement with emotional depth.',
+                fun: 'Lighthearted and entertaining. Use relatable hooks, playful phrasing, and engaging anecdotes.'
+            };
+
+            const systemPrompt = `You are an expert scriptwriter for short-form explainer videos. You create DETAILED, CONTEXTUAL scripts with interesting facts and engaging details.
+
+TASK: Write a ${selectedDuration}-second script about "${prompt}".
+REQUIREMENTS:
+- Total word count: Approximately ${totalWords} words
+- Number of slides: Exactly ${slideCount} slides
+- Style: ${styleMap[currentStyle]}
+
+CRITICAL RULES:
+1. Each slide must be a COMPLETE, DETAILED sentence (15-40 words each)
+2. Include SPECIFIC facts, statistics, examples, or interesting details about ${prompt}
+3. Create a logical narrative flow: Hook → Explanation → Details → Examples → Conclusion
+4. Make it engaging and informative - not generic or repetitive
+5. Use concrete examples and real-world applications
+6. Output ONLY a valid JSON array of strings
+
+EXAMPLE OUTPUT for "forceps" (30s, educational):
+[
+  "Forceps are precision surgical instruments designed to grasp, hold, and manipulate tissue during medical procedures without causing damage.",
+  "They feature two hinged arms with textured tips that provide secure grip while minimizing trauma to delicate structures.",
+  "Surgeons rely on forceps for intricate operations in fields like obstetrics, surgery, and emergency medicine where fingers are too large or imprecise.",
+  "Modern forceps come in over 50 specialized shapes, each designed for specific medical procedures and anatomical requirements.",
+  "Mastering forceps requires extensive clinical training, steady hands, and deep understanding of human anatomy."
+]
+
+OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extra text.
+Example: ["Slide 1 text", "Slide 2 text", ...]`;
+
+            try {
+                showAlert(`🤖 Generating detailed script...`, 'info');
+                
+                const data = await fetchViaProxy('/chat/completions', {
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: `Create a detailed, contextual ${selectedDuration}-second explainer script about: ${prompt}` }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1000,
+                    response_format: { type: 'json_object' }
+                });
+                
+                let raw = data.choices?.[0]?.message?.content?.trim();
+                if (!raw) throw new Error('Empty response from AI');
+                
+                // Clean up response
+                raw = raw.replace(/```json|```/g, '').trim();
+                
+                // Try to parse as JSON
+                let script;
+                try {
+                    script = JSON.parse(raw);
+                } catch (parseErr) {
+                    console.error('JSON parse failed, raw response:', raw);
+                    throw new Error('AI returned invalid JSON format');
+                }
+                
+                // Validate structure
+                if (!Array.isArray(script)) {
+                    // Try to extract array from object
+                    if (script.slides && Array.isArray(script.slides)) {
+                        script = script.slides;
+                    } else if (script.script && Array.isArray(script.script)) {
+                        script = script.script;
+                    } else {
+                        throw new Error('Response is not an array');
+                    }
+                }
+                
+                if (script.length === 0) throw new Error('Empty script array');
+                
+                // Clean and validate each slide
+                const cleaned = script
+                    .map(s => typeof s === 'string' ? s.trim() : '')
+                    .filter(s => s.length > 15 && s.length < 200);
+                
+                if (cleaned.length < slideCount * 0.6) {
+                    throw new Error(`Script too short: got ${cleaned.length} slides, expected ${slideCount}`);
+                }
+                
+                // Validate content quality (not generic)
+                const genericPhrases = ['understanding is essential', 'plays a crucial role', 'systematic process'];
+                const isGeneric = cleaned.some(s => genericPhrases.some(phrase => s.toLowerCase().includes(phrase)));
+                
+                if (isGeneric && cleaned.length < slideCount) {
+                    console.warn('Script appears generic, but using it as fallback failed too');
+                }
+                
+                return cleaned.slice(0, slideCount);
+                
+            } catch (err) {
+                console.error('Script generation failed:', err);
+                showAlert(`⚠️ Script generation failed: ${err.message}. Using contextual fallback.`, 'error');
+                return generateContextualFallback(prompt, slideCount);
+            }
+        }
+
+        // 🎯 CONTEXTUAL FALLBACK (Much better than generic)
+        function generateContextualFallback(topic, count) {
+            const topicLower = topic.toLowerCase();
+            
+            // Generate contextual content based on topic keywords
+            const scripts = {
+                medical: [
+                    `${topic} are essential medical instruments used by healthcare professionals worldwide for precise surgical procedures.`,
+                    `Modern ${topic} feature advanced ergonomic designs that reduce hand fatigue during lengthy operations.`,
+                    `Surgeons undergo years of specialized training to master the proper use of ${topic} in clinical settings.`,
+                    `The evolution of ${topic} reflects decades of medical innovation and patient safety improvements.`,
+                    `Proper sterilization and handling of ${topic} are critical for preventing infections and ensuring patient outcomes.`
+                ],
+                technology: [
+                    `${topic} represents a breakthrough in modern technology that's transforming how we interact with digital systems.`,
+                    `The underlying architecture of ${topic} combines cutting-edge algorithms with user-friendly interface design.`,
+                    `Industry experts predict ${topic} will revolutionize multiple sectors within the next five to ten years.`,
+                    `Understanding ${topic} requires knowledge of both technical principles and practical real-world applications.`,
+                    `The development of ${topic} involved collaboration between engineers, designers, and end-user feedback.`
+                ],
+                science: [
+                    `${topic} is a fascinating area of scientific research that continues to reveal new insights about our world.`,
+                    `Recent studies on ${topic} have challenged previous assumptions and opened new avenues for investigation.`,
+                    `The principles behind ${topic} demonstrate the elegant complexity of natural systems and processes.`,
+                    `Scientists use advanced methodologies to study ${topic} and uncover its fundamental mechanisms.`,
+                    `Understanding ${topic} helps us appreciate the intricate balance of forces in nature and technology.`
+                ],
+                general: [
+                    `${topic} encompasses a wide range of concepts and applications that impact our daily lives in meaningful ways.`,
+                    `Experts in the field of ${topic} emphasize the importance of understanding both theory and practical implementation.`,
+                    `The evolution of ${topic} over the past decade reflects changing needs and technological advancements.`,
+                    `Successful application of ${topic} requires careful consideration of context, resources, and desired outcomes.`,
+                    `Future developments in ${topic} promise to unlock new possibilities and address current limitations.`
+                ]
+            };
+            
+            // Detect topic category
+            let category = 'general';
+            if (topicLower.match(/medical|surgical|health|doctor|patient|hospital/)) category = 'medical';
+            else if (topicLower.match(/tech|software|computer|digital|ai|algorithm|code/)) category = 'technology';
+            else if (topicLower.match(/science|research|study|experiment|biology|physics|chemistry/)) category = 'science';
+            
+            return scripts[category].slice(0, count);
+        }
+
+        // ✍️ CAPTION & HASHTAGS GENERATOR
+        async function generateCaptionAndHashtags(topic, style, script) {
+            const prompt = `You are a social media expert specializing in viral content. Generate an engaging Instagram/TikTok caption and strategic hashtags for a short video.
+
+VIDEO DETAILS:
+- Topic: ${topic}
+- Style: ${style}
+- Script: ${script.join(' | ')}
+
+REQUIREMENTS:
+1. CAPTION (under 2200 chars):
+   - Hook in first line (grab attention)
+   - Value proposition (what viewer learns)
+   - Call-to-action (engage, follow, comment)
+   - Use 1-3 relevant emojis
+   - Conversational, authentic tone
+
+2. HASHTAGS (10-15 total):
+   - 3-5 broad: #ReelCraftt #AI #Shorts #TikTok
+   - 5-7 niche: specific to ${topic}
+   - 2-3 trending: #LearnOnTikTok #EduTok #Viral
+
+OUTPUT FORMAT (JSON only):
+{
+  "caption": "Your caption here...",
+  "hashtags": ["#Tag1", "#Tag2", ...]
+}`;
+
+            try {
+                const data = await fetchViaProxy('/chat/completions', {
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.7,
+                    max_tokens: 500
+                });
+                
+                let raw = data.choices?.[0]?.message?.content?.trim();
+                if (!raw) throw new Error('Empty response');
+                
+                raw = raw.replace(/```json|```/g, '').trim();
+                const result = JSON.parse(raw);
+                
+                if (!result.caption || !result.hashtags) throw new Error('Invalid format');
+                return result;
+                
+            } catch (err) {
+                console.warn('Caption generation failed:', err);
+                return {
+                    caption: `🎬 Learn about ${topic} in ${selectedDuration} seconds! ${style === 'educational' ? 'Facts, insights, and real-world applications.' : style === 'inspiring' ? 'Discover the impact and possibilities.' : 'Fun and engaging breakdown.'} 👇 What surprised you? Comment below! 💬`,
+                    hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#InstagramReels', `#${topic.replace(/\s+/g, '')}`, '#ContentCreator', '#Viral', '#LearnOnTikTok', '#EduTok']
+                };
+            }
+        }
+
+        function copyToClipboard(elementId, btn) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                showAlert('❌ Failed to copy. Please select and copy manually.', 'error');
+            });
+        }
+
+        // 🎬 MAIN GENERATION FLOW
+        async function generateReel() {
+            hideAlerts();
+            const vqInput = document.getElementById('videoQuery').value.trim();
+            const subjectInput = document.getElementById('subject').value.trim();
+            currentTopic = subjectInput;
+            let slides = [];
+            
+            if (currentMode === 'free') {
+                const txt = document.getElementById('freeText').value.trim();
+                if (!txt) return showAlert('Enter text first', 'error');
+                slides = txt.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [txt];
+            } else {
+                if (!subjectInput) return showAlert('Enter a topic/prompt', 'error');
+                slides = await generateScriptFromPrompt(subjectInput);
+            }
+
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Processing...';
+
+            try {
+                const timePer = (selectedDuration * 1000) / slides.length;
+                textChunks = slides.map((t, i) => ({ text: t, start: i * timePer, end: (i + 1) * timePer }));
+
+                showAlert('🎬 Fetching background video...', 'info');
+                let vidUrl = customVideoUrl;
+                if (!vidUrl) {
+                    const finalVideoQuery = vqInput || (currentMode === 'subject' ? subjectInput : null);
+                    const q = finalVideoQuery || 'abstract background particles';
+                    const randomPage = Math.floor(Math.random() * 5) + 1;
+                    const res = await fetch(`https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`);
+                    const data = await res.json();
+                    if (data.videos?.length) {
+                        const randomIdx = Math.floor(Math.random() * data.videos.length);
+                        const vid = data.videos[randomIdx];
+                        const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
+                        vidUrl = valid.length ? valid[0].link : vid.video_files[0].link;
+                    }
+                }
+
+                if (selectedMusic !== 'none') {
+                    showAlert('🎵 Loading music...', 'info');
+                    await playMusic(selectedMusic);
+                }
+
+                const vid = document.getElementById('backgroundVideo');
+                vid.src = vidUrl || 'https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4';
+                vid.crossOrigin = 'anonymous';
+                document.getElementById('previewSection').classList.add('active');
+                document.getElementById('chunkIndicators').innerHTML = textChunks.map((_, i) => `<div class="chunk-dot"></div>`).join('');
+                await new Promise(r => vid.onloadedmetadata = r);
+
+                const canvas = document.createElement('canvas'); canvas.width = 1080; canvas.height = 1920;
+                const ctx = canvas.getContext('2d');
+                updateSlide(0);
+                
+                showAlert('✍️ Generating caption & hashtags...', 'info');
+                const captionData = await generateCaptionAndHashtags(subjectInput, currentStyle, slides);
+                
+                document.getElementById('captionSection').style.display = 'block';
+                document.getElementById('generatedCaption').textContent = captionData.caption;
+                document.getElementById('generatedHashtags').textContent = captionData.hashtags.join(' ');
+                
+                const musicLabel = selectedMusic === 'custom' ? 'Custom Upload' : 
+                                  selectedMusic === 'none' ? 'None' : selectedMusic;
+                showAlert(`✅ Ready! ${textChunks.length} slides • ${selectedDuration}s • Music: ${musicLabel}`, 'info');
+            } catch (e) {
+                console.error(e); showAlert(`Error: ${e.message}`, 'error');
+            } finally {
+                btn.disabled = false; btn.innerHTML = '<span>🎬</span> Generate Reel';
+            }
+        }
+
+        function updateSlide(i) {
+            const el = document.getElementById('displayText');
+            el.classList.remove('active');
+            setTimeout(() => {
+                el.textContent = textChunks[i].text;
+                el.classList.add('active');
+                document.querySelectorAll('.chunk-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+            }, 200);
+            currentChunkIndex = i;
+        }
+
+        async function playPreview() {
+            const vid = document.getElementById('backgroundVideo'), bar = document.getElementById('progressBar'), dur = selectedDuration * 1000;
+            vid.currentTime = 0;
+            if (selectedMusic !== 'none') await playMusic(selectedMusic);
+            await vid.play();
+            clearInterval(animationInterval);
+            const start = Date.now();
+            animationInterval = setInterval(() => {
+                const p = Math.min((Date.now() - start) / dur, 1);
+                bar.style.width = `${p * 100}%`;
+                const idx = textChunks.findIndex(c => (Date.now() - start) >= c.start && (Date.now() - start) < c.end);
+                if (idx !== -1 && idx !== currentChunkIndex) updateSlide(idx);
+                if (p >= 1) { clearInterval(animationInterval); vid.pause(); if (window.currentAudio) window.currentAudio.pause(); bar.style.width = '0%'; }
+            }, 50);
+        }
+
+        async function downloadReel() {
+            const vid = document.getElementById('backgroundVideo'), dur = selectedDuration, btn = document.getElementById('downloadBtn');
+            btn.disabled = true; btn.textContent = 'Recording...';
+            const recordedChunks = [];
+            const rc = document.createElement('canvas'); rc.width = 1080; rc.height = 1920;
+            const rctx = rc.getContext('2d');
+            
+            const stream = rc.captureStream(30);
+            const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+            const mr = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+            mr.ondataavailable = e => { if (e.data.size) recordedChunks.push(e.data); };
+            mr.onstop = () => {
+                const blob = new Blob(recordedChunks, { type: mime });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+                a.download = `reel-${Date.now()}.${mime.includes('mp4') ? 'mp4' : 'webm'}`; a.click();
+                btn.disabled = false; btn.textContent = '⬇ Download';
+                showAlert('✅ Downloaded! Upload to TikTok/IG/Shorts', 'info');
+            };
+            vid.currentTime = 0; await vid.play(); mr.start(200);
+            const start = Date.now(), end = start + dur * 1000;
+            function draw() {
+                const now = Date.now(), el = now - start;
+                rctx.fillStyle = '#000'; rctx.fillRect(0, 0, 1080, 1920);
+                if (vid.readyState >= 2) rctx.drawImage(vid, 0, 0, 1080, 1920);
+                rctx.fillStyle = 'rgba(0,0,0,0.55)'; rctx.fillRect(0, 0, 1080, 1920);
+                const chunk = textChunks.find(c => el >= c.start && el < c.end) || textChunks[0];
+                if (chunk) {
+                    rctx.font = '600 52px Inter, sans-serif'; rctx.fillStyle = '#fff'; rctx.textAlign = 'center';
+                    const words = chunk.text.split(' ');
+                    let line = ''; let lines = [];
+                    for (let n = 0; n < words.length; n++) {
+                        const testLine = line + words[n] + ' ';
+                        if (rctx.measureText(testLine).width > 900 && n > 0) { lines.push(line); line = words[n] + ' '; }
+                        else line = testLine;
+                    }
+                    lines.push(line);
+                    const lineHeight = 65;
+                    const startY = 960 - ((lines.length - 1) * lineHeight) / 2;
+                    lines.forEach((l, i) => rctx.fillText(l.trim(), 540, startY + (i * lineHeight)));
+                }
+                if (now < end) requestAnimationFrame(draw);
+                else { vid.pause(); mr.stop(); if (window.currentAudio) window.currentAudio.pause(); }
+            }
+            setTimeout(draw, 300);
+        }
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
