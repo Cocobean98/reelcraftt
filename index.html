@@ -8,7 +8,10 @@
     <meta name="keywords" content="AI reel generator, text to video, TikTok maker, Instagram Reels creator, YouTube Shorts tool, vertical video generator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://reelcraftt.vercel.app">
-    <meta name="google-site-verification" content="vD2MkWF3hSqVApc5DditvALQxGLUzLgJZ1woQoFyiKw" />
+    
+    <!-- ✅ UPDATED GOOGLE SITE VERIFICATION -->
+    <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
+    
     <meta property="og:type" content="website">
     <meta property="og:title" content="ReelCraftt | AI Text-to-Reel Generator">
     <meta property="og:description" content="Create viral vertical videos in seconds with AI-powered scripts and curated audio.">
@@ -104,7 +107,7 @@
             background: linear-gradient(135deg, var(--primary), #4f46e5); color: white; border: none; padding: 1rem;
             font-size: 1rem; border-radius: var(--radius-md); cursor: pointer; width: 100%; font-weight: 600;
             transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+            box-shadow: 0 4px 12px rgba(99,102,241,0.3); text-decoration: none;
         }
         .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,102,241,0.4); }
         .btn:active:not(:disabled) { transform: translateY(0); }
@@ -238,7 +241,7 @@
         .queue-card {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 90%;
-            text-align: center; box-shadow: var(--shadow-lg);
+            text-align: center; box-shadow: var(--shadow-lg); position: relative;
         }
         .timer { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 1rem 0; font-variant-numeric: tabular-nums; animation: pulse-timer 2s infinite; }
         @keyframes pulse-timer { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } }
@@ -325,9 +328,9 @@
                 <div class="music-options">
                     <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
                     <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
                     <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
-                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
+                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')"> Cinematic</button>
                     <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
                 </div>
                 <div class="upload-area" onclick="document.getElementById('customAudio').click()">
@@ -377,7 +380,8 @@
             <p id="queueStatus" class="queue-subtext">Generating AI-powered content...</p>
             <div class="queue-progress"><div class="queue-progress-bar" id="queueProgressBar"></div></div>
             <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1.5rem;">Free tier processing ensures optimal quality matching. Please keep this tab open.</p>
-            <button class="btn btn-success" onclick="showPricing()">⚡ Skip Queue & Upgrade to Pro</button>
+            <!-- ✅ UPDATED: Smartlink triggers on click, then shows modal -->
+            <button class="btn btn-success" onclick="showPricing()"> Skip Queue & Upgrade to Pro</button>
             <button class="btn btn-secondary" style="margin-top:0.5rem" onclick="minimizeQueue()">🔔 Minimize to Corner (Still Processing)</button>
         </div>
         <div id="queueMinimized" class="queue-minimized" onclick="restoreQueue()">
@@ -450,9 +454,9 @@
         <h2 class="section-title">Why Creators Love ReelCraftt</h2>
         <p class="section-subtitle">Everything you need to create viral vertical videos</p>
         <div class="features-grid">
-            <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
+            <div class="feature-card"><div class="feature-icon"></div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
             <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
-            <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
+            <div class="feature-card"><div class="feature-icon">️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
             <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
             <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
             <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
@@ -497,6 +501,12 @@
         </div>
         <div class="footer-bottom">&copy; 2026 ReelCraftt. All rights reserved. Built with ❤️ by engineers, for creators.</div>
     </footer>
+
+    <!-- ✅ ADSTERRA ADS RESTORED -->
+    <!-- Social Bar -->
+    <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
+    <!-- Popunder -->
+    <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
 
     <script>
         // 🎵 MUSIC CONFIGURATION - Update track counts to match your files
@@ -563,24 +573,24 @@
 
         function hideAlerts() { document.querySelectorAll('.alert').forEach(a => a.classList.remove('show')); }
 
-        // 🔐 SECURE PROXY FETCH
+        //  SECURE PROXY FETCH
         async function fetchViaProxy(service, endpoint, body, method = 'POST') {
-    try {
-        const res = await fetch('/api/proxy', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ service, endpoint, body, method })
-        });
-        if (!res.ok) {
-            const errorText = await res.text();
-            throw new Error(`Proxy error ${res.status}: ${errorText}`);
+            try {
+                const res = await fetch('/api/proxy', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ service, endpoint, body, method })
+                });
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    throw new Error(`Proxy error ${res.status}: ${errorText}`);
+                }
+                return await res.json();
+            } catch (err) {
+                console.error('Proxy fetch failed:', err);
+                throw err;
+            }
         }
-        return await res.json();
-    } catch (err) {
-        console.error('Proxy fetch failed:', err);
-        throw err;
-    }
-}
 
         // 🎵 FOLDER-BASED MUSIC PLAYER
         async function playMusic(type) {
@@ -656,7 +666,7 @@ EXAMPLE OUTPUT for "forceps" (30s, educational):
 OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extra text.`;
 
             try {
-                showAlert(`🤖 Generating detailed script...`, 'info');
+                showAlert(` Generating detailed script...`, 'info');
                 
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
@@ -748,20 +758,17 @@ OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extr
 
         // 🎬 PEXELS VIDEO FETCH
         async function fetchPexelsVideo(query) {
-    const q = query || 'abstract background particles';
-    const randomPage = Math.floor(Math.random() * 5) + 1;
-    const endpoint = `/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
-    
-    // Route through proxy as a GET request
-    const data = await fetchViaProxy('pexels', endpoint, null, 'GET');
-    
-    if (!data.videos?.length) throw new Error('No videos found.');
-    
-    const randomIdx = Math.floor(Math.random() * data.videos.length);
-    const vid = data.videos[randomIdx];
-    const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
-    return valid.length ? valid[0].link : vid.video_files[0].link;
-}
+            const q = query || 'abstract background particles';
+            const randomPage = Math.floor(Math.random() * 5) + 1;
+            const endpoint = `/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
+            const data = await fetchViaProxy('pexels', endpoint, null, 'GET');
+            
+            if (!data.videos?.length) throw new Error('No videos found.');
+            const randomIdx = Math.floor(Math.random() * data.videos.length);
+            const vid = data.videos[randomIdx];
+            const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
+            return valid.length ? valid[0].link : vid.video_files[0].link;
+        }
 
         // ✍️ CAPTION & HASHTAGS GENERATOR
         async function generateCaptionAndHashtags(topic, style, script) {
@@ -910,57 +917,59 @@ OUTPUT FORMAT (JSON only):
             if (queueTimeout) clearTimeout(queueTimeout);
         }
 
+        // ✅ UPDATED: Opens Smartlink in new tab, then shows pricing modal
         function showPricing() { 
-    // Just open the modal. The queue timer keeps running in the background.
-    document.getElementById('pricingModal').classList.add('active'); 
-}
+            window.open('https://www.effectivecpmnetwork.com/zeqnb5brr?key=5cc65e8ac3f067f4e2127225fe53c73e', '_blank');
+            document.getElementById('pricingModal').classList.add('active'); 
+        }
+        
         function hidePricing() { 
-    // Just close the modal. The user will see the queue timer still counting down.
-    document.getElementById('pricingModal').classList.remove('active');
-}
+            document.getElementById('pricingModal').classList.remove('active');
+        }
+        
         function selectPlan(plan) { 
             document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected')); 
             event.currentTarget.classList.add('selected'); 
         }
 
         async function activatePremium() {
-    const codeInput = document.getElementById('premiumCode');
-    const code = codeInput.value.trim();
-    if (!code) return showAlert('Please enter a code', 'error');
-    
-    const encoder = new TextEncoder();
-    const data = encoder.encode(code);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const inputHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
-    
-    const VALID_CODE_HASHES = [
-        "a70b7b0159d6ad9494705dd5cecf4881d00a6f62e95dcc33d7399a47533a2047",
-        "a71af2fea5c9820246973486ad1f4f0eb7f3cfbd243a740c6c3e3c1b91edee4e",
-        "ffea4ef4f22a472075f7245594e9241bc081bc9e51523f73e956495401fdc21c",
-        "cc79eb82d276b69ea122de287f500e9c2a3a11d051069189f7c5812716a87dc6",
-        "3098c8bc7de3ef30b0c94315a6dd646f859702d065b2215dcd9d1eac8ba89d24",
-        "42c4438a236bf95daa94500b97e79e340e24c913db0233530548470b8727d5b1"
-    ];
+            const codeInput = document.getElementById('premiumCode');
+            const code = codeInput.value.trim();
+            if (!code) return showAlert('Please enter a code', 'error');
+            
+            const encoder = new TextEncoder();
+            const data = encoder.encode(code);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const inputHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+            
+            const VALID_CODE_HASHES = [
+                "a70b7b0159d6ad9494705dd5cecf4881d00a6f62e95dcc33d7399a47533a2047",
+                "a71af2fea5c9820246973486ad1f4f0eb7f3cfbd243a740c6c3e3c1b91edee4e",
+                "ffea4ef4f22a472075f7245594e9241bc081bc9e51523f73e956495401fdc21c",
+                "cc79eb82d276b69ea122de287f500e9c2a3a11d051069189f7c5812716a87dc6",
+                "3098c8bc7de3ef30b0c94315a6dd646f859702d065b2215dcd9d1eac8ba89d24",
+                "42c4438a236bf95daa94500b97e79e340e24c913db0233530548470b8727d5b1"
+            ];
 
-    if (VALID_CODE_HASHES.includes(inputHash.toLowerCase())) {
-        localStorage.setItem('reelcraft_premium', 'true');
-        localStorage.setItem('reelcraft_activated', new Date().toISOString());
-        isPremium = true;
-        
-        hidePricing();
-        hideQueueScreen(); // Hide the queue UI
-        updatePremiumBadge();
-        codeInput.value = '';
-        
-        // ✅ CRITICAL: This unlocks the generation process immediately
-        if (queueResolver) {
-            queueResolver();
-            queueResolver = null;
+            if (VALID_CODE_HASHES.includes(inputHash.toLowerCase())) {
+                localStorage.setItem('reelcraft_premium', 'true');
+                localStorage.setItem('reelcraft_activated', new Date().toISOString());
+                isPremium = true;
+                
+                hidePricing();
+                hideQueueScreen(); 
+                updatePremiumBadge();
+                codeInput.value = '';
+                
+                // ✅ CRITICAL: This unlocks the generation process immediately
+                if (queueResolver) {
+                    queueResolver();
+                    queueResolver = null;
+                }
+            } else {
+                showAlert('❌ Invalid code. Please check your email or contact support.', 'error');
+            }
         }
-    } else {
-        showAlert('❌ Invalid code. Please check your email or contact support.', 'error');
-    }
-}
 
         function updatePremiumBadge() {
             const badge = document.querySelector('.badge');
