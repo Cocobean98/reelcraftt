@@ -564,23 +564,23 @@
         function hideAlerts() { document.querySelectorAll('.alert').forEach(a => a.classList.remove('show')); }
 
         // 🔐 SECURE PROXY FETCH
-        async function fetchViaProxy(endpoint, body) {
-            try {
-                const res = await fetch('/api/proxy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ endpoint, body })
-                });
-                if (!res.ok) {
-                    const errorText = await res.text();
-                    throw new Error(`Proxy error ${res.status}: ${errorText}`);
-                }
-                return await res.json();
-            } catch (err) {
-                console.error('Proxy fetch failed:', err);
-                throw err;
-            }
+        async function fetchViaProxy(service, endpoint, body, method = 'POST') {
+    try {
+        const res = await fetch('/api/proxy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ service, endpoint, body, method })
+        });
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`Proxy error ${res.status}: ${errorText}`);
         }
+        return await res.json();
+    } catch (err) {
+        console.error('Proxy fetch failed:', err);
+        throw err;
+    }
+}
 
         // 🎵 FOLDER-BASED MUSIC PLAYER
         async function playMusic(type) {
@@ -658,7 +658,7 @@ OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extr
             try {
                 showAlert(`🤖 Generating detailed script...`, 'info');
                 
-                const data = await fetchViaProxy('/chat/completions', {
+                const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [
                         { role: 'system', content: systemPrompt },
@@ -748,20 +748,20 @@ OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extr
 
         // 🎬 PEXELS VIDEO FETCH
         async function fetchPexelsVideo(query) {
-            const q = query || 'abstract background particles';
-            const randomPage = Math.floor(Math.random() * 5) + 1;
-            const url = `https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
-            const res = await fetch(url, { cache: 'no-store' });
-            
-            if (!res.ok) throw new Error(`Pexels error: ${res.status}`);
-            const data = await res.json();
-            if (!data.videos?.length) throw new Error('No videos found.');
-            
-            const randomIdx = Math.floor(Math.random() * data.videos.length);
-            const vid = data.videos[randomIdx];
-            const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
-            return valid.length ? valid[0].link : vid.video_files[0].link;
-        }
+    const q = query || 'abstract background particles';
+    const randomPage = Math.floor(Math.random() * 5) + 1;
+    const endpoint = `/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
+    
+    // Route through proxy as a GET request
+    const data = await fetchViaProxy('pexels', endpoint, null, 'GET');
+    
+    if (!data.videos?.length) throw new Error('No videos found.');
+    
+    const randomIdx = Math.floor(Math.random() * data.videos.length);
+    const vid = data.videos[randomIdx];
+    const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
+    return valid.length ? valid[0].link : vid.video_files[0].link;
+}
 
         // ✍️ CAPTION & HASHTAGS GENERATOR
         async function generateCaptionAndHashtags(topic, style, script) {
@@ -792,7 +792,7 @@ OUTPUT FORMAT (JSON only):
 }`;
 
             try {
-                const data = await fetchViaProxy('/chat/completions', {
+                const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [{ role: 'user', content: prompt }],
                     temperature: 0.7,
@@ -910,8 +910,21 @@ OUTPUT FORMAT (JSON only):
             if (queueTimeout) clearTimeout(queueTimeout);
         }
 
-        function showPricing() { hideQueueScreen(); document.getElementById('pricingModal').classList.add('active'); }
-        function hidePricing() { document.getElementById('pricingModal').classList.remove('active'); }
+        function showPricing() { 
+    hideQueueScreen(); 
+    // ✅ CRITICAL FIX: Let the generation continue in background
+    if (queueResolver) {
+        queueResolver();
+        queueResolver = null;
+    }
+    document.getElementById('pricingModal').classList.add('active'); 
+}
+        function hidePricing() { 
+    document.getElementById('pricingModal').classList.remove('active');
+    // Clean up any leftover queue state
+    if (queueInterval) clearInterval(queueInterval);
+    if (queueTimeout) clearTimeout(queueTimeout);
+}
         function selectPlan(plan) { 
             document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected')); 
             event.currentTarget.classList.add('selected'); 
