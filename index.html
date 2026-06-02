@@ -226,10 +226,50 @@
         .footer-section a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; transition: var(--transition); }
         .footer-section a:hover { color: var(--primary); }
         .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+        
+        /* Queue & Pricing Modal Styles */
+        .queue-overlay, .pricing-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center; z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        .queue-overlay.active, .pricing-modal.active { display: flex; }
+        .queue-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 90%;
+            text-align: center; box-shadow: var(--shadow-lg);
+        }
+        .timer { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 1rem 0; font-variant-numeric: tabular-nums; animation: pulse-timer 2s infinite; }
+        @keyframes pulse-timer { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } }
+        .queue-subtext { color: var(--text-secondary); margin-bottom: 1rem; min-height: 1.5rem; }
+        .queue-progress { height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; }
+        .queue-progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0%; transition: width 1s linear; }
+        .queue-minimized {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--surface-elevated); border: 1px solid var(--primary);
+            padding: 12px 20px; border-radius: var(--radius-md); color: var(--text-primary);
+            cursor: pointer; box-shadow: var(--shadow-lg); z-index: 999;
+            font-size: 0.875rem; font-weight: 500; display: none;
+        }
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .price-card {
+            background: var(--surface-elevated); border: 2px solid var(--border);
+            border-radius: var(--radius-md); padding: 1.5rem; cursor: pointer; transition: all var(--transition);
+        }
+        .price-card:hover, .price-card.selected { border-color: var(--primary); transform: translateY(-2px); }
+        .price-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .price-card .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0; }
+        .price-card .period { color: var(--text-muted); font-size: 0.875rem; }
+        .price-card ul { list-style: none; text-align: left; margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary); }
+        .price-card ul li::before { content: "✓"; color: var(--accent); margin-right: 0.5rem; }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        
         @media (max-width: 768px) {
             .about-grid { grid-template-columns: 1fr; }
             .section { padding: 3rem 1rem; }
             .section-title { font-size: 1.75rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -329,6 +369,64 @@
         </div>
     </div>
 
+    <!-- Queue Overlay -->
+    <div id="queueOverlay" class="queue-overlay">
+        <div class="queue-card" id="queueMainCard">
+            <h2>🎬 Preparing Your Assets...</h2>
+            <div class="timer" id="queueTimer">02:00</div>
+            <p id="queueStatus" class="queue-subtext">Generating AI-powered content...</p>
+            <div class="queue-progress"><div class="queue-progress-bar" id="queueProgressBar"></div></div>
+            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1.5rem;">Free tier processing ensures optimal quality matching. Please keep this tab open.</p>
+            <button class="btn btn-success" onclick="showPricing()">⚡ Skip Queue & Upgrade to Pro</button>
+            <button class="btn btn-secondary" style="margin-top:0.5rem" onclick="minimizeQueue()">🔔 Minimize to Corner (Still Processing)</button>
+        </div>
+        <div id="queueMinimized" class="queue-minimized" onclick="restoreQueue()">
+            ⏳ Processing: <span id="miniTimer">02:00</span> | Click to view
+        </div>
+    </div>
+
+    <!-- Pricing Modal -->
+    <div id="pricingModal" class="pricing-modal">
+        <div class="queue-card">
+            <button class="close-btn" onclick="hidePricing()">×</button>
+            <h2>Upgrade to ReelCraftt Pro</h2>
+            <p class="queue-subtext">Skip queues, unlimited exports, HD exports</p>
+            <div class="pricing-grid">
+                <div class="price-card" onclick="selectPlan('monthly')">
+                    <h4>Monthly</h4>
+                    <div class="price">$3.99</div>
+                    <div class="period">/month</div>
+                    <ul>
+                        <li>Instant generation</li>
+                        <li>1080p exports</li>
+                        <li>All music tracks</li>
+                        <li>Cancel anytime</li>
+                    </ul>
+                </div>
+                <div class="price-card" onclick="selectPlan('lifetime')">
+                    <h4>Lifetime</h4>
+                    <div class="price">$12.99</div>
+                    <div class="period">one-time</div>
+                    <ul>
+                        <li>Everything in Monthly</li>
+                        <li>Pay once, use forever</li>
+                        <li>Early access features</li>
+                        <li>Priority support</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:1rem; flex-wrap:wrap;">
+                <a href="https://www.paypal.com/ncp/payment/HE7QUXFAK2JFC" target="_blank" class="btn btn-success" style="flex:1; min-width:120px;">💳 Pay $3.99/mo</a>
+                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);">🔑 Pay $12.99 once</a>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.8125rem; margin-top:0.5rem;">
+                After payment, you'll receive a <strong>Premium Code</strong> via email. Enter it below to unlock instant access.
+            </p>
+            <input type="text" id="premiumCode" placeholder="Enter your premium code" style="width:100%; margin-top:0.5rem; padding:0.75rem; background:var(--surface-elevated); border:1px solid var(--border); border-radius:var(--radius-md); color:var(--text-primary);">
+            <button class="btn btn-secondary" style="margin-top:0.5rem;" onclick="activatePremium()">🔓 Activate</button>
+        </div>
+    </div>
+
     <section class="section" id="about">
         <h2 class="section-title">About ReelCraftt</h2>
         <p class="section-subtitle">Built by an engineer, designed for creators</p>
@@ -413,11 +511,14 @@
         let textChunks = [], currentChunkIndex = 0, animationInterval = null;
         let customAudioBuffer = null, customVideoUrl = null;
         let selectedDuration = 30, currentTopic = '';
+        let isPremium = localStorage.getItem('reelcraft_premium') === 'true';
+        let queueTimeout = null, queueInterval = null, queueResolver = null;
 
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.length-btn[data-seconds="30"]').classList.add('active');
             document.getElementById('customAudio').addEventListener('change', handleCustomAudioUpload);
             document.getElementById('customVideo').addEventListener('change', handleCustomVideoUpload);
+            if (isPremium) updatePremiumBadge();
         });
 
         function switchMode(mode) {
@@ -516,7 +617,7 @@
             }
         }
 
-        // 🤖 BULLETPROOF AI SCRIPT GENERATION
+        // 🤖 AI SCRIPT GENERATION VIA PROXY
         async function generateScriptFromPrompt(prompt) {
             const totalWords = Math.round(selectedDuration * 2.5);
             const slideCount = selectedDuration <= 15 ? 3 : selectedDuration <= 30 ? 5 : 8;
@@ -552,8 +653,7 @@ EXAMPLE OUTPUT for "forceps" (30s, educational):
   "Mastering forceps requires extensive clinical training, steady hands, and deep understanding of human anatomy."
 ]
 
-OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extra text.
-Example: ["Slide 1 text", "Slide 2 text", ...]`;
+OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extra text.`;
 
             try {
                 showAlert(`🤖 Generating detailed script...`, 'info');
@@ -565,17 +665,14 @@ Example: ["Slide 1 text", "Slide 2 text", ...]`;
                         { role: 'user', content: `Create a detailed, contextual ${selectedDuration}-second explainer script about: ${prompt}` }
                     ],
                     temperature: 0.7,
-                    max_tokens: 1000,
-                    response_format: { type: 'json_object' }
+                    max_tokens: 1000
                 });
                 
                 let raw = data.choices?.[0]?.message?.content?.trim();
                 if (!raw) throw new Error('Empty response from AI');
                 
-                // Clean up response
                 raw = raw.replace(/```json|```/g, '').trim();
                 
-                // Try to parse as JSON
                 let script;
                 try {
                     script = JSON.parse(raw);
@@ -584,35 +681,18 @@ Example: ["Slide 1 text", "Slide 2 text", ...]`;
                     throw new Error('AI returned invalid JSON format');
                 }
                 
-                // Validate structure
                 if (!Array.isArray(script)) {
-                    // Try to extract array from object
-                    if (script.slides && Array.isArray(script.slides)) {
-                        script = script.slides;
-                    } else if (script.script && Array.isArray(script.script)) {
-                        script = script.script;
-                    } else {
-                        throw new Error('Response is not an array');
-                    }
+                    if (script.slides && Array.isArray(script.slides)) script = script.slides;
+                    else if (script.script && Array.isArray(script.script)) script = script.script;
+                    else throw new Error('Response is not an array');
                 }
                 
                 if (script.length === 0) throw new Error('Empty script array');
                 
-                // Clean and validate each slide
-                const cleaned = script
-                    .map(s => typeof s === 'string' ? s.trim() : '')
-                    .filter(s => s.length > 15 && s.length < 200);
+                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.length > 15 && s.length < 200);
                 
                 if (cleaned.length < slideCount * 0.6) {
                     throw new Error(`Script too short: got ${cleaned.length} slides, expected ${slideCount}`);
-                }
-                
-                // Validate content quality (not generic)
-                const genericPhrases = ['understanding is essential', 'plays a crucial role', 'systematic process'];
-                const isGeneric = cleaned.some(s => genericPhrases.some(phrase => s.toLowerCase().includes(phrase)));
-                
-                if (isGeneric && cleaned.length < slideCount) {
-                    console.warn('Script appears generic, but using it as fallback failed too');
                 }
                 
                 return cleaned.slice(0, slideCount);
@@ -624,11 +704,9 @@ Example: ["Slide 1 text", "Slide 2 text", ...]`;
             }
         }
 
-        // 🎯 CONTEXTUAL FALLBACK (Much better than generic)
         function generateContextualFallback(topic, count) {
             const topicLower = topic.toLowerCase();
             
-            // Generate contextual content based on topic keywords
             const scripts = {
                 medical: [
                     `${topic} are essential medical instruments used by healthcare professionals worldwide for precise surgical procedures.`,
@@ -660,13 +738,29 @@ Example: ["Slide 1 text", "Slide 2 text", ...]`;
                 ]
             };
             
-            // Detect topic category
             let category = 'general';
-            if (topicLower.match(/medical|surgical|health|doctor|patient|hospital/)) category = 'medical';
-            else if (topicLower.match(/tech|software|computer|digital|ai|algorithm|code/)) category = 'technology';
+            if (topicLower.match(/medical|surgical|health|doctor|patient|hospital|forceps/)) category = 'medical';
+            else if (topicLower.match(/tech|software|computer|digital|ai|algorithm|code|programming/)) category = 'technology';
             else if (topicLower.match(/science|research|study|experiment|biology|physics|chemistry/)) category = 'science';
             
             return scripts[category].slice(0, count);
+        }
+
+        // 🎬 PEXELS VIDEO FETCH
+        async function fetchPexelsVideo(query) {
+            const q = query || 'abstract background particles';
+            const randomPage = Math.floor(Math.random() * 5) + 1;
+            const url = `https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
+            const res = await fetch(url, { cache: 'no-store' });
+            
+            if (!res.ok) throw new Error(`Pexels error: ${res.status}`);
+            const data = await res.json();
+            if (!data.videos?.length) throw new Error('No videos found.');
+            
+            const randomIdx = Math.floor(Math.random() * data.videos.length);
+            const vid = data.videos[randomIdx];
+            const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
+            return valid.length ? valid[0].link : vid.video_files[0].link;
         }
 
         // ✍️ CAPTION & HASHTAGS GENERATOR
@@ -739,6 +833,127 @@ OUTPUT FORMAT (JSON only):
             });
         }
 
+        // ⏳ QUEUE SYSTEM
+        async function startFreeQueue() {
+            document.getElementById('queueOverlay').classList.add('active');
+            let timeLeft = 120;
+            const timerEl = document.getElementById('queueTimer');
+            const barEl = document.getElementById('queueProgressBar');
+            const statusEl = document.getElementById('queueStatus');
+            const miniTimer = document.getElementById('miniTimer');
+            barEl.style.width = '0%';
+
+            const messages = [
+                "Analyzing your script & mood...",
+                "Sourcing optimal HD background visuals...",
+                "Fetching royalty-free audio tracks...",
+                "Calculating slide timings & transitions...",
+                "Preparing 1080x1920 rendering engine...",
+                "Optimizing 50% overlay & typography...",
+                "Finalizing assets for your reel..."
+            ];
+
+            return new Promise(resolve => {
+                queueResolver = resolve;
+                
+                queueInterval = setInterval(() => {
+                    timeLeft--;
+                    const mins = Math.floor(timeLeft / 60);
+                    const secs = timeLeft % 60;
+                    const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+                    
+                    timerEl.textContent = timeStr;
+                    if (miniTimer) miniTimer.textContent = timeStr;
+                    barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
+                    
+                    if (timeLeft > 0 && timeLeft % 15 === 0 && statusEl) {
+                        const idx = Math.floor((120 - timeLeft) / 15);
+                        if (messages[idx]) {
+                            statusEl.style.opacity = 0;
+                            setTimeout(() => {
+                                statusEl.textContent = messages[idx];
+                                statusEl.style.opacity = 1;
+                            }, 200);
+                        }
+                    }
+
+                    if (timeLeft <= 0) {
+                        clearInterval(queueInterval);
+                        hideQueueScreen();
+                        queueResolver = null;
+                        resolve();
+                    }
+                }, 1000);
+                
+                queueTimeout = setTimeout(() => {
+                    clearInterval(queueInterval);
+                    hideQueueScreen();
+                    queueResolver = null;
+                    resolve();
+                }, 120000);
+            });
+        }
+
+        function minimizeQueue() {
+            document.getElementById('queueMainCard').style.display = 'none';
+            document.getElementById('queueMinimized').style.display = 'block';
+        }
+        function restoreQueue() {
+            document.getElementById('queueMainCard').style.display = 'block';
+            document.getElementById('queueMinimized').style.display = 'none';
+        }
+        function hideQueueScreen() {
+            document.getElementById('queueMainCard').style.display = 'none';
+            document.getElementById('queueMinimized').style.display = 'none';
+            document.getElementById('queueOverlay').classList.remove('active');
+            if (queueInterval) clearInterval(queueInterval);
+            if (queueTimeout) clearTimeout(queueTimeout);
+        }
+
+        function showPricing() { hideQueueScreen(); document.getElementById('pricingModal').classList.add('active'); }
+        function hidePricing() { document.getElementById('pricingModal').classList.remove('active'); }
+        function selectPlan(plan) { 
+            document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected')); 
+            event.currentTarget.classList.add('selected'); 
+        }
+
+        async function activatePremium() {
+            const codeInput = document.getElementById('premiumCode');
+            const code = codeInput.value.trim();
+            if (!code) return showAlert('Please enter a code', 'error');
+            
+            const encoder = new TextEncoder();
+            const data = encoder.encode(code);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const inputHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+            
+            const VALID_CODE_HASHES = [
+                "a70b7b0159d6ad9494705dd5cecf4881d00a6f62e95dcc33d7399a47533a2047",
+                "a71af2fea5c9820246973486ad1f4f0eb7f3cfbd243a740c6c3e3c1b91edee4e",
+                "ffea4ef4f22a472075f7245594e9241bc081bc9e51523f73e956495401fdc21c",
+                "cc79eb82d276b69ea122de287f500e9c2a3a11d051069189f7c5812716a87dc6",
+                "3098c8bc7de3ef30b0c94315a6dd646f859702d065b2215dcd9d1eac8ba89d24",
+                "42c4438a236bf95daa94500b97e79e340e24c913db0233530548470b8727d5b1"
+            ];
+
+            if (VALID_CODE_HASHES.includes(inputHash.toLowerCase())) {
+                localStorage.setItem('reelcraft_premium', 'true');
+                localStorage.setItem('reelcraft_activated', new Date().toISOString());
+                isPremium = true;
+                hidePricing();
+                showAlert('✅ Premium activated! Queue skipped. Enjoy instant generation.', 'info');
+                updatePremiumBadge();
+                codeInput.value = '';
+            } else {
+                showAlert('❌ Invalid code. Please check your email or contact support.', 'error');
+            }
+        }
+
+        function updatePremiumBadge() {
+            const badge = document.querySelector('.badge');
+            if (badge) badge.textContent = '✅ Pro Member • Instant Queue • Priority Support';
+        }
+
         // 🎬 MAIN GENERATION FLOW
         async function generateReel() {
             hideAlerts();
@@ -753,6 +968,12 @@ OUTPUT FORMAT (JSON only):
                 slides = txt.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [txt];
             } else {
                 if (!subjectInput) return showAlert('Enter a topic/prompt', 'error');
+                
+                // Show queue for free users
+                if (!isPremium) {
+                    await startFreeQueue();
+                }
+                
                 slides = await generateScriptFromPrompt(subjectInput);
             }
 
@@ -767,16 +988,7 @@ OUTPUT FORMAT (JSON only):
                 let vidUrl = customVideoUrl;
                 if (!vidUrl) {
                     const finalVideoQuery = vqInput || (currentMode === 'subject' ? subjectInput : null);
-                    const q = finalVideoQuery || 'abstract background particles';
-                    const randomPage = Math.floor(Math.random() * 5) + 1;
-                    const res = await fetch(`https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`);
-                    const data = await res.json();
-                    if (data.videos?.length) {
-                        const randomIdx = Math.floor(Math.random() * data.videos.length);
-                        const vid = data.videos[randomIdx];
-                        const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
-                        vidUrl = valid.length ? valid[0].link : vid.video_files[0].link;
-                    }
+                    vidUrl = await fetchPexelsVideo(finalVideoQuery || 'abstract background particles');
                 }
 
                 if (selectedMusic !== 'none') {
@@ -791,8 +1003,6 @@ OUTPUT FORMAT (JSON only):
                 document.getElementById('chunkIndicators').innerHTML = textChunks.map((_, i) => `<div class="chunk-dot"></div>`).join('');
                 await new Promise(r => vid.onloadedmetadata = r);
 
-                const canvas = document.createElement('canvas'); canvas.width = 1080; canvas.height = 1920;
-                const ctx = canvas.getContext('2d');
                 updateSlide(0);
                 
                 showAlert('✍️ Generating caption & hashtags...', 'info');
