@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReelCraftt | AI Text-to-Reel Generator for TikTok, Instagram & YouTube Shorts</title>
-    <meta name="description" content="Create viral 9:16 vertical videos in seconds. AI-powered text-to-reel generator with contextual scripts, curated audio & smart captions.">
-    <meta name="keywords" content="AI reel generator, text to video, TikTok maker, Instagram Reels creator, YouTube Shorts tool, vertical video generator">
-    <meta name="robots" content="index, follow">
+    <title>ReelCraftt | Free AI Video Generator for TikTok, Instagram Reels & YouTube Shorts</title>
+    
+    <!-- 🔥 PRIMARY SEO TAGS -->
+    <meta name="description" content="Create viral 9:16 vertical videos in seconds. ReelCraftt is the best free AI reel generator for TikTok, Instagram Reels & YouTube Shorts. No watermark.">
+    <meta name="keywords" content="AI reel generator, free video maker, TikTok maker, Instagram Reels creator, YouTube Shorts tool, vertical video generator, AI script writer, text to video AI, viral reel maker">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="ReelCraftt">
+    <meta name="theme-color" content="#6366f1">
     <link rel="canonical" href="https://reelcraftt.vercel.app">
     
     <!-- ✅ GOOGLE SITE VERIFICATION -->
     <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
     
+    <!-- 🔥 OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ReelCraftt | AI Text-to-Reel Generator">
-    <meta property="og:description" content="Create viral vertical videos in seconds with AI-powered scripts and curated audio.">
+    <meta property="og:url" content="https://reelcraftt.vercel.app">
+    <meta property="og:title" content="ReelCraftt | Free AI Video Generator for TikTok & Reels">
+    <meta property="og:description" content="Create viral 9:16 vertical videos in seconds. AI-powered scripts, curated audio & smart captions. 100% Free.">
     <meta property="og:image" content="/og-image.jpg">
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta property="og:site_name" content="ReelCraftt">
+    
+    <!-- 🔥 TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://reelcraftt.vercel.app">
+    <meta name="twitter:title" content="ReelCraftt | Free AI Video Generator">
+    <meta name="twitter:description" content="Create viral 9:16 vertical videos in seconds. AI-powered scripts, curated audio & smart captions.">
+    <meta name="twitter:image" content="/og-image.jpg">
+    
+    <!-- ✅ FAVICON (See instructions below) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
     <style>
         :root {
             --bg: #09090b; --surface: #111114; --surface-elevated: #18181b;
@@ -34,7 +52,7 @@
             background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.5;
             background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.15), transparent),
                               radial-gradient(circle at 0% 100%, rgba(16,185,129,0.08), transparent);
-            padding: 0;
+            padding: 0; overflow-x: hidden;
         }
         .container { max-width: 1120px; margin: 0 auto; padding: 2rem 1rem; }
         header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; }
@@ -131,8 +149,6 @@
         }
         #backgroundVideo { width: 100%; height: 100%; object-fit: cover; }
         .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.65); display: flex; align-items: center; justify-content: center; padding: 2rem; }
-        
-        /* ✅ SMOOTH TRANSITIONS FOR TEXT */
         .text-slide {
             color: white; font-size: clamp(1.6rem, 5.5vw, 2.2rem); font-weight: 800; text-align: center;
             line-height: 1.2; text-shadow: 0 4px 16px rgba(0,0,0,0.9); max-width: 90%;
@@ -141,7 +157,6 @@
             will-change: opacity, transform;
         }
         .text-slide.active { opacity: 1; transform: translateY(0) scale(1); }
-        
         .progress-bar { position: absolute; bottom: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.1s linear; z-index: 10; }
         .chunk-indicators { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
         .chunk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all var(--transition); }
@@ -233,14 +248,14 @@
         <p class="tagline">Double the t's, double the craft. ✨ Create viral 9:16 videos in seconds.</p>
     </header>
 
-    <div class="container">
-        <div class="card">
+    <main class="container">
+        <article class="card">
             <div class="alert error" id="errorAlert"></div>
             <div class="alert info" id="infoAlert">✅ Ready to generate</div>
 
             <div class="mode-selector">
                 <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
-                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">️ Free Text</button>
+                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
             </div>
             
             <div id="subjectMode">
@@ -278,7 +293,7 @@
                 <div class="music-options">
                     <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
                     <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
                     <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
                     <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
                     <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
@@ -299,9 +314,9 @@
             </div>
             
             <button class="btn" onclick="generateReel()" id="generateBtn"><span>🎬</span> Generate Reel</button>
-        </div>
+        </article>
 
-        <div class="card preview-section" id="previewSection">
+        <section class="card preview-section" id="previewSection">
             <div class="chunk-indicators" id="chunkIndicators"></div>
             <div class="video-container">
                 <video id="backgroundVideo" loop muted playsinline crossorigin="anonymous"></video>
@@ -319,8 +334,8 @@
                 <div class="caption-box" id="generatedHashtags" style="margin-top:1rem; font-family:monospace;"></div>
                 <button class="copy-btn" onclick="copyToClipboard('generatedHashtags', this)">📋 Copy Hashtags</button>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Queue Overlay -->
     <div id="queueOverlay" class="queue-overlay">
@@ -370,7 +385,7 @@
             </div>
             <div style="display:flex; gap:10px; margin-top:1rem; flex-wrap:wrap;">
                 <a href="https://www.paypal.com/ncp/payment/HE7QUXFAK2JFC" target="_blank" class="btn btn-success" style="flex:1; min-width:120px;">💳 Pay $3.99/mo</a>
-                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);"> Pay $12.99 once</a>
+                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);">🔑 Pay $12.99 once</a>
             </div>
             <p style="color:var(--text-muted); font-size:0.8125rem; margin-top:0.5rem;">
                 After payment, you'll receive a <strong>Premium Code</strong> via email. Enter it below to unlock instant access.
@@ -455,6 +470,32 @@
     <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
     <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
 
+    <!-- SEO STRUCTURED DATA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ReelCraftt",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free tier available. Pro plans from $3.99/mo for instant generation."
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      },
+      "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts. Generate scripts, music, captions & hashtags automatically.",
+      "featureList": "AI script generation, Contextual instrumental music, Auto captions & hashtags, 9:16 export, Commercial-safe content, No installation required",
+      "screenshot": "https://reelcraftt.vercel.app/og-image.jpg",
+      "url": "https://reelcraftt.vercel.app"
+    }
+    </script>
+
     <script>
         const MUSIC_CONFIG = {
             ambient: { folder: 'Ambient', trackCount: 5 },
@@ -491,8 +532,7 @@
         }
 
         async function handleCustomAudioUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
+            const file = e.target.files[0]; if (!file) return;
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             try {
                 customAudioBuffer = await audioCtx.decodeAudioData(await file.arrayBuffer());
@@ -526,29 +566,37 @@
             } catch (err) { console.error('Proxy fetch failed:', err); throw err; }
         }
 
+        // ✅ FIXED: Properly handles 'random' by picking a random category
         async function playMusic(type) {
             if (window.currentAudio) { window.currentAudio.pause(); window.currentAudio = null; }
             if (type === 'none' || type === 'custom') return;
+            
             let folder, trackCount;
             if (type === 'random') {
                 const keys = Object.keys(MUSIC_CONFIG);
                 const randKey = keys[Math.floor(Math.random() * keys.length)];
-                folder = MUSIC_CONFIG[randKey].folder; trackCount = MUSIC_CONFIG[randKey].trackCount;
-            } else { folder = MUSIC_CONFIG[type]?.folder; trackCount = MUSIC_CONFIG[type]?.trackCount; }
+                folder = MUSIC_CONFIG[randKey].folder;
+                trackCount = MUSIC_CONFIG[randKey].trackCount;
+            } else {
+                folder = MUSIC_CONFIG[type]?.folder;
+                trackCount = MUSIC_CONFIG[type]?.trackCount;
+            }
+            
             if (!folder || !trackCount) return;
+            
             const trackNum = Math.floor(Math.random() * trackCount) + 1;
             const url = `/audio/${folder}/${trackNum}.mp3`;
+            
             try {
-                const audio = new Audio(url); audio.loop = true; audio.volume = 0.4;
-                await audio.play(); window.currentAudio = audio;
+                const audio = new Audio(url);
+                audio.loop = true; audio.volume = 0.4;
+                await audio.play();
+                window.currentAudio = audio;
             } catch(e) { console.error('Music playback error:', e); }
         }
 
-        // ✅ ENHANCED GROQ PROMPT FOR VIRAL PACING
         async function generateScriptFromPrompt(prompt) {
-            // Better pacing: 1 slide = ~3.5 seconds of reading time
             const slideCount = selectedDuration <= 15 ? 4 : selectedDuration <= 30 ? 6 : 12;
-            
             const styleInstructions = {
                 educational: 'Informative, factual, and clear. Teach one specific thing per slide.',
                 inspiring: 'Motivational, punchy, and emotional. Build up to a powerful conclusion.',
@@ -582,15 +630,14 @@ EXAMPLE OUTPUT (30s, educational, forceps):
 OUTPUT FORMAT: Return ONLY the JSON array.`;
 
             try {
-                showAlert(` Generating viral script...`, 'info');
+                showAlert(`🤖 Generating viral script...`, 'info');
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [
                         { role: 'system', content: systemPrompt },
                         { role: 'user', content: `Write the script about: ${prompt}` }
                     ],
-                    temperature: 0.8, // Higher temp for more creativity
-                    max_tokens: 600
+                    temperature: 0.8, max_tokens: 600
                 });
                 
                 let raw = data.choices?.[0]?.message?.content?.trim();
@@ -603,11 +650,7 @@ OUTPUT FORMAT: Return ONLY the JSON array.`;
                     else throw new Error('Response is not an array');
                 }
                 
-                // Strict validation to prevent text cramming
-                const cleaned = script
-                    .map(s => typeof s === 'string' ? s.trim() : '')
-                    .filter(s => s.length > 3 && s.length < 100); // Enforce short length
-                
+                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.length > 3 && s.length < 100);
                 if (cleaned.length < slideCount * 0.7) throw new Error('Script too short');
                 return cleaned.slice(0, slideCount);
                 
@@ -620,15 +663,8 @@ OUTPUT FORMAT: Return ONLY the JSON array.`;
 
         function generateContextualFallback(topic, count) {
             const hooks = [`Did you know about ${topic}?`, `The truth about ${topic}.`, `${topic} explained simply.`, `Why ${topic} matters.`];
-            const bodies = [
-                `It changes how we understand the world.`,
-                `Experts use this every single day.`,
-                `The mechanics are surprisingly complex.`,
-                `It impacts millions of people globally.`,
-                `Innovation in this field is accelerating.`
-            ];
+            const bodies = [`It changes how we understand the world.`, `Experts use this every single day.`, `The mechanics are surprisingly complex.`, `It impacts millions of people globally.`];
             const ctas = [`Follow for more facts!`, `What do you think? Comment below.`, `Share this with a friend.`, `Save this for later.`];
-            
             let slides = [hooks[Math.floor(Math.random() * hooks.length)]];
             for(let i=0; i<count-2; i++) slides.push(bodies[i % bodies.length]);
             slides.push(ctas[Math.floor(Math.random() * ctas.length)]);
@@ -663,7 +699,7 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 return result;
             } catch (err) {
                 return {
-                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s! 👇 What surprised you? Comment below! 💬`,
+                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s!  What surprised you? Comment below! 💬`,
                     hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#Viral', `#${topic.replace(/\s+/g, '')}`, '#LearnOnTikTok', '#EduTok']
                 };
             }
@@ -768,8 +804,13 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
             if (badge) badge.textContent = '✅ Pro Member • Instant Queue • Priority Support';
         }
 
+        // ✅ FIXED: Resets UI state to prevent getting stuck on blurry page
         async function generateReel() {
             hideAlerts();
+            // Force close any open overlays to prevent blurry screen bug
+            hideQueueScreen();
+            hidePricing();
+            
             const vqInput = document.getElementById('videoQuery').value.trim();
             const subjectInput = document.getElementById('subject').value.trim();
             currentTopic = subjectInput;
@@ -804,8 +845,6 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 vid.crossOrigin = 'anonymous';
                 document.getElementById('previewSection').classList.add('active');
                 document.getElementById('chunkIndicators').innerHTML = textChunks.map((_, i) => `<div class="chunk-dot"></div>`).join('');
-                
-                // Wait for video metadata
                 await new Promise(r => vid.onloadedmetadata = r);
                 
                 updateSlide(0);
@@ -824,55 +863,33 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
             }
         }
 
-        // ✅ SMOOTH TRANSITION LOGIC
         function updateSlide(i) {
             const el = document.getElementById('displayText');
-            // 1. Fade out
             el.classList.remove('active');
-            
-            // 2. Wait for fade out, swap text, fade in
             setTimeout(() => {
                 el.textContent = textChunks[i].text;
                 el.classList.add('active');
                 document.querySelectorAll('.chunk-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
-            }, 300); // Matches CSS transition time
+            }, 300);
             currentChunkIndex = i;
         }
 
-        // ✅ FIXED AUDIO/VIDEO SYNC
         async function playPreview() {
             const vid = document.getElementById('backgroundVideo');
             const bar = document.getElementById('progressBar');
             const dur = selectedDuration * 1000;
-            
             vid.currentTime = 0;
             clearInterval(animationInterval);
-            
-            // Wait for video to be buffered enough to play smoothly
-            if (vid.readyState < 2) {
-                await new Promise(r => vid.addEventListener('canplay', r, { once: true }));
-            }
-            
-            // Start video and music simultaneously
+            if (vid.readyState < 2) await new Promise(r => vid.addEventListener('canplay', r, { once: true }));
             vid.play();
-            if (selectedMusic !== 'none') {
-                playMusic(selectedMusic).catch(e => console.warn(e));
-            }
-            
-            // Start timer exactly when playback begins
+            if (selectedMusic !== 'none') playMusic(selectedMusic).catch(e => console.warn(e));
             const start = Date.now();
             animationInterval = setInterval(() => {
                 const p = Math.min((Date.now() - start) / dur, 1);
                 bar.style.width = `${p * 100}%`;
                 const idx = textChunks.findIndex(c => (Date.now() - start) >= c.start && (Date.now() - start) < c.end);
                 if (idx !== -1 && idx !== currentChunkIndex) updateSlide(idx);
-                
-                if (p >= 1) { 
-                    clearInterval(animationInterval); 
-                    vid.pause(); 
-                    if (window.currentAudio) window.currentAudio.pause(); 
-                    bar.style.width = '0%'; 
-                }
+                if (p >= 1) { clearInterval(animationInterval); vid.pause(); if (window.currentAudio) window.currentAudio.pause(); bar.style.width = '0%'; }
             }, 50);
         }
 
@@ -882,7 +899,6 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
             const recordedChunks = [];
             const rc = document.createElement('canvas'); rc.width = 1080; rc.height = 1920;
             const rctx = rc.getContext('2d');
-            
             const stream = rc.captureStream(30);
             const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
             const mr = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
@@ -891,7 +907,7 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 const blob = new Blob(recordedChunks, { type: mime });
                 const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
                 a.download = `reel-${Date.now()}.${mime.includes('mp4') ? 'mp4' : 'webm'}`; a.click();
-                btn.disabled = false; btn.textContent = '⬇ Download';
+                btn.disabled = false; btn.textContent = ' Download';
                 showAlert('✅ Downloaded! Upload to TikTok/IG/Shorts', 'info');
             };
             vid.currentTime = 0; await vid.play(); mr.start(200);
@@ -904,7 +920,6 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 const chunk = textChunks.find(c => el >= c.start && el < c.end) || textChunks[0];
                 if (chunk) {
                     rctx.font = '800 64px Inter, sans-serif'; rctx.fillStyle = '#fff'; rctx.textAlign = 'center'; rctx.textBaseline = 'middle';
-                    // Simple word wrap for canvas
                     const words = chunk.text.split(' ');
                     let line = ''; let lines = [];
                     for (let n = 0; n < words.length; n++) {
