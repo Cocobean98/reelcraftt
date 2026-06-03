@@ -716,38 +716,43 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
         }
 
         async function startFreeQueue() {
-            document.getElementById('queueOverlay').classList.add('active');
-            let timeLeft = 120;
-            const timerEl = document.getElementById('queueTimer');
-            const barEl = document.getElementById('queueProgressBar');
-            const miniTimer = document.getElementById('miniTimer');
-            barEl.style.width = '0%';
+    // ✅ FIX: Reset modal visibility so it doesn't get stuck on blur
+    document.getElementById('queueMainCard').style.display = 'block';
+    document.getElementById('queueMinimized').style.display = 'none';
+    document.getElementById('queueOverlay').classList.add('active');
+    
+    let timeLeft = 120;
+    const timerEl = document.getElementById('queueTimer');
+    const barEl = document.getElementById('queueProgressBar');
+    const miniTimer = document.getElementById('miniTimer');
+    barEl.style.width = '0%';
 
-            return new Promise(resolve => {
-                queueResolver = resolve;
-                queueInterval = setInterval(() => {
-                    timeLeft--;
-                    const mins = Math.floor(timeLeft / 60);
-                    const secs = timeLeft % 60;
-                    const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-                    timerEl.textContent = timeStr;
-                    if (miniTimer) miniTimer.textContent = timeStr;
-                    barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
-                    if (timeLeft <= 0) {
-                        clearInterval(queueInterval);
-                        hideQueueScreen();
-                        queueResolver = null;
-                        resolve();
-                    }
-                }, 1000);
-                queueTimeout = setTimeout(() => {
-                    clearInterval(queueInterval);
-                    hideQueueScreen();
-                    queueResolver = null;
-                    resolve();
-                }, 120000);
-            });
-        }
+    return new Promise(resolve => {
+        queueResolver = resolve;
+        queueInterval = setInterval(() => {
+            timeLeft--;
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+            timerEl.textContent = timeStr;
+            if (miniTimer) miniTimer.textContent = timeStr;
+            barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(queueInterval);
+                hideQueueScreen();
+                queueResolver = null;
+                resolve();
+            }
+        }, 1000);
+        queueTimeout = setTimeout(() => {
+            clearInterval(queueInterval);
+            hideQueueScreen();
+            queueResolver = null;
+            resolve();
+        }, 120000);
+    });
+}
 
         function minimizeQueue() {
             document.getElementById('queueMainCard').style.display = 'none';
