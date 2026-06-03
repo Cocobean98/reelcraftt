@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://reelcraftt.vercel.app">
     
-    <!-- ✅ UPDATED GOOGLE SITE VERIFICATION -->
+    <!-- ✅ GOOGLE SITE VERIFICATION -->
     <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
     
     <meta property="og:type" content="website">
@@ -130,100 +130,63 @@
             overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
         }
         #backgroundVideo { width: 100%; height: 100%; object-fit: cover; }
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.65); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        
+        /* ✅ SMOOTH TRANSITIONS FOR TEXT */
         .text-slide {
-            color: white; font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 800; text-align: center;
-            line-height: 1.3; text-shadow: 0 2px 12px rgba(0,0,0,0.8); opacity: 0; transform: translateY(15px) scale(0.98);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); max-width: 100%;
+            color: white; font-size: clamp(1.6rem, 5.5vw, 2.2rem); font-weight: 800; text-align: center;
+            line-height: 1.2; text-shadow: 0 4px 16px rgba(0,0,0,0.9); max-width: 90%;
+            opacity: 0; transform: translateY(15px) scale(0.95);
+            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
         }
         .text-slide.active { opacity: 1; transform: translateY(0) scale(1); }
+        
         .progress-bar { position: absolute; bottom: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.1s linear; z-index: 10; }
         .chunk-indicators { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
         .chunk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all var(--transition); }
-        .chunk-dot.active { background: var(--accent); transform: scale(1.4); box-shadow: 0 0 6px rgba(16,185,129,0.6); }
+        .chunk-dot.active { background: var(--accent); transform: scale(1.5); box-shadow: 0 0 8px rgba(16,185,129,0.6); }
         .preview-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
         .preview-actions .btn { flex: 1; min-width: 140px; }
         .spinner { width: 1.25rem; height: 1.25rem; border: 3px solid rgba(255,255,255,0.2); border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .caption-section {
-            margin-top: 2rem; padding: 1.5rem; background: var(--surface-elevated);
-            border: 1px solid var(--border); border-radius: var(--radius-lg);
-        }
+        .caption-section { margin-top: 2rem; padding: 1.5rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); }
         .caption-section h4 { margin-bottom: 1rem; color: var(--text-primary); }
-        .caption-box {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;
-            font-size: 0.9375rem; line-height: 1.5; white-space: pre-wrap;
-        }
-        .copy-btn {
-            background: var(--primary); color: white; border: none;
-            padding: 0.5rem 1rem; border-radius: var(--radius-sm);
-            cursor: pointer; font-size: 0.875rem; transition: var(--transition);
-        }
+        .caption-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; font-size: 0.9375rem; line-height: 1.5; white-space: pre-wrap; }
+        .copy-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.875rem; transition: var(--transition); }
         .copy-btn:hover { background: var(--primary-hover); }
         .copy-btn.copied { background: var(--accent); }
         .section { padding: 4rem 1rem; max-width: 1120px; margin: 0 auto; }
-        .section-title {
-            font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 1rem;
-            background: linear-gradient(135deg, #f4f4f5, #a1a1aa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #f4f4f5, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-subtitle { text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; font-size: 1.125rem; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .about-content p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
-        .about-image {
-            background: var(--surface-elevated); border-radius: var(--radius-lg);
-            height: 300px; display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border);
-        }
+        .about-image { background: var(--surface-elevated); border-radius: var(--radius-lg); height: 300px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .feature-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 1.5rem; transition: var(--transition);
-        }
+        .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; transition: var(--transition); }
         .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
         .feature-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
         .feature-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); }
         .feature-card p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.5; }
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
         .step { padding: 1.5rem; }
-        .step-number {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; background: var(--primary); color: white;
-            border-radius: 50%; font-weight: 700; margin-bottom: 1rem;
-        }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; font-weight: 700; margin-bottom: 1rem; }
         .step h4 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-primary); }
         .step p { color: var(--text-secondary); font-size: 0.9375rem; }
-        .faq-item {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-md); margin-bottom: 1rem; overflow: hidden;
-        }
-        .faq-question {
-            padding: 1rem 1.5rem; cursor: pointer; display: flex;
-            justify-content: space-between; align-items: center; font-weight: 500; color: var(--text-primary);
-        }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 1rem; overflow: hidden; }
+        .faq-question { padding: 1rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; color: var(--text-primary); }
         .faq-question::after { content: "+"; font-size: 1.25rem; transition: var(--transition); }
         .faq-item.active .faq-question::after { transform: rotate(45deg); }
-        .faq-answer {
-            padding: 0 1.5rem; max-height: 0; overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--text-secondary); line-height: 1.5;
-        }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text-secondary); line-height: 1.5; }
         .faq-item.active .faq-answer { padding: 0 1.5rem 1rem; max-height: 500px; }
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
         .testimonial-text { color: var(--text-secondary); margin-bottom: 1rem; font-style: italic; line-height: 1.6; }
         .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-        .author-avatar {
-            width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
-            display: flex; align-items: center; justify-content: center; font-weight: 600; color: white;
-        }
+        .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 600; color: white; }
         .author-name { font-weight: 500; color: var(--text-primary); }
         .author-role { font-size: 0.875rem; color: var(--text-muted); }
-        footer {
-            background: var(--surface); border-top: 1px solid var(--border);
-            padding: 3rem 1rem; margin-top: 4rem;
-        }
+        footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 1rem; margin-top: 4rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1120px; margin: 0 auto; }
         .footer-section h4 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.125rem; }
         .footer-section a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; transition: var(--transition); }
@@ -238,28 +201,15 @@
             animation: fadeIn 0.3s ease;
         }
         .queue-overlay.active, .pricing-modal.active { display: flex; }
-        .queue-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 90%;
-            text-align: center; box-shadow: var(--shadow-lg); position: relative;
-        }
+        .queue-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 90%; text-align: center; box-shadow: var(--shadow-lg); position: relative; }
         .timer { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 1rem 0; font-variant-numeric: tabular-nums; animation: pulse-timer 2s infinite; }
         @keyframes pulse-timer { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } }
         .queue-subtext { color: var(--text-secondary); margin-bottom: 1rem; min-height: 1.5rem; }
         .queue-progress { height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; }
         .queue-progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0%; transition: width 1s linear; }
-        .queue-minimized {
-            position: fixed; bottom: 20px; right: 20px;
-            background: var(--surface-elevated); border: 1px solid var(--primary);
-            padding: 12px 20px; border-radius: var(--radius-md); color: var(--text-primary);
-            cursor: pointer; box-shadow: var(--shadow-lg); z-index: 999;
-            font-size: 0.875rem; font-weight: 500; display: none;
-        }
+        .queue-minimized { position: fixed; bottom: 20px; right: 20px; background: var(--surface-elevated); border: 1px solid var(--primary); padding: 12px 20px; border-radius: var(--radius-md); color: var(--text-primary); cursor: pointer; box-shadow: var(--shadow-lg); z-index: 999; font-size: 0.875rem; font-weight: 500; display: none; }
         .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
-        .price-card {
-            background: var(--surface-elevated); border: 2px solid var(--border);
-            border-radius: var(--radius-md); padding: 1.5rem; cursor: pointer; transition: all var(--transition);
-        }
+        .price-card { background: var(--surface-elevated); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; cursor: pointer; transition: all var(--transition); }
         .price-card:hover, .price-card.selected { border-color: var(--primary); transform: translateY(-2px); }
         .price-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
         .price-card .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0; }
@@ -290,7 +240,7 @@
 
             <div class="mode-selector">
                 <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
-                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
+                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">️ Free Text</button>
             </div>
             
             <div id="subjectMode">
@@ -328,9 +278,9 @@
                 <div class="music-options">
                     <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
                     <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
                     <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
-                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')"> Cinematic</button>
+                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
                     <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
                 </div>
                 <div class="upload-area" onclick="document.getElementById('customAudio').click()">
@@ -380,8 +330,7 @@
             <p id="queueStatus" class="queue-subtext">Generating AI-powered content...</p>
             <div class="queue-progress"><div class="queue-progress-bar" id="queueProgressBar"></div></div>
             <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1.5rem;">Free tier processing ensures optimal quality matching. Please keep this tab open.</p>
-            <!-- ✅ UPDATED: Smartlink triggers on click, then shows modal -->
-            <button class="btn btn-success" onclick="showPricing()"> Skip Queue & Upgrade to Pro</button>
+            <button class="btn btn-success" onclick="showPricing()">⚡ Skip Queue & Upgrade to Pro</button>
             <button class="btn btn-secondary" style="margin-top:0.5rem" onclick="minimizeQueue()">🔔 Minimize to Corner (Still Processing)</button>
         </div>
         <div id="queueMinimized" class="queue-minimized" onclick="restoreQueue()">
@@ -421,7 +370,7 @@
             </div>
             <div style="display:flex; gap:10px; margin-top:1rem; flex-wrap:wrap;">
                 <a href="https://www.paypal.com/ncp/payment/HE7QUXFAK2JFC" target="_blank" class="btn btn-success" style="flex:1; min-width:120px;">💳 Pay $3.99/mo</a>
-                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);">🔑 Pay $12.99 once</a>
+                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);"> Pay $12.99 once</a>
             </div>
             <p style="color:var(--text-muted); font-size:0.8125rem; margin-top:0.5rem;">
                 After payment, you'll receive a <strong>Premium Code</strong> via email. Enter it below to unlock instant access.
@@ -454,9 +403,9 @@
         <h2 class="section-title">Why Creators Love ReelCraftt</h2>
         <p class="section-subtitle">Everything you need to create viral vertical videos</p>
         <div class="features-grid">
-            <div class="feature-card"><div class="feature-icon"></div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
+            <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
             <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
-            <div class="feature-card"><div class="feature-icon">️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
+            <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
             <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
             <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
             <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
@@ -502,14 +451,11 @@
         <div class="footer-bottom">&copy; 2026 ReelCraftt. All rights reserved. Built with ❤️ by engineers, for creators.</div>
     </footer>
 
-    <!-- ✅ ADSTERRA ADS RESTORED -->
-    <!-- Social Bar -->
+    <!-- ADSTERRA ADS -->
     <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
-    <!-- Popunder -->
     <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
 
     <script>
-        // 🎵 MUSIC CONFIGURATION - Update track counts to match your files
         const MUSIC_CONFIG = {
             ambient: { folder: 'Ambient', trackCount: 5 },
             lofi: { folder: 'Lo-fi', trackCount: 5 },
@@ -553,14 +499,11 @@
                 selectedMusic = 'custom';
                 document.querySelectorAll('.music-btn').forEach(b => b.classList.remove('active'));
                 showAlert(`✅ Loaded: ${file.name}`, 'info');
-            } catch (err) {
-                showAlert('❌ Could not decode audio. Try MP3 or WAV.', 'error');
-            }
+            } catch (err) { showAlert('❌ Could not decode audio. Try MP3 or WAV.', 'error'); }
         }
 
         function handleCustomVideoUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
+            const file = e.target.files[0]; if (!file) return;
             customVideoUrl = URL.createObjectURL(file);
             showAlert(`✅ Loaded: ${file.name}`, 'info');
         }
@@ -570,199 +513,133 @@
             el.innerHTML = msg; el.classList.add('show');
             setTimeout(() => el.classList.remove('show'), 8000);
         }
-
         function hideAlerts() { document.querySelectorAll('.alert').forEach(a => a.classList.remove('show')); }
 
-        //  SECURE PROXY FETCH
         async function fetchViaProxy(service, endpoint, body, method = 'POST') {
             try {
                 const res = await fetch('/api/proxy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ service, endpoint, body, method })
                 });
-                if (!res.ok) {
-                    const errorText = await res.text();
-                    throw new Error(`Proxy error ${res.status}: ${errorText}`);
-                }
+                if (!res.ok) throw new Error(`Proxy error ${res.status}`);
                 return await res.json();
-            } catch (err) {
-                console.error('Proxy fetch failed:', err);
-                throw err;
-            }
+            } catch (err) { console.error('Proxy fetch failed:', err); throw err; }
         }
 
-        // 🎵 FOLDER-BASED MUSIC PLAYER
         async function playMusic(type) {
             if (window.currentAudio) { window.currentAudio.pause(); window.currentAudio = null; }
             if (type === 'none' || type === 'custom') return;
-            
             let folder, trackCount;
             if (type === 'random') {
                 const keys = Object.keys(MUSIC_CONFIG);
                 const randKey = keys[Math.floor(Math.random() * keys.length)];
-                folder = MUSIC_CONFIG[randKey].folder;
-                trackCount = MUSIC_CONFIG[randKey].trackCount;
-            } else {
-                folder = MUSIC_CONFIG[type]?.folder;
-                trackCount = MUSIC_CONFIG[type]?.trackCount;
-            }
-            
+                folder = MUSIC_CONFIG[randKey].folder; trackCount = MUSIC_CONFIG[randKey].trackCount;
+            } else { folder = MUSIC_CONFIG[type]?.folder; trackCount = MUSIC_CONFIG[type]?.trackCount; }
             if (!folder || !trackCount) return;
-            
             const trackNum = Math.floor(Math.random() * trackCount) + 1;
             const url = `/audio/${folder}/${trackNum}.mp3`;
-            
             try {
-                showAlert(`🎵 Loading ${type} music...`, 'info');
-                const audio = new Audio(url);
-                audio.loop = true;
-                audio.volume = 0.4;
-                await audio.play();
-                window.currentAudio = audio;
-                showAlert('🎵 Music playing', 'info');
-            } catch(e) {
-                console.error('Music playback error:', e);
-                showAlert('⚠️ Could not play music. Check /audio/ folder structure.', 'error');
-            }
+                const audio = new Audio(url); audio.loop = true; audio.volume = 0.4;
+                await audio.play(); window.currentAudio = audio;
+            } catch(e) { console.error('Music playback error:', e); }
         }
 
-        // 🤖 AI SCRIPT GENERATION VIA PROXY
+        // ✅ ENHANCED GROQ PROMPT FOR VIRAL PACING
         async function generateScriptFromPrompt(prompt) {
-            const totalWords = Math.round(selectedDuration * 2.5);
-            const slideCount = selectedDuration <= 15 ? 3 : selectedDuration <= 30 ? 5 : 8;
+            // Better pacing: 1 slide = ~3.5 seconds of reading time
+            const slideCount = selectedDuration <= 15 ? 4 : selectedDuration <= 30 ? 6 : 12;
             
-            const styleMap = {
-                educational: 'Clear, factual, and engaging. Explain concepts step-by-step with real-world context and specific examples.',
-                inspiring: 'Motivational and uplifting. Focus on impact, possibilities, and human achievement with emotional depth.',
-                fun: 'Lighthearted and entertaining. Use relatable hooks, playful phrasing, and engaging anecdotes.'
+            const styleInstructions = {
+                educational: 'Informative, factual, and clear. Teach one specific thing per slide.',
+                inspiring: 'Motivational, punchy, and emotional. Build up to a powerful conclusion.',
+                fun: 'Witty, surprising, and highly engaging. Use hooks and playful language.'
             };
 
-            const systemPrompt = `You are an expert scriptwriter for short-form explainer videos. You create DETAILED, CONTEXTUAL scripts with interesting facts and engaging details.
-
+            const systemPrompt = `You are a viral TikTok/Reels scriptwriter. 
 TASK: Write a ${selectedDuration}-second script about "${prompt}".
-REQUIREMENTS:
-- Total word count: Approximately ${totalWords} words
-- Number of slides: Exactly ${slideCount} slides
-- Style: ${styleMap[currentStyle]}
+STYLE: ${styleInstructions[currentStyle]}
 
-CRITICAL RULES:
-1. Each slide must be a COMPLETE, DETAILED sentence (15-40 words each)
-2. Include SPECIFIC facts, statistics, examples, or interesting details about ${prompt}
-3. Create a logical narrative flow: Hook → Explanation → Details → Examples → Conclusion
-4. Make it engaging and informative - not generic or repetitive
-5. Use concrete examples and real-world applications
-6. Output ONLY a valid JSON array of strings
+CRITICAL RULES FOR VIRAL PACING:
+1. Create EXACTLY ${slideCount} slides.
+2. MAXIMUM 12 WORDS PER SLIDE. (Crucial: Short-form video viewers read fast. Do NOT write long sentences).
+3. Structure:
+   - Slide 1: Strong Hook (Grab attention immediately)
+   - Slides 2-${slideCount - 1}: Value/Facts (One punchy point per slide)
+   - Slide ${slideCount}: Call to Action or Powerful Conclusion
+4. NO filler words. Every word must add value.
+5. Output ONLY a valid JSON array of strings. No markdown.
 
-EXAMPLE OUTPUT for "forceps" (30s, educational):
+EXAMPLE OUTPUT (30s, educational, forceps):
 [
-  "Forceps are precision surgical instruments designed to grasp, hold, and manipulate tissue during medical procedures without causing damage.",
-  "They feature two hinged arms with textured tips that provide secure grip while minimizing trauma to delicate structures.",
-  "Surgeons rely on forceps for intricate operations in fields like obstetrics, surgery, and emergency medicine where fingers are too large or imprecise.",
-  "Modern forceps come in over 50 specialized shapes, each designed for specific medical procedures and anatomical requirements.",
-  "Mastering forceps requires extensive clinical training, steady hands, and deep understanding of human anatomy."
+  "What are forceps exactly?",
+  "They are precision surgical instruments.",
+  "Designed to grasp tissue without damage.",
+  "They feature hinged arms with textured tips.",
+  "Used heavily in obstetrics and surgery.",
+  "Mastering them takes years of practice."
 ]
 
-OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extra text.`;
+OUTPUT FORMAT: Return ONLY the JSON array.`;
 
             try {
-                showAlert(` Generating detailed script...`, 'info');
-                
+                showAlert(` Generating viral script...`, 'info');
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [
                         { role: 'system', content: systemPrompt },
-                        { role: 'user', content: `Create a detailed, contextual ${selectedDuration}-second explainer script about: ${prompt}` }
+                        { role: 'user', content: `Write the script about: ${prompt}` }
                     ],
-                    temperature: 0.7,
-                    max_tokens: 1000
+                    temperature: 0.8, // Higher temp for more creativity
+                    max_tokens: 600
                 });
                 
                 let raw = data.choices?.[0]?.message?.content?.trim();
                 if (!raw) throw new Error('Empty response from AI');
-                
                 raw = raw.replace(/```json|```/g, '').trim();
                 
-                let script;
-                try {
-                    script = JSON.parse(raw);
-                } catch (parseErr) {
-                    console.error('JSON parse failed, raw response:', raw);
-                    throw new Error('AI returned invalid JSON format');
-                }
-                
+                let script = JSON.parse(raw);
                 if (!Array.isArray(script)) {
-                    if (script.slides && Array.isArray(script.slides)) script = script.slides;
-                    else if (script.script && Array.isArray(script.script)) script = script.script;
+                    if (script.slides) script = script.slides;
                     else throw new Error('Response is not an array');
                 }
                 
-                if (script.length === 0) throw new Error('Empty script array');
+                // Strict validation to prevent text cramming
+                const cleaned = script
+                    .map(s => typeof s === 'string' ? s.trim() : '')
+                    .filter(s => s.length > 3 && s.length < 100); // Enforce short length
                 
-                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.length > 15 && s.length < 200);
-                
-                if (cleaned.length < slideCount * 0.6) {
-                    throw new Error(`Script too short: got ${cleaned.length} slides, expected ${slideCount}`);
-                }
-                
+                if (cleaned.length < slideCount * 0.7) throw new Error('Script too short');
                 return cleaned.slice(0, slideCount);
                 
             } catch (err) {
                 console.error('Script generation failed:', err);
-                showAlert(`⚠️ Script generation failed: ${err.message}. Using contextual fallback.`, 'error');
+                showAlert(`⚠️ Script failed: ${err.message}. Using fallback.`, 'error');
                 return generateContextualFallback(prompt, slideCount);
             }
         }
 
         function generateContextualFallback(topic, count) {
-            const topicLower = topic.toLowerCase();
+            const hooks = [`Did you know about ${topic}?`, `The truth about ${topic}.`, `${topic} explained simply.`, `Why ${topic} matters.`];
+            const bodies = [
+                `It changes how we understand the world.`,
+                `Experts use this every single day.`,
+                `The mechanics are surprisingly complex.`,
+                `It impacts millions of people globally.`,
+                `Innovation in this field is accelerating.`
+            ];
+            const ctas = [`Follow for more facts!`, `What do you think? Comment below.`, `Share this with a friend.`, `Save this for later.`];
             
-            const scripts = {
-                medical: [
-                    `${topic} are essential medical instruments used by healthcare professionals worldwide for precise surgical procedures.`,
-                    `Modern ${topic} feature advanced ergonomic designs that reduce hand fatigue during lengthy operations.`,
-                    `Surgeons undergo years of specialized training to master the proper use of ${topic} in clinical settings.`,
-                    `The evolution of ${topic} reflects decades of medical innovation and patient safety improvements.`,
-                    `Proper sterilization and handling of ${topic} are critical for preventing infections and ensuring patient outcomes.`
-                ],
-                technology: [
-                    `${topic} represents a breakthrough in modern technology that's transforming how we interact with digital systems.`,
-                    `The underlying architecture of ${topic} combines cutting-edge algorithms with user-friendly interface design.`,
-                    `Industry experts predict ${topic} will revolutionize multiple sectors within the next five to ten years.`,
-                    `Understanding ${topic} requires knowledge of both technical principles and practical real-world applications.`,
-                    `The development of ${topic} involved collaboration between engineers, designers, and end-user feedback.`
-                ],
-                science: [
-                    `${topic} is a fascinating area of scientific research that continues to reveal new insights about our world.`,
-                    `Recent studies on ${topic} have challenged previous assumptions and opened new avenues for investigation.`,
-                    `The principles behind ${topic} demonstrate the elegant complexity of natural systems and processes.`,
-                    `Scientists use advanced methodologies to study ${topic} and uncover its fundamental mechanisms.`,
-                    `Understanding ${topic} helps us appreciate the intricate balance of forces in nature and technology.`
-                ],
-                general: [
-                    `${topic} encompasses a wide range of concepts and applications that impact our daily lives in meaningful ways.`,
-                    `Experts in the field of ${topic} emphasize the importance of understanding both theory and practical implementation.`,
-                    `The evolution of ${topic} over the past decade reflects changing needs and technological advancements.`,
-                    `Successful application of ${topic} requires careful consideration of context, resources, and desired outcomes.`,
-                    `Future developments in ${topic} promise to unlock new possibilities and address current limitations.`
-                ]
-            };
-            
-            let category = 'general';
-            if (topicLower.match(/medical|surgical|health|doctor|patient|hospital|forceps/)) category = 'medical';
-            else if (topicLower.match(/tech|software|computer|digital|ai|algorithm|code|programming/)) category = 'technology';
-            else if (topicLower.match(/science|research|study|experiment|biology|physics|chemistry/)) category = 'science';
-            
-            return scripts[category].slice(0, count);
+            let slides = [hooks[Math.floor(Math.random() * hooks.length)]];
+            for(let i=0; i<count-2; i++) slides.push(bodies[i % bodies.length]);
+            slides.push(ctas[Math.floor(Math.random() * ctas.length)]);
+            return slides;
         }
 
-        // 🎬 PEXELS VIDEO FETCH
         async function fetchPexelsVideo(query) {
             const q = query || 'abstract background particles';
             const randomPage = Math.floor(Math.random() * 5) + 1;
             const endpoint = `/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
             const data = await fetchViaProxy('pexels', endpoint, null, 'GET');
-            
             if (!data.videos?.length) throw new Error('No videos found.');
             const randomIdx = Math.floor(Math.random() * data.videos.length);
             const vid = data.videos[randomIdx];
@@ -770,56 +647,24 @@ OUTPUT FORMAT: Return ONLY the JSON array. No explanations, no markdown, no extr
             return valid.length ? valid[0].link : vid.video_files[0].link;
         }
 
-        // ✍️ CAPTION & HASHTAGS GENERATOR
         async function generateCaptionAndHashtags(topic, style, script) {
-            const prompt = `You are a social media expert specializing in viral content. Generate an engaging Instagram/TikTok caption and strategic hashtags for a short video.
-
-VIDEO DETAILS:
-- Topic: ${topic}
-- Style: ${style}
-- Script: ${script.join(' | ')}
-
-REQUIREMENTS:
-1. CAPTION (under 2200 chars):
-   - Hook in first line (grab attention)
-   - Value proposition (what viewer learns)
-   - Call-to-action (engage, follow, comment)
-   - Use 1-3 relevant emojis
-   - Conversational, authentic tone
-
-2. HASHTAGS (10-15 total):
-   - 3-5 broad: #ReelCraftt #AI #Shorts #TikTok
-   - 5-7 niche: specific to ${topic}
-   - 2-3 trending: #LearnOnTikTok #EduTok #Viral
-
-OUTPUT FORMAT (JSON only):
-{
-  "caption": "Your caption here...",
-  "hashtags": ["#Tag1", "#Tag2", ...]
-}`;
-
+            const prompt = `Generate a viral TikTok/Reels caption and 12 hashtags for a video about "${topic}".
+Script context: ${script.join(' ')}
+Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be under 2000 chars, include a hook, and a CTA.`;
             try {
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [{ role: 'user', content: prompt }],
-                    temperature: 0.7,
-                    max_tokens: 500
+                    temperature: 0.7, max_tokens: 400
                 });
-                
-                let raw = data.choices?.[0]?.message?.content?.trim();
-                if (!raw) throw new Error('Empty response');
-                
-                raw = raw.replace(/```json|```/g, '').trim();
+                let raw = data.choices?.[0]?.message?.content?.trim().replace(/```json|```/g, '').trim();
                 const result = JSON.parse(raw);
-                
                 if (!result.caption || !result.hashtags) throw new Error('Invalid format');
                 return result;
-                
             } catch (err) {
-                console.warn('Caption generation failed:', err);
                 return {
-                    caption: `🎬 Learn about ${topic} in ${selectedDuration} seconds! ${style === 'educational' ? 'Facts, insights, and real-world applications.' : style === 'inspiring' ? 'Discover the impact and possibilities.' : 'Fun and engaging breakdown.'} 👇 What surprised you? Comment below! 💬`,
-                    hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#InstagramReels', `#${topic.replace(/\s+/g, '')}`, '#ContentCreator', '#Viral', '#LearnOnTikTok', '#EduTok']
+                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s! 👇 What surprised you? Comment below! 💬`,
+                    hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#Viral', `#${topic.replace(/\s+/g, '')}`, '#LearnOnTikTok', '#EduTok']
                 };
             }
         }
@@ -830,60 +675,28 @@ OUTPUT FORMAT (JSON only):
                 const originalText = btn.textContent;
                 btn.textContent = '✅ Copied!';
                 btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Copy failed:', err);
-                showAlert('❌ Failed to copy. Please select and copy manually.', 'error');
+                setTimeout(() => { btn.textContent = originalText; btn.classList.remove('copied'); }, 2000);
             });
         }
 
-        // ⏳ QUEUE SYSTEM
         async function startFreeQueue() {
             document.getElementById('queueOverlay').classList.add('active');
             let timeLeft = 120;
             const timerEl = document.getElementById('queueTimer');
             const barEl = document.getElementById('queueProgressBar');
-            const statusEl = document.getElementById('queueStatus');
             const miniTimer = document.getElementById('miniTimer');
             barEl.style.width = '0%';
 
-            const messages = [
-                "Analyzing your script & mood...",
-                "Sourcing optimal HD background visuals...",
-                "Fetching royalty-free audio tracks...",
-                "Calculating slide timings & transitions...",
-                "Preparing 1080x1920 rendering engine...",
-                "Optimizing 50% overlay & typography...",
-                "Finalizing assets for your reel..."
-            ];
-
             return new Promise(resolve => {
                 queueResolver = resolve;
-                
                 queueInterval = setInterval(() => {
                     timeLeft--;
                     const mins = Math.floor(timeLeft / 60);
                     const secs = timeLeft % 60;
                     const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-                    
                     timerEl.textContent = timeStr;
                     if (miniTimer) miniTimer.textContent = timeStr;
                     barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
-                    
-                    if (timeLeft > 0 && timeLeft % 15 === 0 && statusEl) {
-                        const idx = Math.floor((120 - timeLeft) / 15);
-                        if (messages[idx]) {
-                            statusEl.style.opacity = 0;
-                            setTimeout(() => {
-                                statusEl.textContent = messages[idx];
-                                statusEl.style.opacity = 1;
-                            }, 200);
-                        }
-                    }
-
                     if (timeLeft <= 0) {
                         clearInterval(queueInterval);
                         hideQueueScreen();
@@ -891,7 +704,6 @@ OUTPUT FORMAT (JSON only):
                         resolve();
                     }
                 }, 1000);
-                
                 queueTimeout = setTimeout(() => {
                     clearInterval(queueInterval);
                     hideQueueScreen();
@@ -917,16 +729,11 @@ OUTPUT FORMAT (JSON only):
             if (queueTimeout) clearTimeout(queueTimeout);
         }
 
-        // ✅ UPDATED: Opens Smartlink in new tab, then shows pricing modal
         function showPricing() { 
             window.open('https://www.effectivecpmnetwork.com/zeqnb5brr?key=5cc65e8ac3f067f4e2127225fe53c73e', '_blank');
             document.getElementById('pricingModal').classList.add('active'); 
         }
-        
-        function hidePricing() { 
-            document.getElementById('pricingModal').classList.remove('active');
-        }
-        
+        function hidePricing() { document.getElementById('pricingModal').classList.remove('active'); }
         function selectPlan(plan) { 
             document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected')); 
             event.currentTarget.classList.add('selected'); 
@@ -936,12 +743,10 @@ OUTPUT FORMAT (JSON only):
             const codeInput = document.getElementById('premiumCode');
             const code = codeInput.value.trim();
             if (!code) return showAlert('Please enter a code', 'error');
-            
             const encoder = new TextEncoder();
             const data = encoder.encode(code);
             const hashBuffer = await crypto.subtle.digest('SHA-256', data);
             const inputHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
-            
             const VALID_CODE_HASHES = [
                 "a70b7b0159d6ad9494705dd5cecf4881d00a6f62e95dcc33d7399a47533a2047",
                 "a71af2fea5c9820246973486ad1f4f0eb7f3cfbd243a740c6c3e3c1b91edee4e",
@@ -950,33 +755,19 @@ OUTPUT FORMAT (JSON only):
                 "3098c8bc7de3ef30b0c94315a6dd646f859702d065b2215dcd9d1eac8ba89d24",
                 "42c4438a236bf95daa94500b97e79e340e24c913db0233530548470b8727d5b1"
             ];
-
             if (VALID_CODE_HASHES.includes(inputHash.toLowerCase())) {
                 localStorage.setItem('reelcraft_premium', 'true');
-                localStorage.setItem('reelcraft_activated', new Date().toISOString());
                 isPremium = true;
-                
-                hidePricing();
-                hideQueueScreen(); 
-                updatePremiumBadge();
+                hidePricing(); hideQueueScreen(); updatePremiumBadge();
                 codeInput.value = '';
-                
-                // ✅ CRITICAL: This unlocks the generation process immediately
-                if (queueResolver) {
-                    queueResolver();
-                    queueResolver = null;
-                }
-            } else {
-                showAlert('❌ Invalid code. Please check your email or contact support.', 'error');
-            }
+                if (queueResolver) { queueResolver(); queueResolver = null; }
+            } else { showAlert('❌ Invalid code.', 'error'); }
         }
-
         function updatePremiumBadge() {
             const badge = document.querySelector('.badge');
             if (badge) badge.textContent = '✅ Pro Member • Instant Queue • Priority Support';
         }
 
-        // 🎬 MAIN GENERATION FLOW
         async function generateReel() {
             hideAlerts();
             const vqInput = document.getElementById('videoQuery').value.trim();
@@ -990,12 +781,7 @@ OUTPUT FORMAT (JSON only):
                 slides = txt.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [txt];
             } else {
                 if (!subjectInput) return showAlert('Enter a topic/prompt', 'error');
-                
-                // Show queue for free users
-                if (!isPremium) {
-                    await startFreeQueue();
-                }
-                
+                if (!isPremium) await startFreeQueue();
                 slides = await generateScriptFromPrompt(subjectInput);
             }
 
@@ -1013,30 +799,24 @@ OUTPUT FORMAT (JSON only):
                     vidUrl = await fetchPexelsVideo(finalVideoQuery || 'abstract background particles');
                 }
 
-                if (selectedMusic !== 'none') {
-                    showAlert('🎵 Loading music...', 'info');
-                    await playMusic(selectedMusic);
-                }
-
                 const vid = document.getElementById('backgroundVideo');
                 vid.src = vidUrl || 'https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4';
                 vid.crossOrigin = 'anonymous';
                 document.getElementById('previewSection').classList.add('active');
                 document.getElementById('chunkIndicators').innerHTML = textChunks.map((_, i) => `<div class="chunk-dot"></div>`).join('');
+                
+                // Wait for video metadata
                 await new Promise(r => vid.onloadedmetadata = r);
-
+                
                 updateSlide(0);
                 
                 showAlert('✍️ Generating caption & hashtags...', 'info');
                 const captionData = await generateCaptionAndHashtags(subjectInput, currentStyle, slides);
-                
                 document.getElementById('captionSection').style.display = 'block';
                 document.getElementById('generatedCaption').textContent = captionData.caption;
                 document.getElementById('generatedHashtags').textContent = captionData.hashtags.join(' ');
                 
-                const musicLabel = selectedMusic === 'custom' ? 'Custom Upload' : 
-                                  selectedMusic === 'none' ? 'None' : selectedMusic;
-                showAlert(`✅ Ready! ${textChunks.length} slides • ${selectedDuration}s • Music: ${musicLabel}`, 'info');
+                showAlert(`✅ Ready! ${textChunks.length} slides • ${selectedDuration}s`, 'info');
             } catch (e) {
                 console.error(e); showAlert(`Error: ${e.message}`, 'error');
             } finally {
@@ -1044,30 +824,55 @@ OUTPUT FORMAT (JSON only):
             }
         }
 
+        // ✅ SMOOTH TRANSITION LOGIC
         function updateSlide(i) {
             const el = document.getElementById('displayText');
+            // 1. Fade out
             el.classList.remove('active');
+            
+            // 2. Wait for fade out, swap text, fade in
             setTimeout(() => {
                 el.textContent = textChunks[i].text;
                 el.classList.add('active');
                 document.querySelectorAll('.chunk-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
-            }, 200);
+            }, 300); // Matches CSS transition time
             currentChunkIndex = i;
         }
 
+        // ✅ FIXED AUDIO/VIDEO SYNC
         async function playPreview() {
-            const vid = document.getElementById('backgroundVideo'), bar = document.getElementById('progressBar'), dur = selectedDuration * 1000;
+            const vid = document.getElementById('backgroundVideo');
+            const bar = document.getElementById('progressBar');
+            const dur = selectedDuration * 1000;
+            
             vid.currentTime = 0;
-            if (selectedMusic !== 'none') await playMusic(selectedMusic);
-            await vid.play();
             clearInterval(animationInterval);
+            
+            // Wait for video to be buffered enough to play smoothly
+            if (vid.readyState < 2) {
+                await new Promise(r => vid.addEventListener('canplay', r, { once: true }));
+            }
+            
+            // Start video and music simultaneously
+            vid.play();
+            if (selectedMusic !== 'none') {
+                playMusic(selectedMusic).catch(e => console.warn(e));
+            }
+            
+            // Start timer exactly when playback begins
             const start = Date.now();
             animationInterval = setInterval(() => {
                 const p = Math.min((Date.now() - start) / dur, 1);
                 bar.style.width = `${p * 100}%`;
                 const idx = textChunks.findIndex(c => (Date.now() - start) >= c.start && (Date.now() - start) < c.end);
                 if (idx !== -1 && idx !== currentChunkIndex) updateSlide(idx);
-                if (p >= 1) { clearInterval(animationInterval); vid.pause(); if (window.currentAudio) window.currentAudio.pause(); bar.style.width = '0%'; }
+                
+                if (p >= 1) { 
+                    clearInterval(animationInterval); 
+                    vid.pause(); 
+                    if (window.currentAudio) window.currentAudio.pause(); 
+                    bar.style.width = '0%'; 
+                }
             }, 50);
         }
 
@@ -1095,10 +900,11 @@ OUTPUT FORMAT (JSON only):
                 const now = Date.now(), el = now - start;
                 rctx.fillStyle = '#000'; rctx.fillRect(0, 0, 1080, 1920);
                 if (vid.readyState >= 2) rctx.drawImage(vid, 0, 0, 1080, 1920);
-                rctx.fillStyle = 'rgba(0,0,0,0.55)'; rctx.fillRect(0, 0, 1080, 1920);
+                rctx.fillStyle = 'rgba(0,0,0,0.65)'; rctx.fillRect(0, 0, 1080, 1920);
                 const chunk = textChunks.find(c => el >= c.start && el < c.end) || textChunks[0];
                 if (chunk) {
-                    rctx.font = '600 52px Inter, sans-serif'; rctx.fillStyle = '#fff'; rctx.textAlign = 'center';
+                    rctx.font = '800 64px Inter, sans-serif'; rctx.fillStyle = '#fff'; rctx.textAlign = 'center'; rctx.textBaseline = 'middle';
+                    // Simple word wrap for canvas
                     const words = chunk.text.split(' ');
                     let line = ''; let lines = [];
                     for (let n = 0; n < words.length; n++) {
@@ -1107,8 +913,9 @@ OUTPUT FORMAT (JSON only):
                         else line = testLine;
                     }
                     lines.push(line);
-                    const lineHeight = 65;
-                    const startY = 960 - ((lines.length - 1) * lineHeight) / 2;
+                    const lineHeight = 75;
+                    const totalH = lines.length * lineHeight;
+                    const startY = 960 - (totalH / 2) + (lineHeight / 2);
                     lines.forEach((l, i) => rctx.fillText(l.trim(), 540, startY + (i * lineHeight)));
                 }
                 if (now < end) requestAnimationFrame(draw);
