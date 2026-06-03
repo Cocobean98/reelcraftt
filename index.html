@@ -16,7 +16,7 @@
     <!-- ✅ GOOGLE SITE VERIFICATION -->
     <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
     
-    <!-- 🔥 OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord) -->
+    <!-- 🔥 OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://reelcraftt.vercel.app">
     <meta property="og:title" content="ReelCraftt | Free AI Video Generator for TikTok & Reels">
@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Create viral 9:16 vertical videos in seconds. AI-powered scripts, curated audio & smart captions.">
     <meta name="twitter:image" content="/og-image.jpg">
     
-    <!-- ✅ FAVICON (See instructions below) -->
+    <!-- ✅ FAVICON -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="shortcut icon" href="/favicon.ico">
 
@@ -254,7 +254,7 @@
             <div class="alert info" id="infoAlert">✅ Ready to generate</div>
 
             <div class="mode-selector">
-                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
+                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')"> Subject Mode</button>
                 <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
             </div>
             
@@ -291,11 +291,11 @@
             <div class="form-group">
                 <label>Background Music</label>
                 <div class="music-options">
-                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
+                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')"> Random</button>
                     <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
                     <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
-                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
+                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')"> Cinematic</button>
                     <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
                 </div>
                 <div class="upload-area" onclick="document.getElementById('customAudio').click()">
@@ -421,7 +421,7 @@
             <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
             <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
             <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
-            <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
+            <div class="feature-card"><div class="feature-icon"></div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
             <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
             <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
         </div>
@@ -470,7 +470,7 @@
     <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
     <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
 
-    <!-- SEO STRUCTURED DATA (JSON-LD) -->
+    <!-- SEO STRUCTURED DATA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -484,14 +484,8 @@
         "priceCurrency": "USD",
         "description": "Free tier available. Pro plans from $3.99/mo for instant generation."
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "127"
-      },
-      "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts. Generate scripts, music, captions & hashtags automatically.",
-      "featureList": "AI script generation, Contextual instrumental music, Auto captions & hashtags, 9:16 export, Commercial-safe content, No installation required",
-      "screenshot": "https://reelcraftt.vercel.app/og-image.jpg",
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" },
+      "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts.",
       "url": "https://reelcraftt.vercel.app"
     }
     </script>
@@ -539,7 +533,7 @@
                 selectedMusic = 'custom';
                 document.querySelectorAll('.music-btn').forEach(b => b.classList.remove('active'));
                 showAlert(`✅ Loaded: ${file.name}`, 'info');
-            } catch (err) { showAlert('❌ Could not decode audio. Try MP3 or WAV.', 'error'); }
+            } catch (err) { showAlert('❌ Could not decode audio.', 'error'); }
         }
 
         function handleCustomVideoUpload(e) {
@@ -566,78 +560,73 @@
             } catch (err) { console.error('Proxy fetch failed:', err); throw err; }
         }
 
-        // ✅ FIXED: Properly handles 'random' by picking a random category
         async function playMusic(type) {
             if (window.currentAudio) { window.currentAudio.pause(); window.currentAudio = null; }
             if (type === 'none' || type === 'custom') return;
-            
             let folder, trackCount;
             if (type === 'random') {
                 const keys = Object.keys(MUSIC_CONFIG);
                 const randKey = keys[Math.floor(Math.random() * keys.length)];
-                folder = MUSIC_CONFIG[randKey].folder;
-                trackCount = MUSIC_CONFIG[randKey].trackCount;
-            } else {
-                folder = MUSIC_CONFIG[type]?.folder;
-                trackCount = MUSIC_CONFIG[type]?.trackCount;
-            }
-            
+                folder = MUSIC_CONFIG[randKey].folder; trackCount = MUSIC_CONFIG[randKey].trackCount;
+            } else { folder = MUSIC_CONFIG[type]?.folder; trackCount = MUSIC_CONFIG[type]?.trackCount; }
             if (!folder || !trackCount) return;
-            
             const trackNum = Math.floor(Math.random() * trackCount) + 1;
             const url = `/audio/${folder}/${trackNum}.mp3`;
-            
             try {
-                const audio = new Audio(url);
-                audio.loop = true; audio.volume = 0.4;
-                await audio.play();
-                window.currentAudio = audio;
+                const audio = new Audio(url); audio.loop = true; audio.volume = 0.4;
+                await audio.play(); window.currentAudio = audio;
             } catch(e) { console.error('Music playback error:', e); }
         }
 
+        // ✅ ENHANCED SCRIPT GENERATION FOR DEEPER CONTEXT
         async function generateScriptFromPrompt(prompt) {
+            // Pacing: 1 slide every ~3.5 to 5 seconds depending on length
             const slideCount = selectedDuration <= 15 ? 4 : selectedDuration <= 30 ? 6 : 12;
+            
             const styleInstructions = {
-                educational: 'Informative, factual, and clear. Teach one specific thing per slide.',
+                educational: 'Informative, documentary-style, and clear. Explain the "why" and "how" using analogies.',
                 inspiring: 'Motivational, punchy, and emotional. Build up to a powerful conclusion.',
                 fun: 'Witty, surprising, and highly engaging. Use hooks and playful language.'
             };
 
-            const systemPrompt = `You are a viral TikTok/Reels scriptwriter. 
-TASK: Write a ${selectedDuration}-second script about "${prompt}".
-STYLE: ${styleInstructions[currentStyle]}
+            // The magic is in this prompt. We explicitly tell it NOT to be robotic.
+            const systemPrompt = `You are an expert science and documentary scriptwriter for high-quality viral Reels/TikToks. 
+            TASK: Write a ${selectedDuration}-second script about "${prompt}".
+            STYLE: ${styleInstructions[currentStyle]}
 
-CRITICAL RULES FOR VIRAL PACING:
-1. Create EXACTLY ${slideCount} slides.
-2. MAXIMUM 12 WORDS PER SLIDE. (Crucial: Short-form video viewers read fast. Do NOT write long sentences).
-3. Structure:
-   - Slide 1: Strong Hook (Grab attention immediately)
-   - Slides 2-${slideCount - 1}: Value/Facts (One punchy point per slide)
-   - Slide ${slideCount}: Call to Action or Powerful Conclusion
-4. NO filler words. Every word must add value.
-5. Output ONLY a valid JSON array of strings. No markdown.
+            CRITICAL RULES FOR ENGAGING CONTENT:
+            1. Create EXACTLY ${slideCount} slides.
+            2. Keep each slide between 10 to 18 words. (Readable, but allows for depth).
+            3. TONE: Professional, fascinating, and insightful. Avoid childish or overly basic robotic statements. 
+            4. USE CONTEXT: Include specific mechanisms, real-world analogies, surprising statistics, or historical facts. 
+            5. Structure:
+               - Slide 1: A mind-bending hook or surprising question.
+               - Middle Slides: The "How it works" using clear analogies or specific mechanisms.
+               - Final Slide: A powerful conclusion or real-world impact.
+            6. Output ONLY a valid JSON array of strings. No markdown.
 
-EXAMPLE OUTPUT (30s, educational, forceps):
-[
-  "What are forceps exactly?",
-  "They are precision surgical instruments.",
-  "Designed to grasp tissue without damage.",
-  "They feature hinged arms with textured tips.",
-  "Used heavily in obstetrics and surgery.",
-  "Mastering them takes years of practice."
-]
+            EXAMPLE OUTPUT (30s, educational, How Lift Works):
+            [
+              "How do 400-ton metal birds actually defy gravity and fly?",
+              "It is not just about engines; it is about invisible air pressure.",
+              "The wing's curved shape forces air to travel faster over the top.",
+              "According to Bernoulli's principle, faster moving air creates lower pressure above.",
+              "The higher pressure underneath pushes the massive wing aggressively upward.",
+              "This invisible battle of air pressure is what keeps us in the sky."
+            ]
 
-OUTPUT FORMAT: Return ONLY the JSON array.`;
+            OUTPUT FORMAT: Return ONLY the JSON array.`;
 
             try {
-                showAlert(`🤖 Generating viral script...`, 'info');
+                showAlert(` Generating viral script...`, 'info');
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [
                         { role: 'system', content: systemPrompt },
                         { role: 'user', content: `Write the script about: ${prompt}` }
                     ],
-                    temperature: 0.8, max_tokens: 600
+                    temperature: 0.85, // Slightly higher temperature for more creativity
+                    max_tokens: 600
                 });
                 
                 let raw = data.choices?.[0]?.message?.content?.trim();
@@ -650,7 +639,9 @@ OUTPUT FORMAT: Return ONLY the JSON array.`;
                     else throw new Error('Response is not an array');
                 }
                 
-                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.length > 3 && s.length < 100);
+                // Filter: Must be at least 5 words, max 30 words (allows for better context)
+                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.split(' ').length >= 5 && s.split(' ').length <= 30);
+                
                 if (cleaned.length < slideCount * 0.7) throw new Error('Script too short');
                 return cleaned.slice(0, slideCount);
                 
@@ -662,9 +653,15 @@ OUTPUT FORMAT: Return ONLY the JSON array.`;
         }
 
         function generateContextualFallback(topic, count) {
-            const hooks = [`Did you know about ${topic}?`, `The truth about ${topic}.`, `${topic} explained simply.`, `Why ${topic} matters.`];
-            const bodies = [`It changes how we understand the world.`, `Experts use this every single day.`, `The mechanics are surprisingly complex.`, `It impacts millions of people globally.`];
-            const ctas = [`Follow for more facts!`, `What do you think? Comment below.`, `Share this with a friend.`, `Save this for later.`];
+            const hooks = [`Have you ever wondered how ${topic} actually works?`, `The hidden mechanics behind ${topic}.`, `Most people misunderstand how ${topic} operates.`, `Why ${topic} completely changed the modern world.`];
+            const bodies = [
+                `It relies on a complex series of invisible mechanisms working in perfect harmony.`,
+                `Experts have spent decades refining the precise engineering behind this process.`,
+                `The underlying physics are surprisingly counterintuitive but incredibly elegant.`,
+                `It impacts millions of lives daily, though most never notice it happening.`
+            ];
+            const ctas = [`Follow for more deep dives!`, `What do you think? Let me know below.`, `Share this with a friend who needs to know.`, `Save this for your next study session.`];
+            
             let slides = [hooks[Math.floor(Math.random() * hooks.length)]];
             for(let i=0; i<count-2; i++) slides.push(bodies[i % bodies.length]);
             slides.push(ctas[Math.floor(Math.random() * ctas.length)]);
@@ -685,8 +682,8 @@ OUTPUT FORMAT: Return ONLY the JSON array.`;
 
         async function generateCaptionAndHashtags(topic, style, script) {
             const prompt = `Generate a viral TikTok/Reels caption and 12 hashtags for a video about "${topic}".
-Script context: ${script.join(' ')}
-Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be under 2000 chars, include a hook, and a CTA.`;
+            Script context: ${script.join(' ')}
+            Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be under 2000 chars, include a hook, and a CTA.`;
             try {
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
@@ -699,7 +696,7 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 return result;
             } catch (err) {
                 return {
-                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s!  What surprised you? Comment below! 💬`,
+                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s! What surprised you? Comment below! 💬`,
                     hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#Viral', `#${topic.replace(/\s+/g, '')}`, '#LearnOnTikTok', '#EduTok']
                 };
             }
@@ -716,43 +713,41 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
         }
 
         async function startFreeQueue() {
-    // ✅ FIX: Reset modal visibility so it doesn't get stuck on blur
-    document.getElementById('queueMainCard').style.display = 'block';
-    document.getElementById('queueMinimized').style.display = 'none';
-    document.getElementById('queueOverlay').classList.add('active');
-    
-    let timeLeft = 120;
-    const timerEl = document.getElementById('queueTimer');
-    const barEl = document.getElementById('queueProgressBar');
-    const miniTimer = document.getElementById('miniTimer');
-    barEl.style.width = '0%';
-
-    return new Promise(resolve => {
-        queueResolver = resolve;
-        queueInterval = setInterval(() => {
-            timeLeft--;
-            const mins = Math.floor(timeLeft / 60);
-            const secs = timeLeft % 60;
-            const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-            timerEl.textContent = timeStr;
-            if (miniTimer) miniTimer.textContent = timeStr;
-            barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
+            document.getElementById('queueMainCard').style.display = 'block';
+            document.getElementById('queueMinimized').style.display = 'none';
+            document.getElementById('queueOverlay').classList.add('active');
             
-            if (timeLeft <= 0) {
-                clearInterval(queueInterval);
-                hideQueueScreen();
-                queueResolver = null;
-                resolve();
-            }
-        }, 1000);
-        queueTimeout = setTimeout(() => {
-            clearInterval(queueInterval);
-            hideQueueScreen();
-            queueResolver = null;
-            resolve();
-        }, 120000);
-    });
-}
+            let timeLeft = 120;
+            const timerEl = document.getElementById('queueTimer');
+            const barEl = document.getElementById('queueProgressBar');
+            const miniTimer = document.getElementById('miniTimer');
+            barEl.style.width = '0%';
+
+            return new Promise(resolve => {
+                queueResolver = resolve;
+                queueInterval = setInterval(() => {
+                    timeLeft--;
+                    const mins = Math.floor(timeLeft / 60);
+                    const secs = timeLeft % 60;
+                    const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+                    timerEl.textContent = timeStr;
+                    if (miniTimer) miniTimer.textContent = timeStr;
+                    barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
+                    if (timeLeft <= 0) {
+                        clearInterval(queueInterval);
+                        hideQueueScreen();
+                        queueResolver = null;
+                        resolve();
+                    }
+                }, 1000);
+                queueTimeout = setTimeout(() => {
+                    clearInterval(queueInterval);
+                    hideQueueScreen();
+                    queueResolver = null;
+                    resolve();
+                }, 120000);
+            });
+        }
 
         function minimizeQueue() {
             document.getElementById('queueMainCard').style.display = 'none';
@@ -809,10 +804,8 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
             if (badge) badge.textContent = '✅ Pro Member • Instant Queue • Priority Support';
         }
 
-        // ✅ FIXED: Resets UI state to prevent getting stuck on blurry page
         async function generateReel() {
             hideAlerts();
-            // Force close any open overlays to prevent blurry screen bug
             hideQueueScreen();
             hidePricing();
             
@@ -912,7 +905,7 @@ Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be unde
                 const blob = new Blob(recordedChunks, { type: mime });
                 const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
                 a.download = `reel-${Date.now()}.${mime.includes('mp4') ? 'mp4' : 'webm'}`; a.click();
-                btn.disabled = false; btn.textContent = ' Download';
+                btn.disabled = false; btn.textContent = '⬇ Download';
                 showAlert('✅ Downloaded! Upload to TikTok/IG/Shorts', 'info');
             };
             vid.currentTime = 0; await vid.play(); mr.start(200);
