@@ -1,5 +1,14 @@
 {
+  "routes": [
+    {
+      "src": "/sitemap\\.xml",
+      "dest": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml; charset=utf-8"
+      }
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
