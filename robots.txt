@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://reelcraftt.vercel.app/sitemap.xml
