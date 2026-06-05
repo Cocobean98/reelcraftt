@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReelCraftt | Free AI Video Generator for TikTok, Instagram Reels & YouTube Shorts</title>
     
-    <!-- 🔥 PRIMARY SEO TAGS -->
-    <meta name="description" content="Create viral 9:16 vertical videos in seconds. ReelCraftt is the best free AI reel generator for TikTok, Instagram Reels & YouTube Shorts. No watermark.">
-    <meta name="keywords" content="AI reel generator, free video maker, TikTok maker, Instagram Reels creator, YouTube Shorts tool, vertical video generator, AI script writer, text to video AI, viral reel maker">
-    <meta name="robots" content="index, follow, max-image-preview:large">
+    <!-- 🔥 ULTIMATE SEO META TAGS -->
+    <title>ReelCraftt: Free AI Video Generator for TikTok, Reels & Shorts</title>
+    <meta name="description" content="Create viral 9:16 vertical videos in seconds with ReelCraftt. The best free AI text-to-video generator for TikTok, Instagram Reels, and YouTube Shorts. Auto-captions, smart scripts & no watermark.">
+    <meta name="keywords" content="AI reel generator, free AI video maker, TikTok video generator, Instagram Reels maker, YouTube Shorts creator, text to video AI, viral reel maker, auto caption generator, AI script writer, short form video tool">
     <meta name="author" content="ReelCraftt">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#6366f1">
     <link rel="canonical" href="https://reelcraftt.vercel.app">
     
     <!-- ✅ GOOGLE SITE VERIFICATION -->
     <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
     
-    <!-- 🔥 OPEN GRAPH -->
+    <!-- 🔥 OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://reelcraftt.vercel.app">
-    <meta property="og:title" content="ReelCraftt | Free AI Video Generator for TikTok & Reels">
-    <meta property="og:description" content="Create viral 9:16 vertical videos in seconds. AI-powered scripts, curated audio & smart captions. 100% Free.">
-    <meta property="og:image" content="/og-image.jpg">
+    <meta property="og:title" content="ReelCraftt: Free AI Video Generator for TikTok, Reels & Shorts">
+    <meta property="og:description" content="Create viral 9:16 vertical videos in seconds. The best free AI text-to-video generator. Auto-captions, smart scripts & no watermark.">
+    <meta property="og:image" content="https://reelcraftt.vercel.app/og-image.jpg">
     <meta property="og:site_name" content="ReelCraftt">
+    <meta property="og:locale" content="en_US">
     
     <!-- 🔥 TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://reelcraftt.vercel.app">
-    <meta name="twitter:title" content="ReelCraftt | Free AI Video Generator">
-    <meta name="twitter:description" content="Create viral 9:16 vertical videos in seconds. AI-powered scripts, curated audio & smart captions.">
-    <meta name="twitter:image" content="/og-image.jpg">
+    <meta name="twitter:title" content="ReelCraftt: Free AI Video Generator">
+    <meta name="twitter:description" content="Create viral 9:16 vertical videos in seconds. The best free AI text-to-video generator.">
+    <meta name="twitter:image" content="https://reelcraftt.vercel.app/og-image.jpg">
     
     <!-- ✅ FAVICON -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- ⚡ PERFORMANCE PRE-CONNECTS -->
+    <link rel="preconnect" href="https://api.groq.com">
+    <link rel="preconnect" href="https://api.pexels.com">
+    <link rel="preconnect" href="https://www.paypal.com">
+    <link rel="dns-prefetch" href="https://pl29621951.effectivecpmnetwork.com">
 
     <style>
         :root {
@@ -61,7 +68,7 @@
             background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
         }
-        .tagline { color: var(--text-secondary); font-size: 1.125rem; max-width: 500px; margin: 0 auto; }
+        .tagline { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
         .badge {
             display: inline-flex; align-items: center; gap: 6px;
             background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
@@ -243,9 +250,9 @@
 </head>
 <body>
     <header>
-        <div class="badge">✨ AI-Powered Reel Generator</div>
+        <div class="badge">✨ #1 AI-Powered Reel Generator</div>
         <h1 class="brand">ReelCraftt</h1>
-        <p class="tagline">Double the t's, double the craft. ✨ Create viral 9:16 videos in seconds.</p>
+        <p class="tagline">Double the t's, double the craft.  The best free AI text-to-video generator for viral 9:16 TikTok, Reels & Shorts.</p>
     </header>
 
     <main class="container">
@@ -254,7 +261,7 @@
             <div class="alert info" id="infoAlert">✅ Ready to generate</div>
 
             <div class="mode-selector">
-                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')"> Subject Mode</button>
+                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
                 <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
             </div>
             
@@ -291,11 +298,11 @@
             <div class="form-group">
                 <label>Background Music</label>
                 <div class="music-options">
-                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')"> Random</button>
+                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
                     <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')">🌊 Ambient</button>
+                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
                     <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
-                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')"> Cinematic</button>
+                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
                     <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
                 </div>
                 <div class="upload-area" onclick="document.getElementById('customAudio').click()">
@@ -385,7 +392,7 @@
             </div>
             <div style="display:flex; gap:10px; margin-top:1rem; flex-wrap:wrap;">
                 <a href="https://www.paypal.com/ncp/payment/HE7QUXFAK2JFC" target="_blank" class="btn btn-success" style="flex:1; min-width:120px;">💳 Pay $3.99/mo</a>
-                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);">🔑 Pay $12.99 once</a>
+                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);"> Pay $12.99 once</a>
             </div>
             <p style="color:var(--text-muted); font-size:0.8125rem; margin-top:0.5rem;">
                 After payment, you'll receive a <strong>Premium Code</strong> via email. Enter it below to unlock instant access.
@@ -397,7 +404,7 @@
 
     <section class="section" id="about">
         <h2 class="section-title">About ReelCraftt</h2>
-        <p class="section-subtitle">Built by an engineer, designed for creators</p>
+        <p class="section-subtitle">Built by an engineer, designed for viral creators</p>
         <div class="about-grid">
             <div class="about-content">
                 <h3>From Engineer to Creator</h3>
@@ -416,12 +423,12 @@
 
     <section class="section" id="features" style="background:var(--surface);">
         <h2 class="section-title">Why Creators Love ReelCraftt</h2>
-        <p class="section-subtitle">Everything you need to create viral vertical videos</p>
+        <p class="section-subtitle">The ultimate toolkit to create viral vertical videos</p>
         <div class="features-grid">
             <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
             <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
             <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
-            <div class="feature-card"><div class="feature-icon"></div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
+            <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
             <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
             <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
         </div>
@@ -439,7 +446,7 @@
 
     <section class="section" id="faq" style="background:var(--surface);">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know</p>
+        <p class="section-subtitle">Everything you need to know about our AI video generator</p>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is ReelCraftt free to use?</div><div class="faq-answer">Yes! Our free tier lets you generate reels with full features. No credit card required.</div></div>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I use generated reels commercially?</div><div class="faq-answer">Absolutely. All content generated by ReelCraftt is 100% yours to use. No attribution required.</div></div>
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What video formats are supported?</div><div class="faq-answer">Reels export as WebM (1080×1920, 9:16 aspect ratio), fully compatible with Instagram Reels, TikTok, YouTube Shorts, and Facebook Reels.</div></div>
@@ -470,24 +477,59 @@
     <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
     <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
 
-    <!-- SEO STRUCTURED DATA -->
+    <!--  TRIPLE-LAYER SEO SCHEMA (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "ReelCraftt",
-      "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Free tier available. Pro plans from $3.99/mo for instant generation."
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ReelCraftt",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier available. Pro plans from $3.99/mo for instant generation."
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" },
+        "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts.",
+        "url": "https://reelcraftt.vercel.app"
       },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" },
-      "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts.",
-      "url": "https://reelcraftt.vercel.app"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is ReelCraftt free to use?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes! Our free tier lets you generate reels with full features. No credit card required." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use generated reels commercially?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. All content generated by ReelCraftt is 100% yours to use. No attribution required." }
+          },
+          {
+            "@type": "Question",
+            "name": "What video formats are supported?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Reels export as WebM (1080×1920, 9:16 aspect ratio), fully compatible with Instagram Reels, TikTok, YouTube Shorts, and Facebook Reels." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to install anything?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No installation required. ReelCraftt runs entirely in your browser—works on desktop, tablet, or mobile." }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ReelCraftt",
+        "url": "https://reelcraftt.vercel.app",
+        "logo": "https://reelcraftt.vercel.app/favicon.png"
+      }
+    ]
     </script>
 
     <script>
@@ -578,18 +620,14 @@
             } catch(e) { console.error('Music playback error:', e); }
         }
 
-        // ✅ ENHANCED SCRIPT GENERATION FOR DEEPER CONTEXT
         async function generateScriptFromPrompt(prompt) {
-            // Pacing: 1 slide every ~3.5 to 5 seconds depending on length
             const slideCount = selectedDuration <= 15 ? 4 : selectedDuration <= 30 ? 6 : 12;
-            
             const styleInstructions = {
                 educational: 'Informative, documentary-style, and clear. Explain the "why" and "how" using analogies.',
                 inspiring: 'Motivational, punchy, and emotional. Build up to a powerful conclusion.',
                 fun: 'Witty, surprising, and highly engaging. Use hooks and playful language.'
             };
 
-            // The magic is in this prompt. We explicitly tell it NOT to be robotic.
             const systemPrompt = `You are an expert science and documentary scriptwriter for high-quality viral Reels/TikToks. 
             TASK: Write a ${selectedDuration}-second script about "${prompt}".
             STYLE: ${styleInstructions[currentStyle]}
@@ -618,14 +656,14 @@
             OUTPUT FORMAT: Return ONLY the JSON array.`;
 
             try {
-                showAlert(` Generating viral script...`, 'info');
+                showAlert(`🤖 Generating viral script...`, 'info');
                 const data = await fetchViaProxy('groq', '/chat/completions', {
                     model: 'llama-3.3-70b-versatile',
                     messages: [
                         { role: 'system', content: systemPrompt },
                         { role: 'user', content: `Write the script about: ${prompt}` }
                     ],
-                    temperature: 0.85, // Slightly higher temperature for more creativity
+                    temperature: 0.85,
                     max_tokens: 600
                 });
                 
@@ -639,7 +677,6 @@
                     else throw new Error('Response is not an array');
                 }
                 
-                // Filter: Must be at least 5 words, max 30 words (allows for better context)
                 const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.split(' ').length >= 5 && s.split(' ').length <= 30);
                 
                 if (cleaned.length < slideCount * 0.7) throw new Error('Script too short');
@@ -647,7 +684,7 @@
                 
             } catch (err) {
                 console.error('Script generation failed:', err);
-                showAlert(`⚠️ Script failed: ${err.message}. Using fallback.`, 'error');
+                showAlert(`️ Script failed: ${err.message}. Using fallback.`, 'error');
                 return generateContextualFallback(prompt, slideCount);
             }
         }
@@ -847,7 +884,7 @@
                 
                 updateSlide(0);
                 
-                showAlert('✍️ Generating caption & hashtags...', 'info');
+                showAlert('️ Generating caption & hashtags...', 'info');
                 const captionData = await generateCaptionAndHashtags(subjectInput, currentStyle, slides);
                 document.getElementById('captionSection').style.display = 'block';
                 document.getElementById('generatedCaption').textContent = captionData.caption;
@@ -857,7 +894,7 @@
             } catch (e) {
                 console.error(e); showAlert(`Error: ${e.message}`, 'error');
             } finally {
-                btn.disabled = false; btn.innerHTML = '<span>🎬</span> Generate Reel';
+                btn.disabled = false; btn.innerHTML = '<span></span> Generate Reel';
             }
         }
 
