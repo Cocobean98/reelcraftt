@@ -3,981 +3,1212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelDeen Studio | Professional Quran Reel Generator</title>
+    <meta name="description" content="Create stunning 9:16 Islamic videos with synchronized recitation.">
     
-    <!-- 🔥 ULTIMATE SEO META TAGS -->
-    <title>ReelCraftt: Free AI Video Generator for TikTok, Reels & Shorts</title>
-    <meta name="description" content="Create viral 9:16 vertical videos in seconds with ReelCraftt. The best free AI text-to-video generator for TikTok, Instagram Reels, and YouTube Shorts. Auto-captions, smart scripts & no watermark.">
-    <meta name="keywords" content="AI reel generator, free AI video maker, TikTok video generator, Instagram Reels maker, YouTube Shorts creator, text to video AI, viral reel maker, auto caption generator, AI script writer, short form video tool">
-    <meta name="author" content="ReelCraftt">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="theme-color" content="#6366f1">
-    <link rel="canonical" href="https://reelcraftt.vercel.app">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
     
-    <!-- ✅ GOOGLE SITE VERIFICATION -->
-    <meta name="google-site-verification" content="WtSXJv5Eq_kq2GFZSbIBPHbR1yvHWrG4pTr7Gyvj03I" />
+    <!-- HalalSpark Auto Ads -->
+    <script src="https://ads.halalspark.co.uk/get-auto-ads-script?websiteId=fefe7d1a-ffc0-4cbb-9781-13a19f5d469c&profile=reeldeen" async></script>
     
-    <!-- 🔥 OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://reelcraftt.vercel.app">
-    <meta property="og:title" content="ReelCraftt: Free AI Video Generator for TikTok, Reels & Shorts">
-    <meta property="og:description" content="Create viral 9:16 vertical videos in seconds. The best free AI text-to-video generator. Auto-captions, smart scripts & no watermark.">
-    <meta property="og:image" content="https://reelcraftt.vercel.app/og-image.jpg">
-    <meta property="og:site_name" content="ReelCraftt">
-    <meta property="og:locale" content="en_US">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- 🔥 TWITTER CARDS -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://reelcraftt.vercel.app">
-    <meta name="twitter:title" content="ReelCraftt: Free AI Video Generator">
-    <meta name="twitter:description" content="Create viral 9:16 vertical videos in seconds. The best free AI text-to-video generator.">
-    <meta name="twitter:image" content="https://reelcraftt.vercel.app/og-image.jpg">
-    
-    <!-- ✅ FAVICON -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-
-    <!-- ⚡ PERFORMANCE PRE-CONNECTS -->
-    <link rel="preconnect" href="https://api.groq.com">
-    <link rel="preconnect" href="https://api.pexels.com">
-    <link rel="preconnect" href="https://www.paypal.com">
-    <link rel="dns-prefetch" href="https://pl29621951.effectivecpmnetwork.com">
-
-    <style>
-        :root {
-            --bg: #09090b; --surface: #111114; --surface-elevated: #18181b;
-            --border: #27272a; --border-light: #3f3f46; --text-primary: #f4f4f5;
-            --text-secondary: #a1a1aa; --text-muted: #71717a; --primary: #6366f1;
-            --primary-hover: #4f46e5; --accent: #10b981; --accent-hover: #059669;
-            --warning: #f59e0b; --error: #ef4444; --radius-sm: 8px; --radius-md: 12px;
-            --radius-lg: 16px; --radius-full: 9999px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
-            --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.4); --transition: 200ms cubic-bezier(0.4,0,0.2,1);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.5;
-            background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.15), transparent),
-                              radial-gradient(circle at 0% 100%, rgba(16,185,129,0.08), transparent);
-            padding: 0; overflow-x: hidden;
-        }
-        .container { max-width: 1120px; margin: 0 auto; padding: 2rem 1rem; }
-        header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; }
-        .brand {
-            font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
-        }
-        .tagline { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
-        .badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
-            color: #818cf8; padding: 6px 14px; border-radius: var(--radius-full);
-            font-size: 0.8125rem; font-weight: 500; margin-bottom: 1.5rem;
-        }
-        .badge::before { content: "●"; color: #10b981; font-size: 10px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        .card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 2rem;
-            box-shadow: var(--shadow-lg); position: relative; overflow: hidden; margin-bottom: 3rem;
-        }
-        .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
-        .mode-selector {
-            display: inline-flex; background: var(--surface-elevated);
-            border: 1px solid var(--border); padding: 4px; border-radius: var(--radius-md);
-            margin-bottom: 2rem; width: 100%; max-width: 320px;
-        }
-        .mode-btn {
-            flex: 1; padding: 0.75rem 1rem; border: none; background: transparent;
-            color: var(--text-muted); border-radius: calc(var(--radius-md) - 4px);
-            cursor: pointer; font-weight: 500; font-size: 0.9375rem; transition: all var(--transition);
-        }
-        .mode-btn.active { background: var(--surface); color: var(--text-primary); box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .mode-btn:hover:not(.active) { color: var(--text-secondary); }
-        .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-secondary); font-size: 0.875rem; }
-        input[type="text"], textarea, select {
-            width: 100%; padding: 0.875rem 1rem; background: var(--surface-elevated);
-            border: 1px solid var(--border); border-radius: var(--radius-md);
-            color: var(--text-primary); font-size: 0.9375rem; transition: border-color var(--transition), box-shadow var(--transition);
-        }
-        input[type="text"]:focus, textarea:focus, select:focus {
-            outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
-        }
-        textarea { min-height: 140px; resize: vertical; line-height: 1.6; }
-        .length-selector { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
-        .length-btn { flex: 1; padding: 0.7rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer; text-align: center; font-weight: 500; transition: var(--transition); }
-        .length-btn:hover { border-color: var(--border-light); color: var(--text-primary); }
-        .length-btn.active { border-color: var(--primary); background: rgba(99,102,241,0.1); color: #818cf8; }
-        .style-options, .music-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
-        .style-btn, .music-btn {
-            padding: 0.75rem; background: var(--surface-elevated); border: 1px solid var(--border);
-            border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer;
-            font-size: 0.875rem; font-weight: 500; transition: all var(--transition); text-align: center;
-        }
-        .style-btn:hover, .music-btn:hover { border-color: var(--border-light); color: var(--text-primary); background: #1c1c21; }
-        .style-btn.active { border-color: var(--primary); background: rgba(99,102,241,0.1); color: #818cf8; }
-        .music-btn.active { border-color: var(--warning); background: rgba(245,158,11,0.1); color: #fbbf24; }
-        .upload-area {
-            margin-top: 1rem; padding: 1rem; background: var(--surface-elevated);
-            border: 2px dashed var(--border); border-radius: var(--radius-md); text-align: center;
-            cursor: pointer; transition: all var(--transition);
-        }
-        .upload-area:hover { border-color: var(--border-light); background: #1c1c21; }
-        input[type="file"] { display: none; }
-        .upload-label { color: var(--text-muted); font-size: 0.875rem; display: block; }
-        .upload-label strong { color: var(--primary); }
-        .btn {
-            background: linear-gradient(135deg, var(--primary), #4f46e5); color: white; border: none; padding: 1rem;
-            font-size: 1rem; border-radius: var(--radius-md); cursor: pointer; width: 100%; font-weight: 600;
-            transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(99,102,241,0.3); text-decoration: none;
-        }
-        .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,102,241,0.4); }
-        .btn:active:not(:disabled) { transform: translateY(0); }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .btn-secondary { background: var(--surface-elevated); border: 1px solid var(--border); color: var(--text-primary); box-shadow: none; }
-        .btn-secondary:hover { background: #1c1c21; border-color: var(--border-light); }
-        .btn-success { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
-        .btn-success:hover { box-shadow: 0 8px 20px rgba(16,185,129,0.4); }
-        .alert { padding: 0.875rem 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: none; font-size: 0.875rem; border-left: 3px solid transparent; }
-        .alert.error { background: rgba(239,68,68,0.1); border-color: var(--error); color: #fca5a5; }
-        .alert.info { background: rgba(16,185,129,0.1); border-color: var(--accent); color: #6ee7b7; }
-        .alert.show { display: flex; align-items: center; gap: 0.75rem; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .preview-section { display: none; margin-top: 2rem; }
-        .preview-section.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .video-container {
-            position: relative; width: 100%; max-width: 360px; margin: 0 auto 2rem;
-            aspect-ratio: 9/16; background: #000; border-radius: var(--radius-lg);
-            overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
-        }
-        #backgroundVideo { width: 100%; height: 100%; object-fit: cover; }
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.65); display: flex; align-items: center; justify-content: center; padding: 2rem; }
-        .text-slide {
-            color: white; font-size: clamp(1.6rem, 5.5vw, 2.2rem); font-weight: 800; text-align: center;
-            line-height: 1.2; text-shadow: 0 4px 16px rgba(0,0,0,0.9); max-width: 90%;
-            opacity: 0; transform: translateY(15px) scale(0.95);
-            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: opacity, transform;
-        }
-        .text-slide.active { opacity: 1; transform: translateY(0) scale(1); }
-        .progress-bar { position: absolute; bottom: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.1s linear; z-index: 10; }
-        .chunk-indicators { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .chunk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all var(--transition); }
-        .chunk-dot.active { background: var(--accent); transform: scale(1.5); box-shadow: 0 0 8px rgba(16,185,129,0.6); }
-        .preview-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-        .preview-actions .btn { flex: 1; min-width: 140px; }
-        .spinner { width: 1.25rem; height: 1.25rem; border: 3px solid rgba(255,255,255,0.2); border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .caption-section { margin-top: 2rem; padding: 1.5rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); }
-        .caption-section h4 { margin-bottom: 1rem; color: var(--text-primary); }
-        .caption-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; font-size: 0.9375rem; line-height: 1.5; white-space: pre-wrap; }
-        .copy-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.875rem; transition: var(--transition); }
-        .copy-btn:hover { background: var(--primary-hover); }
-        .copy-btn.copied { background: var(--accent); }
-        .section { padding: 4rem 1rem; max-width: 1120px; margin: 0 auto; }
-        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #f4f4f5, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-subtitle { text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; font-size: 1.125rem; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .about-content p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
-        .about-image { background: var(--surface-elevated); border-radius: var(--radius-lg); height: 300px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; transition: var(--transition); }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
-        .feature-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
-        .feature-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); }
-        .feature-card p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.5; }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
-        .step { padding: 1.5rem; }
-        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; font-weight: 700; margin-bottom: 1rem; }
-        .step h4 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-primary); }
-        .step p { color: var(--text-secondary); font-size: 0.9375rem; }
-        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 1rem; overflow: hidden; }
-        .faq-question { padding: 1rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; color: var(--text-primary); }
-        .faq-question::after { content: "+"; font-size: 1.25rem; transition: var(--transition); }
-        .faq-item.active .faq-question::after { transform: rotate(45deg); }
-        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text-secondary); line-height: 1.5; }
-        .faq-item.active .faq-answer { padding: 0 1.5rem 1rem; max-height: 500px; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
-        .testimonial-text { color: var(--text-secondary); margin-bottom: 1rem; font-style: italic; line-height: 1.6; }
-        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-        .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 600; color: white; }
-        .author-name { font-weight: 500; color: var(--text-primary); }
-        .author-role { font-size: 0.875rem; color: var(--text-muted); }
-        footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 1rem; margin-top: 4rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1120px; margin: 0 auto; }
-        .footer-section h4 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.125rem; }
-        .footer-section a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; transition: var(--transition); }
-        .footer-section a:hover { color: var(--primary); }
-        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
-        
-        /* Queue & Pricing Modal Styles */
-        .queue-overlay, .pricing-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 1000;
-            animation: fadeIn 0.3s ease;
-        }
-        .queue-overlay.active, .pricing-modal.active { display: flex; }
-        .queue-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 90%; text-align: center; box-shadow: var(--shadow-lg); position: relative; }
-        .timer { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 1rem 0; font-variant-numeric: tabular-nums; animation: pulse-timer 2s infinite; }
-        @keyframes pulse-timer { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } }
-        .queue-subtext { color: var(--text-secondary); margin-bottom: 1rem; min-height: 1.5rem; }
-        .queue-progress { height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; }
-        .queue-progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0%; transition: width 1s linear; }
-        .queue-minimized { position: fixed; bottom: 20px; right: 20px; background: var(--surface-elevated); border: 1px solid var(--primary); padding: 12px 20px; border-radius: var(--radius-md); color: var(--text-primary); cursor: pointer; box-shadow: var(--shadow-lg); z-index: 999; font-size: 0.875rem; font-weight: 500; display: none; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
-        .price-card { background: var(--surface-elevated); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; cursor: pointer; transition: all var(--transition); }
-        .price-card:hover, .price-card.selected { border-color: var(--primary); transform: translateY(-2px); }
-        .price-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .price-card .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0; }
-        .price-card .period { color: var(--text-muted); font-size: 0.875rem; }
-        .price-card ul { list-style: none; text-align: left; margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary); }
-        .price-card ul li::before { content: "✓"; color: var(--accent); margin-right: 0.5rem; }
-        .close-btn { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
-        
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; }
-            .section { padding: 3rem 1rem; }
-            .section-title { font-size: 1.75rem; }
-            .pricing-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="badge">✨ #1 AI-Powered Reel Generator</div>
-        <h1 class="brand">ReelCraftt</h1>
-        <p class="tagline">Double the t's, double the craft.  The best free AI text-to-video generator for viral 9:16 TikTok, Reels & Shorts.</p>
-    </header>
-
-    <main class="container">
-        <article class="card">
-            <div class="alert error" id="errorAlert"></div>
-            <div class="alert info" id="infoAlert">✅ Ready to generate</div>
-
-            <div class="mode-selector">
-                <button class="mode-btn active" data-mode="subject" onclick="switchMode('subject')">🎯 Subject Mode</button>
-                <button class="mode-btn" data-mode="free" onclick="switchMode('free')">✍️ Free Text</button>
-            </div>
-            
-            <div id="subjectMode">
-                <div class="form-group">
-                    <label for="subject">Topic / Prompt</label>
-                    <input type="text" id="subject" placeholder="e.g., Explain the function of forceps, How do airplanes fly...">
-                </div>
-                <div class="form-group">
-                    <label>Content Style</label>
-                    <div class="style-options">
-                        <div class="style-btn active" data-style="educational" onclick="setStyle('educational')">Educational</div>
-                        <div class="style-btn" data-style="inspiring" onclick="setStyle('inspiring')">Inspiring</div>
-                        <div class="style-btn" data-style="fun" onclick="setStyle('fun')">Fun</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Video Length</label>
-                    <div class="length-selector">
-                        <button class="length-btn" data-seconds="15" onclick="setLength(15)">15s</button>
-                        <button class="length-btn active" data-seconds="30" onclick="setLength(30)">30s</button>
-                        <button class="length-btn" data-seconds="60" onclick="setLength(60)">60s</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="freeTextMode" style="display:none;">
-                <div class="form-group">
-                    <label>Your Script</label>
-                    <textarea id="freeText" placeholder="Paste your text here..."></textarea>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label>Background Music</label>
-                <div class="music-options">
-                    <button class="music-btn active" data-track="random" onclick="selectMusic('random')">🎲 Random</button>
-                    <button class="music-btn" data-track="none" onclick="selectMusic('none')">🔇 None</button>
-                    <button class="music-btn" data-track="ambient" onclick="selectMusic('ambient')"> Ambient</button>
-                    <button class="music-btn" data-track="upbeat" onclick="selectMusic('upbeat')">🔥 Upbeat</button>
-                    <button class="music-btn" data-track="cinematic" onclick="selectMusic('cinematic')">🎬 Cinematic</button>
-                    <button class="music-btn" data-track="lofi" onclick="selectMusic('lofi')">☕ Lo-Fi</button>
-                </div>
-                <div class="upload-area" onclick="document.getElementById('customAudio').click()">
-                    <label class="upload-label"><strong>Or upload your own MP3</strong> (optional)</label>
-                    <input type="file" id="customAudio" accept="audio/mp3,audio/mpeg,audio/*">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="videoQuery">Background Video (optional)</label>
-                <input type="text" id="videoQuery" placeholder="e.g., medical, nature, tech, abstract...">
-                <div class="upload-area" onclick="document.getElementById('customVideo').click()" style="margin-top:0.75rem;">
-                    <label class="upload-label"><strong>Or upload your own MP4</strong> (optional, 9:16 recommended)</label>
-                    <input type="file" id="customVideo" accept="video/mp4,video/*">
-                </div>
-            </div>
-            
-            <button class="btn" onclick="generateReel()" id="generateBtn"><span>🎬</span> Generate Reel</button>
-        </article>
-
-        <section class="card preview-section" id="previewSection">
-            <div class="chunk-indicators" id="chunkIndicators"></div>
-            <div class="video-container">
-                <video id="backgroundVideo" loop muted playsinline crossorigin="anonymous"></video>
-                <div class="overlay"><div class="text-slide" id="displayText"></div></div>
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="preview-actions">
-                <button class="btn" onclick="playPreview()" id="playBtn">▶ Play</button>
-                <button class="btn btn-success" onclick="downloadReel()" id="downloadBtn">⬇ Download</button>
-            </div>
-            <div class="caption-section" id="captionSection" style="display:none;">
-                <h4>📝 Ready-to-Post Caption & Hashtags</h4>
-                <div class="caption-box" id="generatedCaption">Generating caption...</div>
-                <button class="copy-btn" onclick="copyToClipboard('generatedCaption', this)">📋 Copy Caption</button>
-                <div class="caption-box" id="generatedHashtags" style="margin-top:1rem; font-family:monospace;"></div>
-                <button class="copy-btn" onclick="copyToClipboard('generatedHashtags', this)">📋 Copy Hashtags</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Queue Overlay -->
-    <div id="queueOverlay" class="queue-overlay">
-        <div class="queue-card" id="queueMainCard">
-            <h2>🎬 Preparing Your Assets...</h2>
-            <div class="timer" id="queueTimer">02:00</div>
-            <p id="queueStatus" class="queue-subtext">Generating AI-powered content...</p>
-            <div class="queue-progress"><div class="queue-progress-bar" id="queueProgressBar"></div></div>
-            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1.5rem;">Free tier processing ensures optimal quality matching. Please keep this tab open.</p>
-            <button class="btn btn-success" onclick="showPricing()">⚡ Skip Queue & Upgrade to Pro</button>
-            <button class="btn btn-secondary" style="margin-top:0.5rem" onclick="minimizeQueue()">🔔 Minimize to Corner (Still Processing)</button>
-        </div>
-        <div id="queueMinimized" class="queue-minimized" onclick="restoreQueue()">
-            ⏳ Processing: <span id="miniTimer">02:00</span> | Click to view
-        </div>
-    </div>
-
-    <!-- Pricing Modal -->
-    <div id="pricingModal" class="pricing-modal">
-        <div class="queue-card">
-            <button class="close-btn" onclick="hidePricing()">×</button>
-            <h2>Upgrade to ReelCraftt Pro</h2>
-            <p class="queue-subtext">Skip queues, unlimited exports, HD exports</p>
-            <div class="pricing-grid">
-                <div class="price-card" onclick="selectPlan('monthly')">
-                    <h4>Monthly</h4>
-                    <div class="price">$3.99</div>
-                    <div class="period">/month</div>
-                    <ul>
-                        <li>Instant generation</li>
-                        <li>1080p exports</li>
-                        <li>All music tracks</li>
-                        <li>Cancel anytime</li>
-                    </ul>
-                </div>
-                <div class="price-card" onclick="selectPlan('lifetime')">
-                    <h4>Lifetime</h4>
-                    <div class="price">$12.99</div>
-                    <div class="period">one-time</div>
-                    <ul>
-                        <li>Everything in Monthly</li>
-                        <li>Pay once, use forever</li>
-                        <li>Early access features</li>
-                        <li>Priority support</li>
-                    </ul>
-                </div>
-            </div>
-            <div style="display:flex; gap:10px; margin-top:1rem; flex-wrap:wrap;">
-                <a href="https://www.paypal.com/ncp/payment/HE7QUXFAK2JFC" target="_blank" class="btn btn-success" style="flex:1; min-width:120px;">💳 Pay $3.99/mo</a>
-                <a href="https://www.paypal.com/ncp/payment/WRWQW8AWPCNX8" target="_blank" class="btn btn-success" style="flex:1; min-width:120px; background:linear-gradient(135deg,#f59e0b,#d97706);"> Pay $12.99 once</a>
-            </div>
-            <p style="color:var(--text-muted); font-size:0.8125rem; margin-top:0.5rem;">
-                After payment, you'll receive a <strong>Premium Code</strong> via email. Enter it below to unlock instant access.
-            </p>
-            <input type="text" id="premiumCode" placeholder="Enter your premium code" style="width:100%; margin-top:0.5rem; padding:0.75rem; background:var(--surface-elevated); border:1px solid var(--border); border-radius:var(--radius-md); color:var(--text-primary);">
-            <button class="btn btn-secondary" style="margin-top:0.5rem;" onclick="activatePremium()">🔓 Activate</button>
-        </div>
-    </div>
-
-    <section class="section" id="about">
-        <h2 class="section-title">About ReelCraftt</h2>
-        <p class="section-subtitle">Built by an engineer, designed for viral creators</p>
-        <div class="about-grid">
-            <div class="about-content">
-                <h3>From Engineer to Creator</h3>
-                <p>Hi, I'm the founder of ReelCraftt. By day, I work as a professional engineer solving complex technical problems. By night, I explore creative projects and build tools that make content creation accessible to everyone.</p>
-                <p>I created ReelCraftt because I needed a faster way to produce high-quality vertical videos for my social media channels. What started as a personal productivity tool quickly grew into a platform that helps thousands of creators, educators, and businesses scale their content without sacrificing quality.</p>
-                <p>Every feature in ReelCraftt is built with one goal: <strong>save you time while helping you grow your audience</strong>. No fluff, no complicated workflows—just smart automation that works.</p>
-            </div>
-            <div class="about-image">
-                <div style="text-align:center; color:var(--text-secondary);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">👨‍💻</div>
-                    <p>Engineer & Creator</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features" style="background:var(--surface);">
-        <h2 class="section-title">Why Creators Love ReelCraftt</h2>
-        <p class="section-subtitle">The ultimate toolkit to create viral vertical videos</p>
-        <div class="features-grid">
-            <div class="feature-card"><div class="feature-icon">🤖</div><h4>AI-Powered Scripts</h4><p>Generate contextual, engaging scripts in seconds. Just enter your topic and let AI handle the rest.</p></div>
-            <div class="feature-card"><div class="feature-icon">🎵</div><h4>Curated Audio Library</h4><p>Choose from ambient, upbeat, cinematic, or lo-fi tracks. 100% copyright-free for commercial use.</p></div>
-            <div class="feature-card"><div class="feature-icon">✍️</div><h4>Smart Captions</h4><p>Auto-generated captions and trending hashtags ready to paste. Boost engagement instantly.</p></div>
-            <div class="feature-card"><div class="feature-icon">🎬</div><h4>One-Click Export</h4><p>Download in 1080×1920 (9:16) format. Optimized for TikTok, Instagram Reels & YouTube Shorts.</p></div>
-            <div class="feature-card"><div class="feature-icon">🔒</div><h4>100% Commercial Safe</h4><p>All generated content is yours to use. No attribution required. Monetize with confidence.</p></div>
-            <div class="feature-card"><div class="feature-icon">⚡</div><h4>Lightning Fast</h4><p>Generate a complete reel in under 60 seconds. No waiting, no queues, no compromises.</p></div>
-        </div>
-    </section>
-
-    <section class="section" id="how-it-works">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">Create viral reels in 3 simple steps</p>
-        <div class="steps">
-            <div class="step"><div class="step-number">1</div><h4>Enter Your Topic</h4><p>Type what you want to explain. Choose style and length.</p></div>
-            <div class="step"><div class="step-number">2</div><h4>AI Generates Everything</h4><p>Scripts, audio, visuals, captions—done in seconds.</p></div>
-            <div class="step"><div class="step-number">3</div><h4>Download & Post</h4><p>Export your reel and paste the ready-to-use caption.</p></div>
-        </div>
-    </section>
-
-    <section class="section" id="faq" style="background:var(--surface);">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know about our AI video generator</p>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is ReelCraftt free to use?</div><div class="faq-answer">Yes! Our free tier lets you generate reels with full features. No credit card required.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I use generated reels commercially?</div><div class="faq-answer">Absolutely. All content generated by ReelCraftt is 100% yours to use. No attribution required.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What video formats are supported?</div><div class="faq-answer">Reels export as WebM (1080×1920, 9:16 aspect ratio), fully compatible with Instagram Reels, TikTok, YouTube Shorts, and Facebook Reels.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do I need to install anything?</div><div class="faq-answer">No installation required. ReelCraftt runs entirely in your browser—works on desktop, tablet, or mobile.</div></div>
-    </section>
-
-    <section class="section" id="testimonials">
-        <h2 class="section-title">What Creators Say</h2>
-        <p class="section-subtitle">Join thousands of satisfied users</p>
-        <div class="testimonials-grid">
-            <div class="testimonial-card"><p class="testimonial-text">"ReelCraftt cut my content creation time by 80%. I went from posting 2 reels/week to 10, and my engagement doubled!"</p><div class="testimonial-author"><div class="author-avatar">SK</div><div><div class="author-name">Sarah K.</div><div class="author-role">Fitness Coach • 45K followers</div></div></div></div>
-            <div class="testimonial-card"><p class="testimonial-text">"As a teacher, I use this to make educational shorts. The AI scripts are surprisingly accurate and the auto-captions save me hours."</p><div class="testimonial-author"><div class="author-avatar">MJ</div><div><div class="author-name">Mark J.</div><div class="author-role">High School Teacher • 12K followers</div></div></div></div>
-            <div class="testimonial-card"><p class="testimonial-text">"Finally a tool that understands my niche! The contextual music and smart hashtags helped my tech reviews go viral."</p><div class="testimonial-author"><div class="author-avatar">AL</div><div><div class="author-name">Alex L.</div><div class="author-role">Tech Reviewer • 89K followers</div></div></div></div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-section"><h4>ReelCraftt</h4><a href="#about">About</a><a href="#features">Features</a><a href="#how-it-works">How It Works</a><a href="#faq">FAQ</a></div>
-            <div class="footer-section"><h4>Resources</h4><a href="#">Blog</a><a href="#">Tutorial Videos</a><a href="#">API Documentation</a><a href="#">Community</a></div>
-            <div class="footer-section"><h4>Legal</h4><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Commercial License</a><a href="#">Cookie Policy</a></div>
-            <div class="footer-section"><h4>Connect</h4><a href="#">Twitter / X</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Contact Support</a></div>
-        </div>
-        <div class="footer-bottom">&copy; 2026 ReelCraftt. All rights reserved. Built with ❤️ by engineers, for creators.</div>
-    </footer>
-
-    <!-- ADSTERRA ADS -->
-    <script src="https://pl29621951.effectivecpmnetwork.com/54/53/5f/54535fe39a55724b8005bd5cb94041e8.js"></script>
-    <script src="https://pl29621949.effectivecpmnetwork.com/1a/1b/1d/1a1b1da060fe156515db6e2f8046b066.js"></script>
-
-    <!--  TRIPLE-LAYER SEO SCHEMA (JSON-LD) -->
-    <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "ReelCraftt",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Free tier available. Pro plans from $3.99/mo for instant generation."
-        },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" },
-        "description": "AI-powered vertical video generator for TikTok, Instagram Reels, and YouTube Shorts.",
-        "url": "https://reelcraftt.vercel.app"
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is ReelCraftt free to use?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes! Our free tier lets you generate reels with full features. No credit card required." }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use generated reels commercially?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. All content generated by ReelCraftt is 100% yours to use. No attribution required." }
-          },
-          {
-            "@type": "Question",
-            "name": "What video formats are supported?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Reels export as WebM (1080×1920, 9:16 aspect ratio), fully compatible with Instagram Reels, TikTok, YouTube Shorts, and Facebook Reels." }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I need to install anything?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No installation required. ReelCraftt runs entirely in your browser—works on desktop, tablet, or mobile." }
-          }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ReelCraftt",
-        "url": "https://reelcraftt.vercel.app",
-        "logo": "https://reelcraftt.vercel.app/favicon.png"
-      }
-    ]
-    </script>
+    <!-- mp4-muxer: Pure JS MP4 muxer, NO special headers needed, works on ANY hosting -->
+    <script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.1.3/build/mp4-muxer.js"></script>
 
     <script>
-        const MUSIC_CONFIG = {
-            ambient: { folder: 'Ambient', trackCount: 5 },
-            lofi: { folder: 'Lo-fi', trackCount: 5 },
-            upbeat: { folder: 'Upbeat', trackCount: 5 },
-            cinematic: { folder: 'Cinematic', trackCount: 5 }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], arabic: ['Scheherazade New', 'serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: {
+                        dark: { 900: '#0a0a0a', 800: '#121212', 700: '#1a1a1a', 600: '#242424' },
+                        accent: { 500: '#10b981', 600: '#059669' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background: #0a0a0a; color: #e5e5e5; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        .glass { background: rgba(18, 18, 18, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .ayah-row { transition: all 0.15s; border-left: 2px solid transparent; }
+        .ayah-row:hover { background: #1a1a1a; }
+        .ayah-row.selected { background: #1a1a1a; border-left-color: #10b981; }
+        .modal-overlay { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); }
+        #previewCanvas {
+            width: 100%; max-width: 360px; aspect-ratio: 9/16;
+            border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+        }
+        .video-thumbnail {
+            cursor: pointer; transition: transform 0.2s, border-color 0.2s;
+            aspect-ratio: 9/16; overflow: hidden; position: relative; background: #1a1a1a;
+        }
+        .video-thumbnail:hover { transform: scale(1.05); border-color: #10b981; }
+        .video-thumbnail.selected { border-color: #10b981 !important; border-width: 3px; }
+        .video-thumbnail video { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .video-thumbnail .thumbnail-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.3s; }
+        .video-thumbnail:hover .thumbnail-img { opacity: 0; }
+        .checkmark-overlay {
+            position: absolute; top: 4px; right: 4px; width: 20px; height: 20px;
+            background: #10b981; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;
+        }
+        .video-thumbnail.selected .checkmark-overlay { opacity: 1; }
+    </style>
+</head>
+<body class="font-sans h-screen flex flex-col overflow-hidden">
+
+    <header class="h-14 border-b border-white/5 bg-dark-900 flex items-center justify-between px-6 shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="w-7 h-7 bg-accent-500 rounded-md flex items-center justify-center">
+                <i data-lucide="play" class="w-4 h-4 text-white fill-white"></i>
+            </div>
+            <span class="font-semibold text-white tracking-tight">ReelDeen <span class="text-white/40 font-normal">Studio</span></span>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+            <button id="storyBtn" class="text-white/60 hover:text-white transition flex items-center gap-1">
+                <i data-lucide="heart" class="w-4 h-4"></i> Our Story
+            </button>
+            <a href="https://buymeacoffee.com/reeldeen" target="_blank" class="text-white/60 hover:text-white transition">Support</a>
+            <button id="downloadBtn" class="hidden bg-accent-500 hover:bg-accent-600 text-white px-4 py-1.5 rounded-md text-sm font-medium items-center gap-2 transition">
+                <i data-lucide="download" class="w-4 h-4"></i> <span id="downloadLabel">Download MP4</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden" style="min-width: 0;">
+        <aside class="w-80 border-r border-white/5 bg-dark-800 flex flex-col shrink-0" style="min-height: 0;">
+            <div class="p-4 border-b border-white/5 bg-dark-800 shrink-0">
+                <label class="text-xs font-medium text-white/60 uppercase tracking-wider mb-2 block">Search Background Videos</label>
+                <div class="flex gap-2 mb-3">
+                    <input type="text" id="videoSearchInput" placeholder="e.g., nature, forest, ocean..." 
+                           class="flex-1 bg-dark-700 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-accent-500">
+                    <button id="searchVideoBtn" class="bg-accent-500 hover:bg-accent-600 text-white px-3 py-2 rounded-md transition">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div id="videoSearchResults" class="grid grid-cols-2 gap-2 max-h-64 overflow-y-auto hidden"></div>
+                <div id="selectedVideoIndicator" class="hidden mt-3 p-2 bg-accent-500/10 border border-accent-500/30 rounded-lg items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-accent-500"></i>
+                    <span class="text-xs text-accent-500 font-medium flex-1">Background selected</span>
+                    <button id="changeVideoBtn" class="text-xs text-white/60 hover:text-white underline">Change</button>
+                </div>
+            </div>
+
+            <div class="p-4 border-b border-white/5 shrink-0">
+                <label class="text-xs font-medium text-white/60 uppercase tracking-wider mb-2 block">Surah</label>
+                <select id="surahSelect" class="w-full bg-dark-700 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-accent-500">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto p-2" style="min-height: 0;">
+                <div class="flex items-center justify-between px-2 py-2 mb-2 shrink-0">
+                    <span class="text-xs font-medium text-white/60 uppercase tracking-wider">Verses</span>
+                    <div class="flex gap-2">
+                        <button id="selectAllBtn" class="text-xs text-white/40 hover:text-white">All</button>
+                        <button id="clearAllBtn" class="text-xs text-white/40 hover:text-white">None</button>
+                    </div>
+                </div>
+                <div id="ayahList" class="space-y-1">
+                    <div class="text-center text-white/30 text-sm py-8">Select a Surah to view verses</div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-white/5 bg-dark-900/50 shrink-0">
+                <div class="flex items-center justify-between text-xs text-white/60 mb-2">
+                    <span>Selected</span>
+                    <span id="selectedCount" class="font-mono text-white">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col items-center justify-center bg-dark-900 p-8 relative min-w-0 overflow-hidden">
+            <div class="flex flex-col items-center justify-center max-h-full">
+                <canvas id="previewCanvas" width="1080" height="1920"></canvas>
+                <p class="mt-6 text-xs text-white/30 font-mono">9:16 Canvas Preview • Click to Play/Pause</p>
+            </div>
+        </main>
+
+        <aside class="w-72 border-l border-white/5 bg-dark-800 flex flex-col shrink-0 overflow-y-auto" style="min-height: 0;">
+            <div class="p-4 border-b border-white/5">
+                <label class="text-xs font-medium text-white/60 uppercase tracking-wider mb-2 block">Reciter</label>
+                <select id="reciterSelect" class="w-full bg-dark-700 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-accent-500">
+                    <option value="ar.alafasy">Mishary Rashid Alafasy</option>
+                    <option value="ar.abdulbasitmurattal">Abdul Basit (Murattal)</option>
+                    <option value="ar.husary">Mahmoud Khalil Al-Husary</option>
+                    <option value="ar.sudais">Abdur-Rahman as-Sudais</option>
+                </select>
+            </div>
+
+            <div class="p-4 border-b border-white/5">
+                <button id="generateBtn" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-medium py-2.5 rounded-md flex items-center justify-center gap-2 transition text-sm mb-3">
+                    <i data-lucide="wand-2" class="w-4 h-4"></i> <span id="generateBtnText">Generate Reel</span>
+                </button>
+                <div id="statusMsg" class="mt-3 text-xs text-center hidden"></div>
+            </div>
+
+            <div id="tagsSection" class="hidden p-4 border-b border-white/5">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-medium text-white/60 uppercase tracking-wider">Auto-Generated Tags</span>
+                    <button id="toggleTagFormat" class="text-xs text-accent-500 hover:text-accent-400 font-medium">Switch Format</button>
+                </div>
+                <div class="mb-3">
+                    <button id="copyTagsBtn" class="w-full bg-accent-500/20 hover:bg-accent-500/30 text-accent-500 text-xs py-2 rounded transition flex items-center justify-center gap-1 mb-2">
+                        <i data-lucide="copy" class="w-3 h-3"></i> Copy Tags
+                    </button>
+                    <div id="tagsContainer" class="text-xs text-white/70 bg-dark-700/50 p-2 rounded max-h-24 overflow-y-auto break-words"></div>
+                </div>
+                <div>
+                    <span class="text-xs font-medium text-white/60 uppercase tracking-wider block mb-2">Caption</span>
+                    <button id="copyCaptionBtn" class="w-full bg-accent-500/20 hover:bg-accent-500/30 text-accent-500 text-xs py-2 rounded transition flex items-center justify-center gap-1 mb-2">
+                        <i data-lucide="copy" class="w-3 h-3"></i> Copy Caption
+                    </button>
+                    <div id="captionContainer" class="text-xs text-white/70 bg-dark-700/50 p-2 rounded max-h-32 overflow-y-auto whitespace-pre-wrap"></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div id="loadingOverlay" class="fixed inset-0 z-50 bg-dark-900/95 backdrop-blur-xl hidden flex-col items-center justify-center">
+        <div class="max-w-sm w-full text-center">
+            <div class="w-16 h-16 border-2 border-accent-500/20 border-t-accent-500 rounded-full animate-spin mx-auto mb-6"></div>
+            <h3 class="text-xl font-semibold text-white mb-2">Preparing Your Reel</h3>
+            <p class="text-white/60 text-sm mb-8">Syncing recitation and rendering backgrounds...</p>
+            <div class="flex items-center justify-center gap-2 text-white/80 mb-8">
+                <span class="text-sm">Reel starts in</span>
+                <span id="countdownTimer" class="font-mono font-bold text-accent-500 text-lg">1:30</span>
+            </div>
+            <div class="glass rounded-lg p-6 text-left">
+                <h4 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                    <i data-lucide="heart" class="w-4 h-4 text-accent-500"></i> The Heart Behind ReelDeen
+                </h4>
+                <p class="text-xs text-white/60 leading-relaxed mb-4">I'm a 28-year-old engineer supporting a family of six on a tight budget. I built ReelDeen as a Sadaqah Jariyah—a project for my Akhira. My dream is to one day buy a home, get married, and fulfill a vow I made to Allah to sponsor a child's education (Kafalah) and give to the poor.</p>
+                <p class="text-xs text-white/60 leading-relaxed mb-4">ReelDeen is and always will be 100% free. But if this tool benefits you, and you wish to help a brother realize his dreams, you can support me below. <strong class="text-white">5% of every donation goes directly to charity.</strong></p>
+                <a href="https://buymeacoffee.com/reeldeen" target="_blank" class="block w-full bg-accent-500 hover:bg-accent-600 text-white text-xs font-medium py-2.5 rounded text-center transition">Support ReelDeen & Our Charity</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="storyModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4">
+        <div class="bg-dark-800 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/10">
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">The Story Behind ReelDeen</h2>
+                    <button id="closeStoryBtn" class="text-white/40 hover:text-white transition"><i data-lucide="x" class="w-6 h-6"></i></button>
+                </div>
+                <p class="text-accent-500 mb-6 text-sm">One project for my Dunya, one for my Akhira.</p>
+                <div class="space-y-4 text-white/80 leading-relaxed text-sm">
+                    <p>Assalamu Alaikum. I'm a 28-year-old engineer, and I'm the sole provider for my family of six. Like many, I've been navigating the heavy realities of low wages and financial strain, constantly searching for a way to build a stable future. I've built two AI tools: one is a premium subscription service for my <em>dunya</em> (worldly life), and the other is ReelDeen—a completely free project for my <em>Akhira</em> (hereafter).</p>
+                    <p>My dream is simple but heavy on my heart: to one day buy a home, get married, and achieve the financial independence that has always felt just out of reach. I've knocked on many doors, but I am waiting to walk through the one where Allah has placed my <em>rizq</em>.</p>
+                    <p>I made a vow to Allah: if He grants me financial stability through this project, I will take <em>Kafalah</em> (sponsor the education of an orphan), give generously to the poor, support my friends, and most importantly, continue to provide for my family with dignity.</p>
+                    <p>If you're reading this, thank you from the bottom of my heart. May Allah increase you in <em>rizq</em> and <em>barakah</em>.</p>
+                </div>
+                <div class="mt-8 p-6 glass rounded-lg text-center">
+                    <h3 class="text-lg font-bold mb-3 flex items-center justify-center gap-2 text-white">
+                        <i data-lucide="heart" class="w-5 h-5 text-accent-500"></i> Support the Mission
+                    </h3>
+                    <p class="text-white/60 text-sm mb-4">ReelDeen will always be 100% free. But if this tool brings light to your day and you wish to help a brother realize his dreams, you can support me here.</p>
+                    <a href="https://buymeacoffee.com/reeldeen" target="_blank" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-medium py-2.5 px-6 rounded-lg transition text-sm mb-3">Support ReelDeen</a>
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <p class="text-xs text-white/60 mb-2">As a promise to Allah, 5% of every donation goes directly to charity.</p>
+                        <div class="text-3xl font-bold text-accent-500 mb-1">$<span id="charityCounter">0</span></div>
+                        <p class="text-xs text-white/50 font-medium uppercase tracking-widest">Raised for Charity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" preload="auto" crossorigin="anonymous"></audio>
+
+    <script>
+        lucide.createIcons();
+
+        const QURAN_COM_API = 'https://api.quran.com/api/v4';
+        
+        let surahsData = [], currentAyahs = [], currentAyahIndex = 0, isPlaying = false;
+        let selectedAyahs = new Set(), currentSurahData = null;
+        let audioPlayer = document.getElementById('audioPlayer');
+        let videoPool = [], videoPoolIndex = 0;
+        let mediaRecorder, recordedChunks = [];
+        let isRecording = false;
+        let currentTagFormat = 'hashtags';
+        let renderLoopId = null;
+        let selectedVideoUrl = null;
+        let pendingVideoUrl = null;
+        let isReelGenerated = false;
+
+        const previewCanvas = document.getElementById('previewCanvas');
+        const ctx = previewCanvas.getContext('2d');
+        const surahSelect = document.getElementById('surahSelect');
+        const ayahList = document.getElementById('ayahList');
+        const reciterSelect = document.getElementById('reciterSelect');
+        const generateBtn = document.getElementById('generateBtn');
+        const generateBtnText = document.getElementById('generateBtnText');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloadLabel = document.getElementById('downloadLabel');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const countdownTimer = document.getElementById('countdownTimer');
+        const storyModal = document.getElementById('storyModal');
+        const tagsSection = document.getElementById('tagsSection');
+        const videoSearchInput = document.getElementById('videoSearchInput');
+        const searchVideoBtn = document.getElementById('searchVideoBtn');
+        const videoSearchResults = document.getElementById('videoSearchResults');
+
+        const viralTags = {
+            general: ['quran', 'islam', 'muslim', 'allah', 'islamic', 'muslimtiktok', 'quranrecitation', 'islamicreels', 'muslimreels', 'fyp', 'viral', 'trending', 'islamicvideo', 'quranverses', 'deen', 'sunnah', 'muslimah', 'islamicpost', 'quranquotes', 'islamicreminder'],
+            recitation: ['quranrecitation', 'tilawat', 'tajweed', 'quranreciter', 'beautifulrecitation', 'quranaudio', 'recitation', 'quranlover', 'quranlife', 'qurandaily']
         };
 
-        let currentMode = 'subject', currentStyle = 'educational', selectedMusic = 'random';
-        let textChunks = [], currentChunkIndex = 0, animationInterval = null;
-        let customAudioBuffer = null, customVideoUrl = null;
-        let selectedDuration = 30, currentTopic = '';
-        let isPremium = localStorage.getItem('reelcraft_premium') === 'true';
-        let queueTimeout = null, queueInterval = null, queueResolver = null;
+        // ─────────────────────────────────────────────────────────────────────────
+        // SHARED AUDIO CONTEXT
+        // createMediaElementSource() can only be called ONCE per audio element.
+        // We create it once here and reuse the same nodes for every recording.
+        // ─────────────────────────────────────────────────────────────────────────
+        let sharedAudioContext = null;
+        let sharedSourceNode = null;
+        let sharedDestNode = null;   // MediaStreamDestination — for MediaRecorder fallbacks
+        let sharedAudioStream = null; // the MediaStream from sharedDestNode
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.length-btn[data-seconds="30"]').classList.add('active');
-            document.getElementById('customAudio').addEventListener('change', handleCustomAudioUpload);
-            document.getElementById('customVideo').addEventListener('change', handleCustomVideoUpload);
-            if (isPremium) updatePremiumBadge();
+        function ensureAudioContext() {
+            if (sharedAudioContext && sharedAudioContext.state !== 'closed') {
+                // Resume if suspended (browser auto-suspends idle contexts)
+                if (sharedAudioContext.state === 'suspended') sharedAudioContext.resume();
+                return;
+            }
+            sharedAudioContext = new AudioContext({ sampleRate: 44100 });
+            sharedSourceNode  = sharedAudioContext.createMediaElementSource(audioPlayer);
+            sharedDestNode    = sharedAudioContext.createMediaStreamDestination();
+            sharedSourceNode.connect(sharedDestNode);
+            sharedSourceNode.connect(sharedAudioContext.destination);
+            sharedAudioStream = sharedDestNode.stream;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────
+        // MP4 RECORDING ENGINE
+        // Uses WebCodecs API (Chrome 94+, Edge 94+, Safari 16.4+) + mp4-muxer
+        // No FFmpeg, no special server headers, no SharedArrayBuffer needed.
+        // Falls back to native video/mp4 MediaRecorder (Safari), then webm as last resort.
+        // ─────────────────────────────────────────────────────────────────────────
+
+        function supportsWebCodecs() {
+            return typeof VideoEncoder !== 'undefined' && typeof AudioEncoder !== 'undefined';
+        }
+
+        function supportsNativeMP4() {
+            return MediaRecorder.isTypeSupported('video/mp4') ||
+                   MediaRecorder.isTypeSupported('video/mp4;codecs=avc1') ||
+                   MediaRecorder.isTypeSupported('video/mp4;codecs=h264');
+        }
+
+        /**
+         * Lightweight frame pump: captures canvas frames at 30fps and encodes them
+         * while audio plays. Called once per reel generation.
+         */
+        async function recordReelMP4() {
+            const FPS = 30;
+            const W = previewCanvas.width;
+            const H = previewCanvas.height;
+            const frameDuration = 1_000_000 / FPS; // microseconds
+
+            const { Muxer, ArrayBufferTarget } = Mp4Muxer;
+            const target = new ArrayBufferTarget();
+            const muxer = new Muxer({
+                target,
+                video: { codec: 'avc', width: W, height: H, frameRate: FPS },
+                audio: { codec: 'aac', sampleRate: 44100, numberOfChannels: 2 },
+                fastStart: 'in-memory'
+            });
+
+            const videoEncoder = new VideoEncoder({
+                output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
+                error: e => console.error('VideoEncoder:', e)
+            });
+            videoEncoder.configure({
+                codec: 'avc1.4d001f',   // H.264 Main Profile Level 3.1
+                width: W,
+                height: H,
+                bitrate: 5_000_000,
+                framerate: FPS
+            });
+
+            // Audio capture — reuse the single shared AudioContext (createMediaElementSource
+            // can only be called once per element; calling it again throws on repeat downloads)
+            ensureAudioContext();
+            const audioTrack = sharedAudioStream.getAudioTracks()[0];
+            let audioReader = null;
+            if (audioTrack && typeof MediaStreamTrackProcessor !== 'undefined') {
+                const processor = new MediaStreamTrackProcessor({ track: audioTrack });
+                audioReader = processor.readable.getReader();
+            }
+
+            const audioEncoder = new AudioEncoder({
+                output: (chunk, meta) => muxer.addAudioChunk(chunk, meta),
+                error: e => console.error('AudioEncoder:', e)
+            });
+            audioEncoder.configure({
+                codec: 'mp4a.40.2',
+                sampleRate: 44100,
+                numberOfChannels: 2,
+                bitrate: 128_000
+            });
+
+            // Frame pump: captures canvas at 30fps
+            let videoTimestamp = 0;
+            let frameCount = 0;
+            let pumpActive = true;
+
+            // START CONTINUOUS RENDERING DURING RECORDING
+            if (!renderLoopId) {
+                startRenderLoop();
+            }
+
+            async function pumpVideoFrames() {
+                while (pumpActive && isRecording) {
+                    const frame = new VideoFrame(previewCanvas, {
+                        timestamp: videoTimestamp,
+                        duration: frameDuration
+                    });
+                    const isKey = frameCount % (FPS * 2) === 0; // keyframe every 2s
+                    videoEncoder.encode(frame, { keyFrame: isKey });
+                    frame.close();
+                    videoTimestamp += frameDuration;
+                    frameCount++;
+                    // Wait for next frame slot
+                    await new Promise(r => setTimeout(r, 1000 / FPS));
+                }
+            }
+
+            // Audio pump: reads PCM from MediaStreamTrackProcessor
+            async function pumpAudioFrames() {
+                if (!audioReader) return;
+                while (pumpActive && isRecording) {
+                    try {
+                        const { value: audioData, done } = await audioReader.read();
+                        if (done) break;
+                        if (audioData) {
+                            audioEncoder.encode(audioData);
+                            audioData.close();
+                        }
+                    } catch (e) {
+                        break;
+                    }
+                }
+            }
+
+            // Start pumps
+            const videoPumpPromise = pumpVideoFrames();
+            const audioPumpPromise = pumpAudioFrames();
+
+            // Play all ayahs sequentially
+            bgVideo.currentTime = 0;
+            bgVideo.play().catch(() => {});
+
+            for (let i = 0; i < currentAyahs.length; i++) {
+                if (!isRecording) break;
+                currentAyahIndex = i;
+                downloadLabel.textContent = `Recording ${Math.round(((i + 1) / currentAyahs.length) * 100)}%`;
+
+                await new Promise((resolve) => {
+                    audioPlayer.src = currentAyahs[i].audio;
+                    audioPlayer.onended = resolve;
+                    audioPlayer.onerror = resolve;
+                    audioPlayer.play().catch(resolve);
+                });
+
+                await new Promise(r => setTimeout(r, 300));
+            }
+
+            // Stop pumps
+            pumpActive = false;
+            if (audioReader) audioReader.cancel().catch(() => {});
+            await Promise.allSettled([videoPumpPromise, audioPumpPromise]);
+
+            // Allow final frames to flush through encoder queue
+            await new Promise(r => setTimeout(r, 500));
+
+            await videoEncoder.flush();
+            await audioEncoder.flush();
+            videoEncoder.close();
+            audioEncoder.close();
+
+            muxer.finalize();
+            // Do NOT close sharedAudioContext — it is reused across multiple recordings
+
+            return target.buffer;
+        }
+
+        /**
+         * Fallback: record using native MediaRecorder requesting video/mp4.
+         * Works in Safari and some Chromium builds.
+         */
+        async function recordWithNativeMP4() {
+            const stream = previewCanvas.captureStream(30);
+
+            // Reuse shared audio context — never call createMediaElementSource twice
+            ensureAudioContext();
+            sharedAudioStream.getAudioTracks().forEach(t => stream.addTrack(t));
+
+            const mimeType = ['video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4;codecs=h264', 'video/mp4']
+                .find(m => MediaRecorder.isTypeSupported(m)) || 'video/mp4';
+
+            const recorder = new MediaRecorder(stream, {
+                mimeType,
+                videoBitsPerSecond: 5_000_000
+            });
+            const chunks = [];
+            recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+
+            // START CONTINUOUS RENDERING DURING RECORDING
+            if (!renderLoopId) {
+                startRenderLoop();
+            }
+
+            recorder.start();
+            bgVideo.currentTime = 0;
+            bgVideo.play().catch(() => {});
+
+            for (let i = 0; i < currentAyahs.length; i++) {
+                if (!isRecording) break;
+                currentAyahIndex = i;
+                downloadLabel.textContent = `Recording ${Math.round(((i + 1) / currentAyahs.length) * 100)}%`;
+
+                await new Promise((resolve) => {
+                    audioPlayer.src = currentAyahs[i].audio;
+                    audioPlayer.onended = resolve;
+                    audioPlayer.onerror = resolve;
+                    audioPlayer.play().catch(resolve);
+                });
+
+                await new Promise(r => setTimeout(r, 300));
+            }
+
+            await new Promise(r => setTimeout(r, 500));
+
+            await new Promise(resolve => {
+                recorder.onstop = resolve;
+                recorder.stop();
+            });
+
+            // Do NOT close sharedAudioContext — it is reused across recordings
+            bgVideo.pause();
+
+            return new Blob(chunks, { type: 'video/mp4' });
+        }
+
+        /**
+         * Last-resort WebM fallback.
+         */
+        async function recordWithWebM() {
+            const stream = previewCanvas.captureStream(30);
+
+            // Reuse shared audio context — never call createMediaElementSource twice
+            ensureAudioContext();
+            sharedAudioStream.getAudioTracks().forEach(t => stream.addTrack(t));
+
+            const mimeType = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+                .find(m => MediaRecorder.isTypeSupported(m)) || 'video/webm';
+
+            const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 5_000_000 });
+            const chunks = [];
+            recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+
+            // START CONTINUOUS RENDERING DURING RECORDING
+            if (!renderLoopId) {
+                startRenderLoop();
+            }
+
+            recorder.start();
+            bgVideo.currentTime = 0;
+            bgVideo.play().catch(() => {});
+
+            for (let i = 0; i < currentAyahs.length; i++) {
+                if (!isRecording) break;
+                currentAyahIndex = i;
+                downloadLabel.textContent = `Recording ${Math.round(((i + 1) / currentAyahs.length) * 100)}%`;
+
+                await new Promise((resolve) => {
+                    audioPlayer.src = currentAyahs[i].audio;
+                    audioPlayer.onended = resolve;
+                    audioPlayer.onerror = resolve;
+                    audioPlayer.play().catch(resolve);
+                });
+
+                await new Promise(r => setTimeout(r, 300));
+            }
+
+            await new Promise(r => setTimeout(r, 500));
+
+            await new Promise(resolve => {
+                recorder.onstop = resolve;
+                recorder.stop();
+            });
+
+            // Do NOT close sharedAudioContext — it is reused across recordings
+            bgVideo.pause();
+
+            return new Blob(chunks, { type: 'video/webm' });
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────
+        // DOWNLOAD BUTTON — tries best available method in order
+        // ─────────────────────────────────────────────────────────────────────────
+
+        downloadBtn.addEventListener('click', async () => {
+            if (!currentAyahs.length || isRecording) return;
+
+            isRecording = true;
+            isPlaying = false;
+            audioPlayer.pause();
+
+            downloadBtn.disabled = true;
+            downloadLabel.textContent = 'Starting...';
+            lucide.createIcons();
+
+            const surahName = surahSelect.value;
+            let blob = null;
+            let ext = 'mp4';
+
+            try {
+                // ── Method 1: WebCodecs + mp4-muxer (Chrome 94+, Edge 94+, Safari 16.4+)
+                if (supportsWebCodecs() && typeof Mp4Muxer !== 'undefined') {
+                    console.log('Recording with WebCodecs + mp4-muxer...');
+                    downloadLabel.textContent = 'Recording...';
+                    try {
+                        const buffer = await recordReelMP4();
+                        blob = new Blob([buffer], { type: 'video/mp4' });
+                        ext = 'mp4';
+                        console.log('WebCodecs recording successful, size:', blob.size);
+                    } catch (e) {
+                        console.warn('WebCodecs recording failed, trying next method:', e);
+                        blob = null;
+                    }
+                }
+
+                // ── Method 2: Native video/mp4 MediaRecorder (Safari, some Chrome)
+                if (!blob && supportsNativeMP4()) {
+                    console.log('Recording with native MP4 MediaRecorder...');
+                    downloadLabel.textContent = 'Recording (MP4)...';
+                    try {
+                        blob = await recordWithNativeMP4();
+                        ext = 'mp4';
+                        console.log('Native MP4 recording successful, size:', blob.size);
+                    } catch (e) {
+                        console.warn('Native MP4 recording failed, trying WebM fallback:', e);
+                        blob = null;
+                    }
+                }
+
+                // ── Method 3: WebM fallback (always works, but not ideal for Instagram)
+                if (!blob) {
+                    console.log('Recording with WebM fallback...');
+                    downloadLabel.textContent = 'Recording (WebM)...';
+                    blob = await recordWithWebM();
+                    ext = 'webm';
+                    console.log('WebM recording done, size:', blob.size);
+                    alert('Your browser does not support direct MP4 recording.\n\nThe video was saved as .webm instead.\n\nTo convert it to MP4, upload it to: cloudconvert.com/webm-to-mp4\n(Free, no account needed)');
+                }
+
+                // Trigger download
+                if (blob && blob.size > 0) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `reeldeen-surah${surahName}.${ext}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    setTimeout(() => URL.revokeObjectURL(url), 5000);
+                } else {
+                    alert('Recording failed — no data was captured. Please try again.');
+                }
+
+            } catch (err) {
+                console.error('Download failed:', err);
+                alert('Download failed: ' + err.message + '\n\nPlease try again.');
+            } finally {
+                isRecording = false;
+                isPlaying = false;
+                downloadBtn.disabled = false;
+                downloadLabel.textContent = 'Download MP4';
+                lucide.createIcons();
+            }
         });
 
-        function switchMode(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
-            document.getElementById('freeTextMode').style.display = mode === 'free' ? 'block' : 'none';
-            document.getElementById('subjectMode').style.display = mode === 'subject' ? 'block' : 'none';
-        }
-        function setStyle(style) { currentStyle = style; document.querySelectorAll('.style-btn').forEach(b => b.classList.toggle('active', b.dataset.style === style)); }
-        function selectMusic(track) { selectedMusic = track; document.querySelectorAll('.music-btn').forEach(b => b.classList.toggle('active', b.dataset.track === track)); }
-        function setLength(seconds) {
-            selectedDuration = seconds;
-            document.querySelectorAll('.length-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.seconds) === seconds));
-        }
+        // ─────────────────────────────────────────────────────────────────────────
+        // REST OF APP (unchanged from original)
+        // ─────────────────────────────────────────────────────────────────────────
 
-        async function handleCustomAudioUpload(e) {
-            const file = e.target.files[0]; if (!file) return;
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            try {
-                customAudioBuffer = await audioCtx.decodeAudioData(await file.arrayBuffer());
-                selectedMusic = 'custom';
-                document.querySelectorAll('.music-btn').forEach(b => b.classList.remove('active'));
-                showAlert(`✅ Loaded: ${file.name}`, 'info');
-            } catch (err) { showAlert('❌ Could not decode audio.', 'error'); }
-        }
-
-        function handleCustomVideoUpload(e) {
-            const file = e.target.files[0]; if (!file) return;
-            customVideoUrl = URL.createObjectURL(file);
-            showAlert(`✅ Loaded: ${file.name}`, 'info');
-        }
-
-        function showAlert(msg, type = 'error') {
-            const el = document.getElementById(`${type}Alert`);
-            el.innerHTML = msg; el.classList.add('show');
-            setTimeout(() => el.classList.remove('show'), 8000);
-        }
-        function hideAlerts() { document.querySelectorAll('.alert').forEach(a => a.classList.remove('show')); }
-
-        async function fetchViaProxy(service, endpoint, body, method = 'POST') {
-            try {
-                const res = await fetch('/api/proxy', {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ service, endpoint, body, method })
-                });
-                if (!res.ok) throw new Error(`Proxy error ${res.status}`);
-                return await res.json();
-            } catch (err) { console.error('Proxy fetch failed:', err); throw err; }
-        }
-
-        async function playMusic(type) {
-            if (window.currentAudio) { window.currentAudio.pause(); window.currentAudio = null; }
-            if (type === 'none' || type === 'custom') return;
-            let folder, trackCount;
-            if (type === 'random') {
-                const keys = Object.keys(MUSIC_CONFIG);
-                const randKey = keys[Math.floor(Math.random() * keys.length)];
-                folder = MUSIC_CONFIG[randKey].folder; trackCount = MUSIC_CONFIG[randKey].trackCount;
-            } else { folder = MUSIC_CONFIG[type]?.folder; trackCount = MUSIC_CONFIG[type]?.trackCount; }
-            if (!folder || !trackCount) return;
-            const trackNum = Math.floor(Math.random() * trackCount) + 1;
-            const url = `/audio/${folder}/${trackNum}.mp3`;
-            try {
-                const audio = new Audio(url); audio.loop = true; audio.volume = 0.4;
-                await audio.play(); window.currentAudio = audio;
-            } catch(e) { console.error('Music playback error:', e); }
-        }
-
-        async function generateScriptFromPrompt(prompt) {
-            const slideCount = selectedDuration <= 15 ? 4 : selectedDuration <= 30 ? 6 : 12;
-            const styleInstructions = {
-                educational: 'Informative, documentary-style, and clear. Explain the "why" and "how" using analogies.',
-                inspiring: 'Motivational, punchy, and emotional. Build up to a powerful conclusion.',
-                fun: 'Witty, surprising, and highly engaging. Use hooks and playful language.'
+        function getAudioUrl(surah, ayah, reciter) {
+            const reciterMap = {
+                'ar.alafasy': 'Alafasy',
+                'ar.abdulbasitmurattal': 'Abdul_Basit_Murattal',
+                'ar.husary': 'Husary',
+                'ar.sudais': 'Sudais'
             };
+            const reciterName = reciterMap[reciter] || 'Alafasy';
+            const surahPadded = String(surah).padStart(3, '0');
+            const ayahPadded = String(ayah).padStart(3, '0');
+            return `https://verses.quran.com/${reciterName}/mp3/${surahPadded}${ayahPadded}.mp3`;
+        }
 
-            const systemPrompt = `You are an expert science and documentary scriptwriter for high-quality viral Reels/TikToks. 
-            TASK: Write a ${selectedDuration}-second script about "${prompt}".
-            STYLE: ${styleInstructions[currentStyle]}
-
-            CRITICAL RULES FOR ENGAGING CONTENT:
-            1. Create EXACTLY ${slideCount} slides.
-            2. Keep each slide between 10 to 18 words. (Readable, but allows for depth).
-            3. TONE: Professional, fascinating, and insightful. Avoid childish or overly basic robotic statements. 
-            4. USE CONTEXT: Include specific mechanisms, real-world analogies, surprising statistics, or historical facts. 
-            5. Structure:
-               - Slide 1: A mind-bending hook or surprising question.
-               - Middle Slides: The "How it works" using clear analogies or specific mechanisms.
-               - Final Slide: A powerful conclusion or real-world impact.
-            6. Output ONLY a valid JSON array of strings. No markdown.
-
-            EXAMPLE OUTPUT (30s, educational, How Lift Works):
-            [
-              "How do 400-ton metal birds actually defy gravity and fly?",
-              "It is not just about engines; it is about invisible air pressure.",
-              "The wing's curved shape forces air to travel faster over the top.",
-              "According to Bernoulli's principle, faster moving air creates lower pressure above.",
-              "The higher pressure underneath pushes the massive wing aggressively upward.",
-              "This invisible battle of air pressure is what keeps us in the sky."
-            ]
-
-            OUTPUT FORMAT: Return ONLY the JSON array.`;
-
+        async function loadSurahVerses(surahNum) {
             try {
-                showAlert(`🤖 Generating viral script...`, 'info');
-                const data = await fetchViaProxy('groq', '/chat/completions', {
-                    model: 'llama-3.3-70b-versatile',
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        { role: 'user', content: `Write the script about: ${prompt}` }
-                    ],
-                    temperature: 0.85,
-                    max_tokens: 600
+                const surahInfoRes = await fetch(`${QURAN_COM_API}/chapters/${surahNum}`);
+                const surahInfo = await surahInfoRes.json();
+                const totalVerses = surahInfo.chapter.verses_count;
+                
+                const res = await fetch(`${QURAN_COM_API}/verses/by_chapter/${surahNum}?language=en&words=false&translations=131&fields=text_uthmani,verse_key,translations&per_page=${totalVerses}`);
+                const data = await res.json();
+                
+                if (!data.verses || data.verses.length === 0) throw new Error('No verses found');
+                
+                return data.verses.map(v => {
+                    const verseNum = parseInt(v.verse_key.split(':')[1]);
+                    const translation = v.translations && v.translations.length > 0 ? v.translations[0].text : '';
+                    return { numberInSurah: verseNum, text: v.text_uthmani, translation, verseKey: v.verse_key };
                 });
-                
-                let raw = data.choices?.[0]?.message?.content?.trim();
-                if (!raw) throw new Error('Empty response from AI');
-                raw = raw.replace(/```json|```/g, '').trim();
-                
-                let script = JSON.parse(raw);
-                if (!Array.isArray(script)) {
-                    if (script.slides) script = script.slides;
-                    else throw new Error('Response is not an array');
-                }
-                
-                const cleaned = script.map(s => typeof s === 'string' ? s.trim() : '').filter(s => s.split(' ').length >= 5 && s.split(' ').length <= 30);
-                
-                if (cleaned.length < slideCount * 0.7) throw new Error('Script too short');
-                return cleaned.slice(0, slideCount);
-                
-            } catch (err) {
-                console.error('Script generation failed:', err);
-                showAlert(`️ Script failed: ${err.message}. Using fallback.`, 'error');
-                return generateContextualFallback(prompt, slideCount);
+            } catch (error) {
+                console.error('Error loading verses:', error);
+                throw new Error('Failed to load verses from Quran.com API');
             }
         }
 
-        function generateContextualFallback(topic, count) {
-            const hooks = [`Have you ever wondered how ${topic} actually works?`, `The hidden mechanics behind ${topic}.`, `Most people misunderstand how ${topic} operates.`, `Why ${topic} completely changed the modern world.`];
-            const bodies = [
-                `It relies on a complex series of invisible mechanisms working in perfect harmony.`,
-                `Experts have spent decades refining the precise engineering behind this process.`,
-                `The underlying physics are surprisingly counterintuitive but incredibly elegant.`,
-                `It impacts millions of lives daily, though most never notice it happening.`
-            ];
-            const ctas = [`Follow for more deep dives!`, `What do you think? Let me know below.`, `Share this with a friend who needs to know.`, `Save this for your next study session.`];
-            
-            let slides = [hooks[Math.floor(Math.random() * hooks.length)]];
-            for(let i=0; i<count-2; i++) slides.push(bodies[i % bodies.length]);
-            slides.push(ctas[Math.floor(Math.random() * ctas.length)]);
-            return slides;
-        }
-
-        async function fetchPexelsVideo(query) {
-            const q = query || 'abstract background particles';
-            const randomPage = Math.floor(Math.random() * 5) + 1;
-            const endpoint = `/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&per_page=15&page=${randomPage}&_=${Date.now()}`;
-            const data = await fetchViaProxy('pexels', endpoint, null, 'GET');
-            if (!data.videos?.length) throw new Error('No videos found.');
-            const randomIdx = Math.floor(Math.random() * data.videos.length);
-            const vid = data.videos[randomIdx];
-            const valid = vid.video_files.filter(f => f.width <= 1080 && f.height >= f.width);
-            return valid.length ? valid[0].link : vid.video_files[0].link;
-        }
-
-        async function generateCaptionAndHashtags(topic, style, script) {
-            const prompt = `Generate a viral TikTok/Reels caption and 12 hashtags for a video about "${topic}".
-            Script context: ${script.join(' ')}
-            Return JSON ONLY: {"caption": "...", "hashtags": ["#..."]}. Caption must be under 2000 chars, include a hook, and a CTA.`;
-            try {
-                const data = await fetchViaProxy('groq', '/chat/completions', {
-                    model: 'llama-3.3-70b-versatile',
-                    messages: [{ role: 'user', content: prompt }],
-                    temperature: 0.7, max_tokens: 400
-                });
-                let raw = data.choices?.[0]?.message?.content?.trim().replace(/```json|```/g, '').trim();
-                const result = JSON.parse(raw);
-                if (!result.caption || !result.hashtags) throw new Error('Invalid format');
-                return result;
-            } catch (err) {
-                return {
-                    caption: `🎬 Learn about ${topic} in ${selectedDuration}s! What surprised you? Comment below! 💬`,
-                    hashtags: ['#ReelCraftt', '#AI', '#Shorts', '#TikTok', '#Viral', `#${topic.replace(/\s+/g, '')}`, '#LearnOnTikTok', '#EduTok']
-                };
-            }
-        }
-
-        function copyToClipboard(elementId, btn) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btn.textContent;
-                btn.textContent = '✅ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = originalText; btn.classList.remove('copied'); }, 2000);
-            });
-        }
-
-        async function startFreeQueue() {
-            document.getElementById('queueMainCard').style.display = 'block';
-            document.getElementById('queueMinimized').style.display = 'none';
-            document.getElementById('queueOverlay').classList.add('active');
-            
-            let timeLeft = 120;
-            const timerEl = document.getElementById('queueTimer');
-            const barEl = document.getElementById('queueProgressBar');
-            const miniTimer = document.getElementById('miniTimer');
-            barEl.style.width = '0%';
-
-            return new Promise(resolve => {
-                queueResolver = resolve;
-                queueInterval = setInterval(() => {
-                    timeLeft--;
-                    const mins = Math.floor(timeLeft / 60);
-                    const secs = timeLeft % 60;
-                    const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
-                    timerEl.textContent = timeStr;
-                    if (miniTimer) miniTimer.textContent = timeStr;
-                    barEl.style.width = `${((120 - timeLeft) / 120) * 100}%`;
-                    if (timeLeft <= 0) {
-                        clearInterval(queueInterval);
-                        hideQueueScreen();
-                        queueResolver = null;
-                        resolve();
+        function normalizeAyahData(ayahs, surahNum) {
+            let a = [...ayahs];
+            if (surahNum !== 1 && surahNum !== 9) {
+                if (a.length > 0 && a[0].text) {
+                    const firstText = a[0].text.trim();
+                    const isOnlyBismillah = firstText.length < 100 && (firstText.includes('بِسْمِ') || firstText.includes('بسم'));
+                    if (isOnlyBismillah && a.length > 1) {
+                        a[1].bismillah = a[0].text;
+                        a[1].bismillahTranslation = 'In the name of Allah, the Most Gracious, the Most Merciful';
+                        a.shift();
                     }
-                }, 1000);
-                queueTimeout = setTimeout(() => {
-                    clearInterval(queueInterval);
-                    hideQueueScreen();
-                    queueResolver = null;
-                    resolve();
-                }, 120000);
-            });
+                }
+            }
+            a.forEach((x, i) => x.numberInSurah = i + 1);
+            return a;
         }
 
-        function minimizeQueue() {
-            document.getElementById('queueMainCard').style.display = 'none';
-            document.getElementById('queueMinimized').style.display = 'block';
-        }
-        function restoreQueue() {
-            document.getElementById('queueMainCard').style.display = 'block';
-            document.getElementById('queueMinimized').style.display = 'none';
-        }
-        function hideQueueScreen() {
-            document.getElementById('queueMainCard').style.display = 'none';
-            document.getElementById('queueMinimized').style.display = 'none';
-            document.getElementById('queueOverlay').classList.remove('active');
-            if (queueInterval) clearInterval(queueInterval);
-            if (queueTimeout) clearTimeout(queueTimeout);
-        }
-
-        function showPricing() { 
-            window.open('https://www.effectivecpmnetwork.com/zeqnb5brr?key=5cc65e8ac3f067f4e2127225fe53c73e', '_blank');
-            document.getElementById('pricingModal').classList.add('active'); 
-        }
-        function hidePricing() { document.getElementById('pricingModal').classList.remove('active'); }
-        function selectPlan(plan) { 
-            document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected')); 
-            event.currentTarget.classList.add('selected'); 
+        function wrapText(ctx, text, maxWidth) {
+            if (!text) return [];
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                const testLine = currentLine ? currentLine + ' ' + word : word;
+                if (ctx.measureText(testLine).width > maxWidth && currentLine) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else currentLine = testLine;
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
         }
 
-        async function activatePremium() {
-            const codeInput = document.getElementById('premiumCode');
-            const code = codeInput.value.trim();
-            if (!code) return showAlert('Please enter a code', 'error');
-            const encoder = new TextEncoder();
-            const data = encoder.encode(code);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const inputHash = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
-            const VALID_CODE_HASHES = [
-                "a70b7b0159d6ad9494705dd5cecf4881d00a6f62e95dcc33d7399a47533a2047",
-                "a71af2fea5c9820246973486ad1f4f0eb7f3cfbd243a740c6c3e3c1b91edee4e",
-                "ffea4ef4f22a472075f7245594e9241bc081bc9e51523f73e956495401fdc21c",
-                "cc79eb82d276b69ea122de287f500e9c2a3a11d051069189f7c5812716a87dc6",
-                "3098c8bc7de3ef30b0c94315a6dd646f859702d065b2215dcd9d1eac8ba89d24",
-                "42c4438a236bf95daa94500b97e79e340e24c913db0233530548470b8727d5b1"
-            ];
-            if (VALID_CODE_HASHES.includes(inputHash.toLowerCase())) {
-                localStorage.setItem('reelcraft_premium', 'true');
-                isPremium = true;
-                hidePricing(); hideQueueScreen(); updatePremiumBadge();
-                codeInput.value = '';
-                if (queueResolver) { queueResolver(); queueResolver = null; }
-            } else { showAlert('❌ Invalid code.', 'error'); }
-        }
-        function updatePremiumBadge() {
-            const badge = document.querySelector('.badge');
-            if (badge) badge.textContent = '✅ Pro Member • Instant Queue • Priority Support';
+        function drawRoundedRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
         }
 
-        async function generateReel() {
-            hideAlerts();
-            hideQueueScreen();
-            hidePricing();
+        function renderFrame() {
+            const W = previewCanvas.width, H = previewCanvas.height;
             
-            const vqInput = document.getElementById('videoQuery').value.trim();
-            const subjectInput = document.getElementById('subject').value.trim();
-            currentTopic = subjectInput;
-            let slides = [];
-            
-            if (currentMode === 'free') {
-                const txt = document.getElementById('freeText').value.trim();
-                if (!txt) return showAlert('Enter text first', 'error');
-                slides = txt.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [txt];
+            if (bgVideo && bgVideo.readyState >= 2 && bgVideo.videoWidth > 0) {
+                const videoAspect = bgVideo.videoWidth / bgVideo.videoHeight;
+                const canvasAspect = W / H;
+                let drawWidth, drawHeight, drawX, drawY;
+                if (videoAspect > canvasAspect) { 
+                    drawHeight = H; drawWidth = H * videoAspect; drawX = (W - drawWidth) / 2; drawY = 0; 
+                } else { 
+                    drawWidth = W; drawHeight = W / videoAspect; drawX = 0; drawY = (H - drawHeight) / 2; 
+                }
+                ctx.drawImage(bgVideo, drawX, drawY, drawWidth, drawHeight);
             } else {
-                if (!subjectInput) return showAlert('Enter a topic/prompt', 'error');
-                if (!isPremium) await startFreeQueue();
-                slides = await generateScriptFromPrompt(subjectInput);
+                const grad = ctx.createLinearGradient(0, 0, 0, H);
+                grad.addColorStop(0, '#1a3a3a'); grad.addColorStop(1, '#0a1a1a');
+                ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
             }
+            
+            const overlay = ctx.createLinearGradient(0, 0, 0, H);
+            overlay.addColorStop(0, 'rgba(0,0,0,0.55)');
+            overlay.addColorStop(0.5, 'rgba(0,0,0,0.35)');
+            overlay.addColorStop(1, 'rgba(0,0,0,0.65)');
+            ctx.fillStyle = overlay; ctx.fillRect(0, 0, W, H);
+            
+            if (currentAyahs.length > 0 && currentAyahIndex < currentAyahs.length && currentAyahs[currentAyahIndex]) {
+                const ayah = currentAyahs[currentAyahIndex];
+                
+                const badgeY = 680, badgeH = 48, badgeW = 240, badgeX = (W - badgeW) / 2;
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 24); ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1; ctx.stroke();
+                ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.font = '600 18px Inter, sans-serif';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                const surahName = ayah.surah?.name_simple || currentSurahData?.surahName || 'Quran';
+                ctx.fillText(surahName.toUpperCase(), W/2, badgeY + badgeH/2);
+                
+                const safeZoneTop = badgeY + badgeH + 30;
+                const indicatorY = 1500;
+                const safeZoneBottom = indicatorY - 30;
+                const availableHeight = safeZoneBottom - safeZoneTop;
+                
+                const arabicMaxWidth = W * 0.85;
+                const englishMaxWidth = W * 0.72;
+                const hasBismillah = !!ayah.bismillah;
+                
+                const bismillahSize = 65;
+                const bismillahLineHeight = bismillahSize * 1.8;
+                const bismillahGap = 30;
+                
+                let bismillahTotalHeight = 0;
+                let bismillahLines = [];
+                if (hasBismillah) {
+                    ctx.font = `700 ${bismillahSize}px "Scheherazade New", serif`;
+                    bismillahLines = wrapText(ctx, ayah.bismillah, W * 0.85);
+                    bismillahTotalHeight = (bismillahLines.length * bismillahLineHeight) + bismillahGap;
+                }
+                
+                const mainAvailableHeight = availableHeight - bismillahTotalHeight;
+                
+                let arabicFontSize = 90, englishFontSize = 30;
+                const MIN_ARABIC = 50, MIN_ENGLISH = 18;
+                
+                function calculateMainHeight(aSize, eSize) {
+                    ctx.font = `700 ${aSize}px "Scheherazade New", serif`;
+                    const aLines = wrapText(ctx, ayah.text, arabicMaxWidth);
+                    const aHeight = aLines.length * (aSize * 1.8);
+                    ctx.font = `italic 400 ${eSize}px Inter, sans-serif`;
+                    const eLines = wrapText(ctx, ayah.translation, englishMaxWidth);
+                    const eHeight = eLines.length * (eSize * 1.4);
+                    return aHeight + eHeight + 30;
+                }
+                
+                while (calculateMainHeight(arabicFontSize, englishFontSize) > mainAvailableHeight &&
+                       (arabicFontSize > MIN_ARABIC || englishFontSize > MIN_ENGLISH)) {
+                    if (arabicFontSize > MIN_ARABIC) arabicFontSize -= 2;
+                    if (englishFontSize > MIN_ENGLISH) englishFontSize -= 1;
+                }
+                
+                ctx.font = `700 ${arabicFontSize}px "Scheherazade New", serif`;
+                const arabicLines = wrapText(ctx, ayah.text, arabicMaxWidth);
+                const arabicLineHeight = arabicFontSize * 1.8;
+                const arabicTotalHeight = arabicLines.length * arabicLineHeight;
+                
+                ctx.font = `italic 400 ${englishFontSize}px Inter, sans-serif`;
+                const englishLines = wrapText(ctx, ayah.translation, englishMaxWidth);
+                const englishLineHeight = englishFontSize * 1.4;
+                const englishTotalHeight = englishLines.length * englishLineHeight;
+                
+                const mainContentHeight = arabicTotalHeight + englishTotalHeight + 30;
+                const totalContentHeight = bismillahTotalHeight + mainContentHeight;
+                const contentStartY = safeZoneTop + (availableHeight - totalContentHeight) / 2;
+                
+                let currentY = contentStartY;
+                
+                if (hasBismillah) {
+                    ctx.font = `700 ${bismillahSize}px "Scheherazade New", serif`;
+                    ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 15; ctx.shadowOffsetY = 3;
+                    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+                    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                    bismillahLines.forEach((line, i) => {
+                        ctx.fillText(line, W/2, currentY + (i * bismillahLineHeight) + bismillahLineHeight/2);
+                    });
+                    currentY += bismillahTotalHeight;
+                    ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+                }
+                
+                ctx.font = `700 ${arabicFontSize}px "Scheherazade New", serif`;
+                ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 15; ctx.shadowOffsetY = 3;
+                ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                arabicLines.forEach((line, i) => {
+                    ctx.fillText(line, W/2, currentY + (i * arabicLineHeight) + arabicLineHeight/2);
+                });
+                ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+                
+                currentY += arabicTotalHeight + 30;
+                
+                ctx.font = `italic 400 ${englishFontSize}px Inter, sans-serif`;
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                englishLines.forEach((line, i) => {
+                    ctx.fillText(line, W/2, currentY + (i * englishLineHeight) + englishLineHeight/2);
+                });
+                
+                ctx.fillStyle = 'rgba(255,255,255,0.55)';
+                ctx.font = '500 22px "JetBrains Mono", monospace';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText(`♪  AYAH ${String(ayah.numberInSurah).padStart(2, '0')}`, W/2, indicatorY);
+            }
+        }
 
-            const btn = document.getElementById('generateBtn');
-            btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Processing...';
+        // FIXED: Ensure render loop runs continuously
+        function startRenderLoop() {
+            function loop() {
+                renderFrame();
+                renderLoopId = requestAnimationFrame(loop);
+            }
+            // Only start if not already running
+            if (!renderLoopId) {
+                loop();
+            }
+        }
 
+        function generateTagsAndCaption(surahName) {
+            const surahSlug = surahName.toLowerCase().replace(/-/g, '');
+            const surahTags = [surahSlug, `surah${surahSlug}`, 'quran'];
+            const allTags = [...surahTags, ...viralTags.general, ...viralTags.recitation];
+            const uniqueTags = [...new Set(allTags)].slice(0, 25);
+            const hashtagFormat = uniqueTags.map(t => `#${t}`).join(' ');
+            const commaFormat = uniqueTags.join(', ');
+            const caption = `📖 ${surahName} - Reflection\n\n✨ "${currentAyahs[0]?.translation || ''}"\n\nBeautiful recitation to brighten your day\n\n💫 Save this for later & share with someone who needs it!\n\n${hashtagFormat}`;
+            return { hashtags: hashtagFormat, comma: commaFormat, caption };
+        }
+
+        function updateTagsDisplay() {
+            const surahName = currentAyahs[0]?.surah?.name_simple || 'Quran';
+            const tagsData = generateTagsAndCaption(surahName);
+            document.getElementById('tagsContainer').textContent = currentTagFormat === 'hashtags' ? tagsData.hashtags : tagsData.comma;
+            document.getElementById('captionContainer').textContent = tagsData.caption;
+        }
+
+        async function init() {
             try {
-                const timePer = (selectedDuration * 1000) / slides.length;
-                textChunks = slides.map((t, i) => ({ text: t, start: i * timePer, end: (i + 1) * timePer }));
-
-                showAlert('🎬 Fetching background video...', 'info');
-                let vidUrl = customVideoUrl;
-                if (!vidUrl) {
-                    const finalVideoQuery = vqInput || (currentMode === 'subject' ? subjectInput : null);
-                    vidUrl = await fetchPexelsVideo(finalVideoQuery || 'abstract background particles');
+                const res = await fetch(`${QURAN_COM_API}/chapters?language=en`);
+                const data = await res.json();
+                if (data.chapters) {
+                    surahsData = data.chapters;
+                    surahSelect.innerHTML = '<option value="">Select Surah</option>' + surahsData.map(s => `<option value="${s.id}">${s.id}. ${s.name_simple} (${s.verses_count} verses)</option>`).join('');
+                    fetchVideoBatch();
                 }
+            } catch (e) { console.error('Failed to load surahs:', e); }
+            startRenderLoop(); // Start initial render loop
+        }
 
-                const vid = document.getElementById('backgroundVideo');
-                vid.src = vidUrl || 'https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4';
-                vid.crossOrigin = 'anonymous';
-                document.getElementById('previewSection').classList.add('active');
-                document.getElementById('chunkIndicators').innerHTML = textChunks.map((_, i) => `<div class="chunk-dot"></div>`).join('');
-                await new Promise(r => vid.onloadedmetadata = r);
-                
-                updateSlide(0);
-                
-                showAlert('️ Generating caption & hashtags...', 'info');
-                const captionData = await generateCaptionAndHashtags(subjectInput, currentStyle, slides);
-                document.getElementById('captionSection').style.display = 'block';
-                document.getElementById('generatedCaption').textContent = captionData.caption;
-                document.getElementById('generatedHashtags').textContent = captionData.hashtags.join(' ');
-                
-                showAlert(`✅ Ready! ${textChunks.length} slides • ${selectedDuration}s`, 'info');
+        surahSelect.addEventListener('change', async (e) => {
+            if (!e.target.value) return;
+            const surahNum = parseInt(e.target.value);
+            ayahList.innerHTML = '<div class="text-center text-white/30 text-sm py-8">Loading verses...</div>';
+            selectedAyahs.clear();
+            document.getElementById('selectedCount').textContent = '0';
+            try {
+                const ayahs = await loadSurahVerses(surahNum);
+                const normalized = normalizeAyahData(ayahs, surahNum);
+                const surah = surahsData.find(s => s.id === surahNum);
+                currentSurahData = { ayahs: normalized, surahNum, surahName: surah?.name_simple || 'Quran' };
+                renderAyahList();
             } catch (e) {
-                console.error(e); showAlert(`Error: ${e.message}`, 'error');
-            } finally {
-                btn.disabled = false; btn.innerHTML = '<span></span> Generate Reel';
+                console.error('Failed to load ayahs:', e);
+                ayahList.innerHTML = `<div class="text-center text-red-400 text-sm py-8">Error: ${e.message}. Please try again.</div>`;
             }
+        });
+
+        function renderAyahList() {
+            ayahList.innerHTML = '';
+            if (!currentSurahData || !currentSurahData.ayahs || currentSurahData.ayahs.length === 0) {
+                ayahList.innerHTML = '<div class="text-center text-white/30 text-sm py-8">No verses available</div>';
+                return;
+            }
+            currentSurahData.ayahs.forEach((ayah) => {
+                const div = document.createElement('div');
+                div.className = `ayah-row p-3 rounded-md cursor-pointer ${selectedAyahs.has(ayah.numberInSurah) ? 'selected' : ''}`;
+                div.innerHTML = `<div class="flex items-start gap-3"><span class="font-mono text-xs text-white/40 mt-1 w-6">${ayah.numberInSurah}</span><div class="flex-1 min-w-0"><p class="font-arabic text-right text-white text-sm mb-1 truncate" dir="rtl" style="line-height: 2.2;">${ayah.text}</p><p class="text-[10px] text-white/40 truncate">${ayah.translation || ''}</p></div></div>`;
+                div.onclick = () => {
+                    if (selectedAyahs.has(ayah.numberInSurah)) selectedAyahs.delete(ayah.numberInSurah);
+                    else selectedAyahs.add(ayah.numberInSurah);
+                    div.classList.toggle('selected');
+                    document.getElementById('selectedCount').textContent = selectedAyahs.size;
+                };
+                ayahList.appendChild(div);
+            });
         }
 
-        function updateSlide(i) {
-            const el = document.getElementById('displayText');
-            el.classList.remove('active');
-            setTimeout(() => {
-                el.textContent = textChunks[i].text;
-                el.classList.add('active');
-                document.querySelectorAll('.chunk-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
-            }, 300);
-            currentChunkIndex = i;
-        }
+        document.getElementById('selectAllBtn').onclick = () => {
+            if (!currentSurahData) return;
+            selectedAyahs.clear();
+            currentSurahData.ayahs.forEach(a => selectedAyahs.add(a.numberInSurah));
+            renderAyahList();
+            document.getElementById('selectedCount').textContent = selectedAyahs.size;
+        };
+        document.getElementById('clearAllBtn').onclick = () => {
+            selectedAyahs.clear();
+            renderAyahList();
+            document.getElementById('selectedCount').textContent = 0;
+        };
 
-        async function playPreview() {
-            const vid = document.getElementById('backgroundVideo');
-            const bar = document.getElementById('progressBar');
-            const dur = selectedDuration * 1000;
-            vid.currentTime = 0;
-            clearInterval(animationInterval);
-            if (vid.readyState < 2) await new Promise(r => vid.addEventListener('canplay', r, { once: true }));
-            vid.play();
-            if (selectedMusic !== 'none') playMusic(selectedMusic).catch(e => console.warn(e));
-            const start = Date.now();
-            animationInterval = setInterval(() => {
-                const p = Math.min((Date.now() - start) / dur, 1);
-                bar.style.width = `${p * 100}%`;
-                const idx = textChunks.findIndex(c => (Date.now() - start) >= c.start && (Date.now() - start) < c.end);
-                if (idx !== -1 && idx !== currentChunkIndex) updateSlide(idx);
-                if (p >= 1) { clearInterval(animationInterval); vid.pause(); if (window.currentAudio) window.currentAudio.pause(); bar.style.width = '0%'; }
-            }, 50);
-        }
-
-        async function downloadReel() {
-            const vid = document.getElementById('backgroundVideo'), dur = selectedDuration, btn = document.getElementById('downloadBtn');
-            btn.disabled = true; btn.textContent = 'Recording...';
-            const recordedChunks = [];
-            const rc = document.createElement('canvas'); rc.width = 1080; rc.height = 1920;
-            const rctx = rc.getContext('2d');
-            const stream = rc.captureStream(30);
-            const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
-            const mr = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
-            mr.ondataavailable = e => { if (e.data.size) recordedChunks.push(e.data); };
-            mr.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: mime });
-                const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-                a.download = `reel-${Date.now()}.${mime.includes('mp4') ? 'mp4' : 'webm'}`; a.click();
-                btn.disabled = false; btn.textContent = '⬇ Download';
-                showAlert('✅ Downloaded! Upload to TikTok/IG/Shorts', 'info');
-            };
-            vid.currentTime = 0; await vid.play(); mr.start(200);
-            const start = Date.now(), end = start + dur * 1000;
-            function draw() {
-                const now = Date.now(), el = now - start;
-                rctx.fillStyle = '#000'; rctx.fillRect(0, 0, 1080, 1920);
-                if (vid.readyState >= 2) rctx.drawImage(vid, 0, 0, 1080, 1920);
-                rctx.fillStyle = 'rgba(0,0,0,0.65)'; rctx.fillRect(0, 0, 1080, 1920);
-                const chunk = textChunks.find(c => el >= c.start && el < c.end) || textChunks[0];
-                if (chunk) {
-                    rctx.font = '800 64px Inter, sans-serif'; rctx.fillStyle = '#fff'; rctx.textAlign = 'center'; rctx.textBaseline = 'middle';
-                    const words = chunk.text.split(' ');
-                    let line = ''; let lines = [];
-                    for (let n = 0; n < words.length; n++) {
-                        const testLine = line + words[n] + ' ';
-                        if (rctx.measureText(testLine).width > 900 && n > 0) { lines.push(line); line = words[n] + ' '; }
-                        else line = testLine;
+        async function searchVideos(query) {
+            if (!query) return;
+            videoSearchResults.innerHTML = '<div class="col-span-2 text-center text-white/40 text-xs py-4">Searching videos...</div>';
+            videoSearchResults.classList.remove('hidden');
+            let allVideos = [];
+            try {
+                try {
+                    const pixabayRes = await fetch(`/api/pixabay?query=${encodeURIComponent(query)}&per_page=8`);
+                    if (pixabayRes.ok) {
+                        const pixabayData = await pixabayRes.json();
+                        if (pixabayData.hits && pixabayData.hits.length > 0) {
+                            allVideos = allVideos.concat(pixabayData.hits.map(v => ({
+                                source: 'pixabay',
+                                video_files: [{ link: v.videos?.large?.url || v.videos?.medium?.url || v.videos?.small?.url, height: 1920 }],
+                                image: v.picture_id ? `https://cdn.pixabay.com/photo/${v.picture_id}_640.jpg` : v.preview_url
+                            })).filter(v => v.video_files[0].link));
+                        }
                     }
-                    lines.push(line);
-                    const lineHeight = 75;
-                    const totalH = lines.length * lineHeight;
-                    const startY = 960 - (totalH / 2) + (lineHeight / 2);
-                    lines.forEach((l, i) => rctx.fillText(l.trim(), 540, startY + (i * lineHeight)));
-                }
-                if (now < end) requestAnimationFrame(draw);
-                else { vid.pause(); mr.stop(); if (window.currentAudio) window.currentAudio.pause(); }
+                } catch (e) { console.warn('Pixabay failed:', e); }
+                try {
+                    const pexelsRes = await fetch(`/api/pexels?query=${encodeURIComponent(query)}&per_page=8&orientation=portrait`);
+                    if (pexelsRes.ok) {
+                        const pexelsData = await pexelsRes.json();
+                        if (pexelsData.videos && pexelsData.videos.length > 0) {
+                            allVideos = allVideos.concat(pexelsData.videos.map(v => ({ source: 'pexels', video_files: v.video_files, image: v.image })));
+                        }
+                    }
+                } catch (e) { console.warn('Pexels failed:', e); }
+                if (allVideos.length > 0) displayVideoSearchResults(allVideos);
+                else videoSearchResults.innerHTML = '<div class="col-span-2 text-center text-white/40 text-xs py-4">No videos found. Try: nature, forest, ocean, sky</div>';
+            } catch (e) {
+                console.error('Video search failed:', e);
+                videoSearchResults.innerHTML = '<div class="col-span-2 text-center text-red-400 text-xs py-4">Error loading videos</div>';
             }
-            setTimeout(draw, 300);
         }
 
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
+        function displayVideoSearchResults(videos) {
+            videoSearchResults.innerHTML = '';
+            videos.forEach((video, idx) => {
+                const videoFile = video.video_files?.find(f => f.height === 1920) || video.video_files?.find(f => f.height >= 720) || video.video_files?.[0];
+                const videoUrl = videoFile?.link;
+                const thumbnail = video.image;
+                if (!videoUrl) return;
+                const div = document.createElement('div');
+                div.className = `video-thumbnail rounded-lg overflow-hidden border-2 ${selectedVideoUrl === videoUrl || pendingVideoUrl === videoUrl ? 'selected' : ''}`;
+                const videoEl = document.createElement('video');
+                videoEl.muted = true; videoEl.loop = true; videoEl.playsInline = true;
+                videoEl.preload = 'metadata'; videoEl.src = videoUrl;
+                const imgEl = document.createElement('img');
+                imgEl.src = thumbnail; imgEl.alt = `Video ${idx + 1}`; imgEl.className = 'thumbnail-img';
+                const checkEl = document.createElement('div');
+                checkEl.className = 'checkmark-overlay';
+                checkEl.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                div.appendChild(imgEl); div.appendChild(videoEl); div.appendChild(checkEl);
+                div.addEventListener('mouseenter', () => { videoEl.play().catch(() => {}); });
+                div.addEventListener('mouseleave', () => { videoEl.pause(); videoEl.currentTime = 0; });
+                div.onclick = () => {
+                    document.querySelectorAll('.video-thumbnail').forEach(el => el.classList.remove('selected'));
+                    div.classList.add('selected');
+                    selectVideo(video, videoUrl);
+                };
+                videoSearchResults.appendChild(div);
+            });
+            videoSearchResults.classList.remove('hidden');
         }
+
+        function selectVideo(video, videoUrl) {
+            if (videoUrl) {
+                pendingVideoUrl = videoUrl;
+                const indicator = document.getElementById('selectedVideoIndicator');
+                indicator.classList.remove('hidden');
+                indicator.classList.add('flex');
+                lucide.createIcons();
+                if (!isReelGenerated) {
+                    selectedVideoUrl = videoUrl;
+                    bgVideo.src = videoUrl;
+                    bgVideo.load();
+                }
+                setTimeout(() => {
+                    videoSearchResults.classList.add('hidden');
+                    videoSearchInput.value = '';
+                }, 300);
+            }
+        }
+
+        document.getElementById('changeVideoBtn').addEventListener('click', () => {
+            pendingVideoUrl = null; selectedVideoUrl = null;
+            const indicator = document.getElementById('selectedVideoIndicator');
+            indicator.classList.add('hidden'); indicator.classList.remove('flex');
+            videoSearchInput.focus();
+        });
+
+        searchVideoBtn.addEventListener('click', () => {
+            const query = videoSearchInput.value.trim();
+            if (query) searchVideos(query);
+        });
+
+        videoSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = videoSearchInput.value.trim();
+                if (query) searchVideos(query);
+            }
+        });
+
+        async function fetchVideoBatch() {
+            try {
+                const res = await fetch('/api/pexels?per_page=20&orientation=portrait');
+                const data = await res.json();
+                if (data.videos) {
+                    videoPool = data.videos.map(v => {
+                        const f = v.video_files.find(f => f.height === 1920) || v.video_files[0];
+                        return f?.link;
+                    }).filter(url => url);
+                }
+            } catch (e) { console.warn('Video fetch failed'); }
+        }
+
+        function getNextVideo() {
+            if (selectedVideoUrl) {
+                bgVideo.src = selectedVideoUrl;
+            } else if (videoPool.length > 0) {
+                if (videoPoolIndex >= videoPool.length - 5) fetchVideoBatch();
+                if (videoPoolIndex >= videoPool.length) videoPoolIndex = 0;
+                bgVideo.src = videoPool[videoPoolIndex++];
+            }
+            bgVideo.load();
+        }
+
+        function startLoadingSequence(finalCallback) {
+            loadingOverlay.classList.remove('hidden');
+            loadingOverlay.classList.add('flex');
+            lucide.createIcons();
+            let timeLeft = 90;
+            updateTimerDisplay(timeLeft);
+            const interval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timeLeft);
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    loadingOverlay.classList.add('hidden');
+                    loadingOverlay.classList.remove('flex');
+                    finalCallback();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            countdownTimer.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        generateBtn.addEventListener('click', async () => {
+            if (!surahSelect.value || selectedAyahs.size === 0) return;
+            const surahNum = parseInt(surahSelect.value);
+            const reciter = reciterSelect.value;
+            if (pendingVideoUrl) { selectedVideoUrl = pendingVideoUrl; pendingVideoUrl = null; }
+            startLoadingSequence(async () => {
+                try {
+                    const surah = surahsData.find(s => s.id === surahNum);
+                    const ayahs = await loadSurahVerses(surahNum);
+                    const normalized = normalizeAyahData(ayahs, surahNum);
+                    const filtered = normalized.filter(a => selectedAyahs.has(a.numberInSurah)).sort((a,b) => a.numberInSurah - b.numberInSurah);
+                    currentAyahs = filtered.map(a => ({
+                        ...a,
+                        audio: getAudioUrl(surahNum, a.numberInSurah, reciter),
+                        surah
+                    }));
+                    currentAyahIndex = 0;
+                    getNextVideo();
+                    downloadBtn.classList.remove('hidden');
+                    downloadBtn.style.display = 'flex';
+                    tagsSection.classList.remove('hidden');
+                    updateTagsDisplay();
+                    isReelGenerated = true;
+                    generateBtnText.textContent = 'Regenerate Reel';
+                    startPlayback();
+                } catch (e) {
+                    console.error('Generation failed:', e);
+                    alert('Failed to generate reel. Please try again.');
+                }
+            });
+        });
+
+        function startPlayback() {
+            if (!currentAyahs.length || isRecording) return;
+            isPlaying = true;
+            bgVideo.play();
+            playCurrentAyah();
+        }
+
+        function playCurrentAyah() {
+            if (!isPlaying || isRecording) return;
+            if (currentAyahIndex >= currentAyahs.length) currentAyahIndex = 0;
+            const ayah = currentAyahs[currentAyahIndex];
+            audioPlayer.src = ayah.audio;
+            audioPlayer.play().catch(e => console.error('Audio play failed:', e));
+            audioPlayer.onended = () => {
+                currentAyahIndex++;
+                if (isPlaying && !isRecording) playCurrentAyah();
+            };
+        }
+
+        previewCanvas.addEventListener('click', () => {
+            if (!currentAyahs.length || isRecording) return;
+            isPlaying = !isPlaying;
+            if (isPlaying) { bgVideo.play(); audioPlayer.play(); }
+            else { bgVideo.pause(); audioPlayer.pause(); }
+        });
+
+        document.getElementById('copyTagsBtn').addEventListener('click', () => {
+            const text = document.getElementById('tagsContainer').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyTagsBtn');
+                btn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => { btn.innerHTML = '<i data-lucide="copy" class="w-3 h-3"></i> Copy Tags'; lucide.createIcons(); }, 2000);
+            });
+        });
+
+        document.getElementById('copyCaptionBtn').addEventListener('click', () => {
+            const text = document.getElementById('captionContainer').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyCaptionBtn');
+                btn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => { btn.innerHTML = '<i data-lucide="copy" class="w-3 h-3"></i> Copy Caption'; lucide.createIcons(); }, 2000);
+            });
+        });
+
+        document.getElementById('toggleTagFormat').addEventListener('click', () => {
+            currentTagFormat = currentTagFormat === 'hashtags' ? 'comma' : 'hashtags';
+            updateTagsDisplay();
+        });
+
+        document.getElementById('storyBtn').addEventListener('click', () => {
+            storyModal.classList.remove('hidden'); storyModal.classList.add('flex'); lucide.createIcons();
+        });
+        document.getElementById('closeStoryBtn').addEventListener('click', () => {
+            storyModal.classList.add('hidden'); storyModal.classList.remove('flex');
+        });
+        storyModal.addEventListener('click', (e) => {
+            if (e.target === storyModal) { storyModal.classList.add('hidden'); storyModal.classList.remove('flex'); }
+        });
+
+        const bgVideo = document.createElement('video');
+        bgVideo.loop = true; bgVideo.muted = true; bgVideo.playsInline = true;
+        bgVideo.crossOrigin = 'anonymous'; bgVideo.style.display = 'none';
+        document.body.appendChild(bgVideo);
+
+        init();
     </script>
 </body>
 </html>
